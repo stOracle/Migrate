@@ -1,0 +1,18 @@
+<?xml version = '1.0' encoding = 'UTF-8'?>
+<Relation class="oracle.dbtools.crest.model.design.logical.InheritanceRelation" name="Hierarchy_1" directorySegmentName="seg_0" id="720D6073-A2B2-A0A1-8EE7-78BFF1062398">
+<createdBy>Stephen</createdBy>
+<createdTime>2016-11-30 00:59:03 UTC</createdTime>
+<ownerDesignName>HospitalModel</ownerDesignName>
+<engineerTo>
+<item key="AD605F01-77C0-DDF1-D65B-9F0A845D94CC" value="true"/>
+</engineerTo>
+<identifying>false</identifying>
+<nameOnSource>Super Type</nameOnSource>
+<nameOnTarget>Sub Type</nameOnTarget>
+<optionalSource>true</optionalSource>
+<optionalTarget>true</optionalTarget>
+<sourceEntity>DA6F9ADD-7426-B4E5-C4DC-D83CED4BD76C</sourceEntity>
+<targetEntity>F9087BA8-E50C-28EE-4921-03D2D4384458</targetEntity>
+<transferable>true</transferable>
+<deleteRule>NO ACTION</deleteRule>
+</Relation>

@@ -1,0 +1,3335 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<rulesfile version="1.0"
+	name="Rules for Sybase 12.5 Server-Library Migrations"
+	description="Search rules to identify Sybase Open Server 12.5 Server-Library calls in C applications"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
+
+	<ruleset name="ctlib" description="Client Server Library Routines defined in cspublic.h routines"
+		type="SYBASE" 
+		source="c" 
+		target="ORACLE" 
+		enable="true" 
+		codetype="ctlib"
+		helpurl="http://infocenter.sybase.com/help/index.jsp?topic=/com.sybase.infocenter.dc32840.1550/html/ctref/X48187.htm">
+		<required>
+			<regex>
+				<expression><![CDATA[bkpublic\.h|cspublic\.h|mcconfig\.h|sqlca\.h|sybdbn\.h|sybfront\.h|sybhstmt\.h|sybtesql\.h|cstypes\.h|mcpublic\.h|sqlda\.h|syberror\.h|syblogin\.h|csconfig\.h|ctpublic\.h|mctypes\.h|sybdb\.h|sybesql.c|sybhesql\.h]]></expression>
+			</regex>
+		</required>
+		<rules>
+			<regex codetype="ctlib" name="ctpublic include" description="Defines structures, types, and values used by Client-Library routines">
+				<example></example>
+				<expression><![CDATA[ctpublic\.h]]></expression>
+				<replacement type="regex"><![CDATA[dblibdrv\.h]]></replacement>
+			</regex>
+			<regex codetype="ctlib" name="sybfront.h include" description="sybfront.h and sybdb.h, are required in all source files that contain calls to DB-Library/C routines">
+				<example></example>
+				<expression><![CDATA[sybfront\.h]]></expression>
+				<replacement type="regex"><![CDATA[dblibdrv\.h]]></replacement>
+			</regex>
+			<regex codetype="ctlib" name="sybdb include" description="sybfront.h and sybdb.h, are required in all source files that contain calls to DB-Library/C routines">
+				<example></example>
+				<expression><![CDATA[sybdb\.h]]></expression>
+				<replacement type="regex"><![CDATA[dblibdrv\.h]]></replacement>
+			</regex>
+	
+			<regex codetype="ctlib" name="ct_bind">
+				<example></example>
+<!-- 				<expression params="6"><![CDATA[ct_bind]]></expression>
+				<replacement type="regex"><![CDATA[oci_bind($1, $3, $2, $4, $6, $5)]]></replacement> -->
+        <expression><![CDATA[ct_bind]]></expression>
+        <replacement type="regex"><![CDATA[oci_bind]]></replacement> 
+			</regex>
+			<regex codetype="ctlib" name="ct_br_column">
+				<example></example>
+				<expression><![CDATA[ct_br_column]]></expression>
+			</regex>
+			<regex codetype="ctlib" name="ct_br_table">
+				<example></example>
+				<expression><![CDATA[ct_br_table]]></expression>
+			</regex>
+			<regex codetype="ctlib" name="ct_callback">
+				<example></example>
+				<expression><![CDATA[ct_callback]]></expression>
+				<replacement type="regex"><![CDATA[OCIUserCallbackRegister]]></replacement>
+			</regex>
+			<regex codetype="ctlib" name="ct_cancel">
+				<expression><![CDATA[ct_cancel]]></expression>
+			</regex>
+			<regex codetype="ctlib" name="ct_capability">
+				<expression><![CDATA[ct_capability]]></expression>
+			</regex>
+			<regex codetype="ctlib" name="ct_close">
+				<expression><![CDATA[ct_close]]></expression>
+			</regex>
+			<regex codetype="ctlib" name="ct_cmd_alloc">
+				<expression><![CDATA[ct_cmd_alloc]]></expression>
+			</regex>
+			<regex codetype="ctlib" name="ct_cmd_drop">
+				<expression><![CDATA[ct_cmd_drop]]></expression>
+			</regex>
+			<regex codetype="ctlib" name="ct_cmd_props">
+				<expression><![CDATA[ct_cmd_props]]></expression>
+			</regex>
+			<regex codetype="ctlib" name="ct_command">
+				<expression><![CDATA[ct_command]]></expression>
+			</regex>
+			<regex codetype="ctlib" name="ct_compute_info">
+				<expression><![CDATA[ct_compute_info]]></expression>
+			</regex>
+			<regex codetype="ctlib" name="ct_con_alloc">
+				<expression><![CDATA[ct_con_alloc]]></expression>
+			</regex>
+			<regex codetype="ctlib" name="ct_con_drop">
+				<expression><![CDATA[ct_con_drop]]></expression>
+			</regex>
+			<regex codetype="ctlib" name="ct_con_props">
+				<expression><![CDATA[ct_con_props]]></expression>
+			</regex>
+			<regex codetype="ctlib" name="ct_config">
+				<expression><![CDATA[ct_config]]></expression>
+			</regex>
+			<regex codetype="ctlib" name="ct_connect">
+				<expression><![CDATA[ct_connect]]></expression>
+			</regex>
+			<regex codetype="ctlib" name="ct_cursor">
+				<expression><![CDATA[ct_cursor]]></expression>
+			</regex>
+			<regex codetype="ctlib" name="ct_data_info">
+				<expression><![CDATA[ct_data_info]]></expression>
+			</regex>
+			<regex codetype="ctlib" name="ct_debug">
+				<expression><![CDATA[ct_debug]]></expression>
+			</regex>
+			<regex codetype="ctlib" name="ct_describe">
+				<expression><![CDATA[ct_describe]]></expression>
+			</regex>
+			<regex codetype="ctlib" name="ct_diag">
+				<expression><![CDATA[ct_diag]]></expression>
+			</regex>
+			<regex codetype="ctlib" name="ct_ds_dropobj">
+				<expression><![CDATA[ct_ds_dropobj]]></expression>
+			</regex>
+			<regex codetype="ctlib" name="ct_ds_lookup">
+				<expression><![CDATA[ct_ds_lookup]]></expression>
+			</regex>
+			<regex codetype="ctlib" name="ct_ds_objinfo">
+				<expression><![CDATA[ct_ds_objinfo]]></expression>
+			</regex>
+			<regex codetype="ctlib" name="ct_dynamic">
+				<expression><![CDATA[ct_dynamic]]></expression>
+			</regex>
+			<regex codetype="ctlib" name="ct_dyndesc">
+				<expression><![CDATA[ct_dyndesc]]></expression>
+			</regex>
+			<regex codetype="ctlib" name="ct_dynsqlda">
+				<expression><![CDATA[ct_dynsqlda]]></expression>
+			</regex>
+			<regex codetype="ctlib" name="ct_exit">
+				<expression><![CDATA[ct_exit]]></expression>
+			</regex>
+			<regex codetype="ctlib" name="ct_fetch">
+				<expression><![CDATA[ct_fetch]]></expression>
+			</regex>
+			<regex codetype="ctlib" name="ct_get_data">
+				<expression><![CDATA[ct_get_data]]></expression>
+			</regex>
+			<regex codetype="ctlib" name="ct_getformat">
+				<expression><![CDATA[ct_getformat]]></expression>
+			</regex>
+			<regex codetype="ctlib" name="ct_getloginfo">
+				<expression><![CDATA[ct_getloginfo]]></expression>
+			</regex>
+			<regex codetype="ctlib" name="ct_init">
+				<expression><![CDATA[ct_init]]></expression>
+			</regex>
+			<regex codetype="ctlib" name="ct_keydata">
+				<expression><![CDATA[ct_keydata]]></expression>
+			</regex>
+			<regex codetype="ctlib" name="ct_labels">
+				<expression><![CDATA[ct_labels]]></expression>
+			</regex>
+			<regex codetype="ctlib" name="ct_options">
+				<expression><![CDATA[ct_options]]></expression>
+			</regex>
+			<regex codetype="ctlib" name="ct_param">
+				<expression><![CDATA[ct_param]]></expression>
+			</regex>
+			<regex codetype="ctlib" name="ct_poll">
+				<expression><![CDATA[ct_poll]]></expression>
+			</regex>
+			<regex codetype="ctlib" name="ct_recvpassthru">
+				<expression><![CDATA[ct_recvpassthru]]></expression>
+			</regex>
+			<regex codetype="ctlib" name="ct_remote_pwd">
+				<expression><![CDATA[ct_remote_pwd]]></expression>
+			</regex>
+			<regex codetype="ctlib" name="ct_res_info">
+				<expression><![CDATA[ct_res_info]]></expression>
+			</regex>
+			<regex codetype="ctlib" name="ct_results">
+				<expression><![CDATA[ct_results]]></expression>
+			</regex>
+			<regex codetype="ctlib" name="ct_send">
+				<expression><![CDATA[ct_send]]></expression>
+			</regex>
+			<regex codetype="ctlib" name="ct_send_data">
+				<expression><![CDATA[ct_send_data]]></expression>
+			</regex>
+			<regex codetype="ctlib" name="ct_sendpassthru">
+				<expression><![CDATA[ct_sendpassthru]]></expression>
+			</regex>
+			<regex codetype="ctlib" name="ct_setloginfo">
+				<expression><![CDATA[ct_setloginfo]]></expression>
+			</regex>
+			<regex codetype="ctlib" name="ct_setparam">
+				<expression><![CDATA[ct_setparam]]></expression>
+			</regex>
+			<regex codetype="ctlib" name="ct_wakeup">
+				<expression><![CDATA[ct_wakeup]]></expression>
+			</regex>
+			<regex codetype="ctlib" name="cs_calc">
+				<expression><![CDATA[cs_calc]]></expression>
+			</regex>
+			<regex codetype="ctlib" name="cs_cmp">
+				<expression><![CDATA[cs_cmp]]></expression>
+			</regex>
+			<regex codetype="ctlib" name="cs_config">
+				<expression><![CDATA[cs_config]]></expression>
+			</regex>
+			<regex codetype="ctlib" name="cs_conv_mult">
+				<expression><![CDATA[cs_conv_mult]]></expression>
+			</regex>
+			<regex codetype="ctlib" name="cs_convert">
+				<expression><![CDATA[cs_convert]]></expression>
+			</regex>
+			<regex codetype="ctlib" name="cs_ctx_alloc">
+				<expression><![CDATA[cs_ctx_alloc]]></expression>
+			</regex>
+			<regex codetype="ctlib" name="cs_ctx_drop">
+				<expression><![CDATA[cs_ctx_drop]]></expression>
+			</regex>
+			<regex codetype="ctlib" name="cs_ctx_global">
+				<expression><![CDATA[cs_ctx_global]]></expression>
+			</regex>
+			<regex codetype="ctlib" name="cs_diag">
+				<expression><![CDATA[cs_diag]]></expression>
+			</regex>
+			<regex codetype="ctlib" name="cs_dt_crack">
+				<expression><![CDATA[cs_dt_crack]]></expression>
+			</regex>
+			<regex codetype="ctlib" name="cs_dt_info">
+				<expression><![CDATA[cs_dt_info]]></expression>
+			</regex>
+			<regex codetype="ctlib" name="cs_loc_alloc">
+				<expression><![CDATA[cs_loc_alloc]]></expression>
+			</regex>
+			<regex codetype="ctlib" name="cs_loc_drop">
+				<expression><![CDATA[cs_loc_drop]]></expression>
+			</regex>
+			<regex codetype="ctlib" name="cs_locale">
+				<expression><![CDATA[cs_locale]]></expression>
+			</regex>
+			<regex codetype="ctlib" name="cs_manage_convert">
+				<expression><![CDATA[cs_manage_convert]]></expression>
+			</regex>
+			<regex codetype="ctlib" name="cs_objects">
+				<expression><![CDATA[cs_objects]]></expression>
+			</regex>
+			<regex codetype="ctlib" name="cs_prop_ssl_localid">
+				<expression><![CDATA[cs_prop_ssl_localid]]></expression>
+			</regex>
+			<regex codetype="ctlib" name="cs_set_convert">
+				<expression><![CDATA[cs_set_convert]]></expression>
+			</regex>
+			<regex codetype="ctlib" name="cs_setnull">
+				<expression><![CDATA[cs_setnull]]></expression>
+			</regex>
+			<regex codetype="ctlib" name="cs_strbuild">
+				<expression><![CDATA[cs_strbuild]]></expression>
+			</regex>
+			<regex codetype="ctlib" name="cs_strcmp">
+				<expression><![CDATA[cs_strcmp]]></expression>
+			</regex>
+			<regex codetype="ctlib" name="cs_time">
+				<expression><![CDATA[cs_time]]></expression>
+			</regex>
+			<regex codetype="ctlib" name="cs_validate_cb">
+				<expression><![CDATA[cs_validate_cb]]></expression>
+			</regex>
+			<regex codetype="ctlib" name="cs_will_convert">
+				<expression><![CDATA[cs_will_convert]]></expression>
+			</regex>
+		</rules>
+	</ruleset>
+
+	<ruleset type="SYBASE" target="ORACLE" enable="false" source="c"
+		name="Server-Library routine" description="Server-Library routine"
+		codetype="ctlib">
+		<required>
+			<regex>
+				<expression><![CDATA[bkpublic\.h|cspublic\.h|mcconfig\.h|sqlca\.h|sybdbn\.h|sybfront\.h|sybhstmt\.h|sybtesql\.h|cstypes\.h|mcpublic\.h|sqlda\.h|syberror\.h|syblogin\.h|csconfig\.h|ctpublic\.h|mctypes\.h|sybdb\.h|sybesql.c|sybhesql\.h]]></expression>
+			</regex>
+		</required>
+		<rules>
+			<regex codetype="ctlib" name="srv_alloc">
+				<expression><![CDATA[srv_alloc]]></expression>
+			</regex>
+			<regex codetype="ctlib" name="srv_alt_bind">
+				<expression><![CDATA[srv_alt_bind]]></expression>
+			</regex>
+			<regex codetype="ctlib" name="srv_alt_descfmt">
+				<expression><![CDATA[srv_alt_descfmt]]></expression>
+			</regex>
+			<regex codetype="ctlib" name="srv_alt_exist">
+				<expression><![CDATA[srv_alt_exist]]></expression>
+			</regex>
+			<regex codetype="ctlib" name="srv_alt_header">
+				<expression><![CDATA[srv_alt_header]]></expression>
+			</regex>
+			<regex codetype="ctlib" name="srv_alt_xferd">
+				<expression><![CDATA[srv_alt_xferd]]></expression>
+			</regex>
+			<regex codetype="ctlib" name="srv_bind">
+				<expression><![CDATA[srv_bind]]></expression>
+			</regex>
+			<regex codetype="ctlib" name="srv_bmove">
+				<expression><![CDATA[srv_bmove]]></expression>
+			</regex>
+			<regex codetype="ctlib" name="srv_bzero">
+				<expression><![CDATA[srv_bzero]]></expression>
+			</regex>
+			<regex codetype="ctlib" name="srv_callback">
+				<expression><![CDATA[srv_callback]]></expression>
+			</regex>
+			<regex codetype="ctlib" name="srv_capability">
+				<expression><![CDATA[srv_capability]]></expression>
+			</regex>
+			<regex codetype="ctlib" name="srv_capability_info">
+				<expression><![CDATA[srv_capability_info]]></expression>
+			</regex>
+			<regex codetype="ctlib" name="srv_charset_set">
+				<expression><![CDATA[srv_charset_set]]></expression>
+			</regex>
+			<regex codetype="ctlib" name="srv_createmsgq">
+				<expression><![CDATA[srv_createmsgq]]></expression>
+			</regex>
+			<regex codetype="ctlib" name="srv_createmutex">
+				<expression><![CDATA[srv_createmutex]]></expression>
+			</regex>
+			<regex codetype="ctlib" name="srv_createproc">
+				<expression><![CDATA[srv_createproc]]></expression>
+			</regex>
+			<regex codetype="ctlib" name="srv_cursor_props">
+				<expression><![CDATA[srv_cursor_props]]></expression>
+			</regex>
+			<regex codetype="ctlib" name="srv_dbg_stop">
+				<expression><![CDATA[srv_dbg_stop]]></expression>
+			</regex>
+			<regex codetype="ctlib" name="srv_dbg_switch">
+				<expression><![CDATA[srv_dbg_switch]]></expression>
+			</regex>
+			<regex codetype="ctlib" name="srv_define_event">
+				<expression><![CDATA[srv_define_event]]></expression>
+			</regex>
+			<regex codetype="ctlib" name="srv_deletemsgq">
+				<expression><![CDATA[srv_deletemsgq]]></expression>
+			</regex>
+			<regex codetype="ctlib" name="srv_deletemutex">
+				<expression><![CDATA[srv_deletemutex]]></expression>
+			</regex>
+			<regex codetype="ctlib" name="srv_descfmt">
+				<expression><![CDATA[srv_descfmt]]></expression>
+			</regex>
+			<regex codetype="ctlib" name="srv_dropproc">
+				<expression><![CDATA[srv_dropproc]]></expression>
+			</regex>
+			<regex codetype="ctlib" name="srv_dynamic">
+				<expression><![CDATA[srv_dynamic]]></expression>
+			</regex>
+			<regex codetype="ctlib" name="srv_envchange">
+				<expression><![CDATA[srv_envchange]]></expression>
+			</regex>
+			<regex codetype="ctlib" name="srv_envchange">
+				<expression><![CDATA[srv_envchange]]></expression>
+			</regex>
+			<regex codetype="ctlib" name="srv_errhandle">
+				<expression><![CDATA[srv_errhandle]]></expression>
+			</regex>
+			<regex codetype="ctlib" name="srv_event">
+				<expression><![CDATA[srv_event]]></expression>
+			</regex>
+			<regex codetype="ctlib" name="srv_event_deferred">
+				<expression><![CDATA[srv_event_deferred]]></expression>
+			</regex>
+			<regex codetype="ctlib" name="srv_freesrv_version">
+				<expression><![CDATA[srv_freesrv_version]]></expression>
+			</regex>
+			<regex codetype="ctlib" name="srv_get_text">
+				<expression><![CDATA[srv_get_text]]></expression>
+			</regex>
+			<regex codetype="ctlib" name="srv_getmsgq">
+				<expression><![CDATA[srv_getmsgq]]></expression>
+			</regex>
+			<regex codetype="ctlib" name="srv_getobjid">
+				<expression><![CDATA[srv_getobjid]]></expression>
+			</regex>
+			<regex codetype="ctlib" name="srv_getobjname">
+				<expression><![CDATA[srv_getobjname]]></expression>
+			</regex>
+			<regex codetype="ctlib" name="srv_handle">
+				<expression><![CDATA[srv_handle]]></expression>
+			</regex>
+			<regex codetype="ctlib" name="srv_init">
+				<expression><![CDATA[srv_init]]></expression>
+			</regex>
+			<regex codetype="ctlib" name="srv_jsleep">
+				<expression><![CDATA[srv_jsleep]]></expression>
+			</regex>
+			<regex codetype="ctlib" name="srv_langcpy">
+				<expression><![CDATA[srv_langcpy]]></expression>
+			</regex>
+			<regex codetype="ctlib" name="srv_langlen">
+				<expression><![CDATA[srv_langlen]]></expression>
+			</regex>
+			<regex codetype="ctlib" name="srv_langptr">
+				<expression><![CDATA[srv_langptr]]></expression>
+			</regex>
+			<regex codetype="ctlib" name="srv_lockmutex">
+				<expression><![CDATA[srv_lockmutex]]></expression>
+			</regex>
+			<regex codetype="ctlib" name="srv_logsrv_poll">
+				<expression><![CDATA[srv_logsrv_poll]]></expression>
+			</regex>
+			<regex codetype="ctlib" name="srv_mask">
+				<expression><![CDATA[srv_mask]]></expression>
+			</regex>
+			<regex codetype="ctlib" name="srv_msg">
+				<expression><![CDATA[srv_msg]]></expression>
+			</regex>
+			<regex codetype="ctlib" name="srv_negotiate">
+				<expression><![CDATA[srv_negotiate]]></expression>
+			</regex>
+			<regex codetype="ctlib" name="srv_numparams">
+				<expression><![CDATA[srv_numparams]]></expression>
+			</regex>
+			<regex codetype="ctlib" name="srv_options">
+				<expression><![CDATA[srv_options]]></expression>
+			</regex>
+			<regex codetype="ctlib" name="srv_orderby">
+				<expression><![CDATA[srv_orderby]]></expression>
+			</regex>
+			<regex codetype="ctlib" name="srv_props">
+				<expression><![CDATA[srv_props]]></expression>
+			</regex>
+			<regex codetype="ctlib" name="srv_putmsgq">
+				<expression><![CDATA[srv_putmsgq]]></expression>
+			</regex>
+			<regex codetype="ctlib" name="srv_realloc">
+				<expression><![CDATA[srv_realloc]]></expression>
+			</regex>
+			<regex codetype="ctlib" name="srv_recvpassthru">
+				<expression><![CDATA[srv_recvpassthru]]></expression>
+			</regex>
+			<regex codetype="ctlib" name="srv_regcreate">
+				<expression><![CDATA[srv_regcreate]]></expression>
+			</regex>
+			<regex codetype="ctlib" name="srv_regdefine">
+				<expression><![CDATA[srv_regdefine]]></expression>
+			</regex>
+			<regex codetype="ctlib" name="srv_regdrop">
+				<expression><![CDATA[srv_regdrop]]></expression>
+			</regex>
+			<regex codetype="ctlib" name="srv_regexec">
+				<expression><![CDATA[srv_regexec]]></expression>
+			</regex>
+			<regex codetype="ctlib" name="srv_reginit">
+				<expression><![CDATA[srv_reginit]]></expression>
+			</regex>
+			<regex codetype="ctlib" name="srv_reglist">
+				<expression><![CDATA[srv_reglist]]></expression>
+			</regex>
+			<regex codetype="ctlib" name="srv_reglistfree">
+				<expression><![CDATA[srv_reglistfree]]></expression>
+			</regex>
+			<regex codetype="ctlib" name="srv_regnowatch">
+				<expression><![CDATA[srv_regnowatch]]></expression>
+			</regex>
+			<regex codetype="ctlib" name="srv_regparam">
+				<expression><![CDATA[srv_regparam]]></expression>
+			</regex>
+			<regex codetype="ctlib" name="srv_regwatch">
+				<expression><![CDATA[srv_regwatch]]></expression>
+			</regex>
+			<regex codetype="ctlib" name="srv_regwatchlist">
+				<expression><![CDATA[srv_regwatchlist]]></expression>
+			</regex>
+			<regex codetype="ctlib" name="srv_rpcdb">
+				<expression><![CDATA[srv_rpcdb]]></expression>
+			</regex>
+			<regex codetype="ctlib" name="srv_rpcname">
+				<expression><![CDATA[srv_rpcname]]></expression>
+			</regex>
+			<regex codetype="ctlib" name="srv_rpcnumber">
+				<expression><![CDATA[srv_rpcnumber]]></expression>
+			</regex>
+			<regex codetype="ctlib" name="srv_rpcoptions">
+				<expression><![CDATA[srv_rpcoptions]]></expression>
+			</regex>
+			<regex codetype="ctlib" name="srv_rpcowner">
+				<expression><![CDATA[srv_rpcowner]]></expression>
+			</regex>
+			<regex codetype="ctlib" name="srv_run">
+				<expression><![CDATA[srv_run]]></expression>
+			</regex>
+			<regex codetype="ctlib" name="srv_select">
+				<expression><![CDATA[srv_select]]></expression>
+			</regex>
+			<regex codetype="ctlib" name="srv_send_text">
+				<expression><![CDATA[srv_send_text]]></expression>
+			</regex>
+			<regex codetype="ctlib" name="srv_senddone">
+				<expression><![CDATA[srv_senddone]]></expression>
+			</regex>
+			<regex codetype="ctlib" name="srv_sendinfo">
+				<expression><![CDATA[srv_sendinfo]]></expression>
+			</regex>
+			<regex codetype="ctlib" name="srv_sendpassthru">
+				<expression><![CDATA[srv_sendpassthru]]></expression>
+			</regex>
+			<regex codetype="ctlib" name="srv_sendstatus">
+				<expression><![CDATA[srv_sendstatus]]></expression>
+			</regex>
+			<regex codetype="ctlib" name="srv_setcontrol">
+				<expression><![CDATA[srv_setcontrol]]></expression>
+			</regex>
+			<regex codetype="ctlib" name="srv_setloginfo">
+				<expression><![CDATA[srv_setloginfo]]></expression>
+			</regex>
+			<regex codetype="ctlib" name="srv_setpri">
+				<expression><![CDATA[srv_setpri]]></expression>
+			</regex>
+			<regex codetype="ctlib" name="srv_sigdump">
+				<expression><![CDATA[srv_sigdump]]></expression>
+			</regex>
+			<regex codetype="ctlib" name="srv_signal">
+				<expression><![CDATA[srv_signal]]></expression>
+			</regex>
+			<regex codetype="ctlib" name="srv_sleep">
+				<expression><![CDATA[srv_sleep]]></expression>
+			</regex>
+			<regex codetype="ctlib" name="srv_spawn">
+				<expression><![CDATA[srv_spawn]]></expression>
+			</regex>
+			<regex codetype="ctlib" name="srv_symbol">
+				<expression><![CDATA[srv_symbol]]></expression>
+			</regex>
+			<regex codetype="ctlib" name="srv_tabcolname">
+				<expression><![CDATA[srv_tabcolname]]></expression>
+			</regex>
+			<regex codetype="ctlib" name="srv_tabname">
+				<expression><![CDATA[srv_tabname]]></expression>
+			</regex>
+			<regex codetype="ctlib" name="srv_termproc">
+				<expression><![CDATA[srv_termproc]]></expression>
+			</regex>
+			<regex codetype="ctlib" name="srv_text_info">
+				<expression><![CDATA[srv_text_info]]></expression>
+			</regex>
+			<regex codetype="ctlib" name="srv_thread_props">
+				<expression><![CDATA[srv_thread_props]]></expression>
+			</regex>
+			<regex codetype="ctlib" name="srv_ucwakeup">
+				<expression><![CDATA[srv_ucwakeup]]></expression>
+			</regex>
+			<regex codetype="ctlib" name="srv_unlockmutex">
+				<expression><![CDATA[srv_unlockmutex]]></expression>
+			</regex>
+			<regex codetype="ctlib" name="srv_wakeup">
+				<expression><![CDATA[srv_wakeup]]></expression>
+			</regex>
+			<regex codetype="ctlib" name="srv_xferdata">
+				<expression><![CDATA[srv_xferdata]]></expression>
+			</regex>
+			<regex codetype="ctlib" name="srv_yield">
+				<expression><![CDATA[srv_yield]]></expression>
+			</regex>
+			<regex codetype="ctlib" name="srv_poll">
+				<expression><![CDATA[srv_poll]]></expression>
+			</regex>
+			</rules>
+	</ruleset>
+	
+	<ruleset name="Client Server Library API" description="Contents of cspublic.h,cstypes.h and csconfig.h"
+		codetype="ctlib" type="SYBASE" target="ORACLE" enable="false" source="c">
+		<required>
+			<regex>
+				<expression><![CDATA[bkpublic\.h|cspublic\.h|mcconfig\.h|sqlca\.h|sybdbn\.h|sybfront\.h|sybhstmt\.h|sybtesql\.h|cstypes\.h|mcpublic\.h|sqlda\.h|syberror\.h|syblogin\.h|csconfig\.h|ctpublic\.h|mctypes\.h|sybdb\.h|sybesql.c|sybhesql\.h]]></expression>
+			</regex>
+		</required>
+		<rules>
+			<regex codetype="ctlib" name="CS_12HOUR">
+				<expression><![CDATA[CS_12HOUR]]></expression>
+			</regex>
+			<regex codetype="ctlib" name="CS_ABORTCHK_INTERVAL">
+				<expression><![CDATA[CS_ABORTCHK_INTERVAL]]></expression>
+			</regex>
+			<regex codetype="ctlib" name="CS_ABSOLUTE">
+				<expression><![CDATA[CS_ABSOLUTE]]></expression>
+			</regex>
+			<regex codetype="ctlib" name="CS_ACK">
+				<expression><![CDATA[CS_ACK]]></expression>
+			</regex>
+			<regex codetype="ctlib" name="CS_ADD">
+				<expression><![CDATA[CS_ADD]]></expression>
+			</regex>
+			<regex codetype="ctlib" name="CS_ALL_CAPS">
+				<expression><![CDATA[CS_ALL_CAPS]]></expression>
+			</regex>
+			<regex codetype="ctlib" name="CS_ALLMSG_TYPE">
+				<expression><![CDATA[CS_ALLMSG_TYPE]]></expression>
+			</regex>
+			<regex codetype="ctlib" name="CS_ALLOC">
+				<expression><![CDATA[CS_ALLOC]]></expression>
+			</regex>
+			<regex codetype="ctlib" name="CS_ANSI_BINDS">
+				<expression><![CDATA[CS_ANSI_BINDS]]></expression>
+			</regex>
+			<regex codetype="ctlib" name="CS_APPNAME">
+				<expression><![CDATA[CS_APPNAME]]></expression>
+			</regex>
+			<regex codetype="ctlib" name="CS_ASYNC_IO">
+				<expression><![CDATA[CS_ASYNC_IO]]></expression>
+			</regex>
+			<regex codetype="ctlib" name="CS_ASYNC_NOTIFS">
+				<expression><![CDATA[CS_ASYNC_NOTIFS]]></expression>
+			</regex>
+			<regex codetype="ctlib" name="CS_BEHAVIOR">
+				<expression><![CDATA[CS_BEHAVIOR]]></expression>
+			</regex>
+			<regex codetype="ctlib" name="CS_BEHAVIOR_100">
+				<expression><![CDATA[CS_BEHAVIOR_100]]></expression>
+			</regex>
+			<regex codetype="ctlib" name="CS_BEHAVIOR_110">
+				<expression><![CDATA[CS_BEHAVIOR_110]]></expression>
+			</regex>
+			<regex codetype="ctlib" name="CS_BEHAVIOR_120">
+				<expression><![CDATA[CS_BEHAVIOR_120]]></expression>
+			</regex>
+			<regex codetype="ctlib" name="CS_BEHAVIOR_125">
+				<expression><![CDATA[CS_BEHAVIOR_125]]></expression>
+			</regex>
+			<regex codetype="ctlib" name="CS_BLK_ROW">
+				<expression><![CDATA[CS_BLK_ROW]]></expression>
+			</regex>
+			<regex codetype="ctlib" name="CS_BLKDATA">
+				<expression><![CDATA[CS_BLKDATA]]></expression>
+			</regex>
+			<regex codetype="ctlib" name="CS_BLKDESC">
+				<expression><![CDATA[CS_BLKDESC]]></expression>
+			</regex>
+			<regex codetype="ctlib" name="CS_BROWSE_INFO">
+				<expression><![CDATA[CS_BROWSE_INFO]]></expression>
+			</regex>
+			<regex codetype="ctlib" name="CS_BULK_CONT">
+				<expression><![CDATA[CS_BULK_CONT]]></expression>
+			</regex>
+			<regex codetype="ctlib" name="CS_BULK_DATA">
+				<expression><![CDATA[CS_BULK_DATA]]></expression>
+			</regex>
+			<regex codetype="ctlib" name="CS_BULK_INIT">
+				<expression><![CDATA[CS_BULK_INIT]]></expression>
+			</regex>
+			<regex codetype="ctlib" name="CS_BULK_LOGIN">
+				<expression><![CDATA[CS_BULK_LOGIN]]></expression>
+			</regex>
+			<regex codetype="ctlib" name="CS_BYLIST_LEN">
+				<expression><![CDATA[CS_BYLIST_LEN]]></expression>
+			</regex>
+			<regex codetype="ctlib" name="CS_CACHE">
+				<expression><![CDATA[CS_CACHE]]></expression>
+			</regex>
+			<regex codetype="ctlib" name="CS_CANCEL_ABORT_NOTIF">
+				<expression><![CDATA[CS_CANCEL_ABORT_NOTIF]]></expression>
+			</regex>
+			<regex codetype="ctlib" name="CS_CANCEL_ALL">
+				<expression><![CDATA[CS_CANCEL_ALL]]></expression>
+			</regex>
+			<regex codetype="ctlib" name="CS_CANCEL_ATTN">
+				<expression><![CDATA[CS_CANCEL_ATTN]]></expression>
+			</regex>
+			<regex codetype="ctlib" name="CS_CANCEL_CURRENT">
+				<expression><![CDATA[CS_CANCEL_CURRENT]]></expression>
+			</regex>
+			<regex codetype="ctlib" name="CS_CAP_ARRAYLEN">
+				<expression><![CDATA[CS_CAP_ARRAYLEN]]></expression>
+			</regex>
+			<regex codetype="ctlib" name="CS_CAP_IDX">
+				<expression><![CDATA[CS_CAP_IDX]]></expression>
+			</regex>
+			<regex codetype="ctlib" name="CS_CAP_REQUEST">
+				<expression><![CDATA[CS_CAP_REQUEST]]></expression>
+			</regex>
+			<regex codetype="ctlib" name="CS_CAP_RESPONSE">
+				<expression><![CDATA[CS_CAP_RESPONSE]]></expression>
+			</regex>
+			<regex codetype="ctlib" name="CS_CHALLENGE_CB">
+				<expression><![CDATA[CS_CHALLENGE_CB]]></expression>
+			</regex>
+			<regex codetype="ctlib" name="CS_CHARSETCNV">
+				<expression><![CDATA[CS_CHARSETCNV]]></expression>
+			</regex>
+			<regex codetype="ctlib" name="CS_CLEAR">
+				<expression><![CDATA[CS_CLEAR]]></expression>
+			</regex>
+			<regex codetype="ctlib" name="CS_CLEAR_FLAG">
+				<expression><![CDATA[CS_CLEAR_FLAG]]></expression>
+			</regex>
+			<regex codetype="ctlib" name="CS_CLIENTMSG_CB">
+				<expression><![CDATA[CS_CLIENTMSG_CB]]></expression>
+			</regex>
+			<regex codetype="ctlib" name="CS_CLIENTMSG_TYPE">
+				<expression><![CDATA[CS_CLIENTMSG_TYPE]]></expression>
+			</regex>
+			<regex codetype="ctlib" name="CS_CMD_DONE">
+				<expression><![CDATA[CS_CMD_DONE]]></expression>
+			</regex>
+			<regex codetype="ctlib" name="CS_CMD_FAIL">
+				<expression><![CDATA[CS_CMD_FAIL]]></expression>
+			</regex>
+			<regex codetype="ctlib" name="CS_CMD_NUMBER">
+				<expression><![CDATA[CS_CMD_NUMBER]]></expression>
+			</regex>
+			<regex codetype="ctlib" name="CS_CMD_SUCCEED">
+				<expression><![CDATA[CS_CMD_SUCCEED]]></expression>
+			</regex>
+			<regex codetype="ctlib" name="CS_COLUMN_DATA">
+				<expression><![CDATA[CS_COLUMN_DATA]]></expression>
+			</regex>
+			<regex codetype="ctlib" name="CS_COMMBLOCK">
+				<expression><![CDATA[CS_COMMBLOCK]]></expression>
+			</regex>
+			<regex codetype="ctlib" name="CS_COMP_BYLIST">
+				<expression><![CDATA[CS_COMP_BYLIST]]></expression>
+			</regex>
+			<regex codetype="ctlib" name="CS_COMP_COLID">
+				<expression><![CDATA[CS_COMP_COLID]]></expression>
+			</regex>
+			<regex codetype="ctlib" name="CS_COMP_ID">
+				<expression><![CDATA[CS_COMP_ID]]></expression>
+			</regex>
+			<regex codetype="ctlib" name="CS_COMP_OP">
+				<expression><![CDATA[CS_COMP_OP]]></expression>
+			</regex>
+			<regex codetype="ctlib" name="CS_COMPARE">
+				<expression><![CDATA[CS_COMPARE]]></expression>
+			</regex>
+			<regex codetype="ctlib" name="CS_COMPLETION_CB">
+				<expression><![CDATA[CS_COMPLETION_CB]]></expression>
+			</regex>
+			<regex codetype="ctlib" name="CS_COMPUTE_RESULT">
+				<expression><![CDATA[CS_COMPUTE_RESULT]]></expression>
+			</regex>
+			<regex codetype="ctlib" name="CS_COMPUTEFMT_RESULT">
+				<expression><![CDATA[CS_COMPUTEFMT_RESULT]]></expression>
+			</regex>
+			<regex codetype="ctlib" name="CS_CON_INBAND">
+				<expression><![CDATA[CS_CON_INBAND]]></expression>
+			</regex>
+			<regex codetype="ctlib" name="CS_CON_KEEPALIVE">
+				<expression><![CDATA[CS_CON_KEEPALIVE]]></expression>
+			</regex>
+			<regex codetype="ctlib" name="CS_CON_LOGICAL">
+				<expression><![CDATA[CS_CON_LOGICAL]]></expression>
+			</regex>
+			<regex codetype="ctlib" name="CS_CON_NOINBAND">
+				<expression><![CDATA[CS_CON_NOINBAND]]></expression>
+			</regex>
+			<regex codetype="ctlib" name="CS_CON_NOOOB">
+				<expression><![CDATA[CS_CON_NOOOB]]></expression>
+			</regex>
+			<regex codetype="ctlib" name="CS_CON_OOB">
+				<expression><![CDATA[CS_CON_OOB]]></expression>
+			</regex>
+			<regex codetype="ctlib" name="CS_CON_STATUS">
+				<expression><![CDATA[CS_CON_STATUS]]></expression>
+			</regex>
+			<regex codetype="ctlib" name="CS_CON_TCP_NODELAY">
+				<expression><![CDATA[CS_CON_TCP_NODELAY]]></expression>
+			</regex>
+			<regex codetype="ctlib" name="CS_CONFIG_BY_SERVERNAME">
+				<expression><![CDATA[CS_CONFIG_BY_SERVERNAME]]></expression>
+			</regex>
+			<regex codetype="ctlib" name="CS_CONFIG_FILE">
+				<expression><![CDATA[CS_CONFIG_FILE]]></expression>
+			</regex>
+			<regex codetype="ctlib" name="CS_CONSTAT_CONNECTED">
+				<expression><![CDATA[CS_CONSTAT_CONNECTED]]></expression>
+			</regex>
+			<regex codetype="ctlib" name="CS_CONSTAT_DEAD">
+				<expression><![CDATA[CS_CONSTAT_DEAD]]></expression>
+			</regex>
+			<regex codetype="ctlib" name="CS_CSR_ABS">
+				<expression><![CDATA[CS_CSR_ABS]]></expression>
+			</regex>
+			<regex codetype="ctlib" name="CS_CSR_FIRST">
+				<expression><![CDATA[CS_CSR_FIRST]]></expression>
+			</regex>
+			<regex codetype="ctlib" name="CS_CSR_LAST">
+				<expression><![CDATA[CS_CSR_LAST]]></expression>
+			</regex>
+			<regex codetype="ctlib" name="CS_CSR_MULTI">
+				<expression><![CDATA[CS_CSR_MULTI]]></expression>
+			</regex>
+			<regex codetype="ctlib" name="CS_CSR_PREV">
+				<expression><![CDATA[CS_CSR_PREV]]></expression>
+			</regex>
+			<regex codetype="ctlib" name="CS_CSR_REL">
+				<expression><![CDATA[CS_CSR_REL]]></expression>
+			</regex>
+			<regex codetype="ctlib" name="CS_CUR_ID">
+				<expression><![CDATA[CS_CUR_ID]]></expression>
+			</regex>
+			<regex codetype="ctlib" name="CS_CUR_IMPLICIT">
+				<expression><![CDATA[CS_CUR_IMPLICIT]]></expression>
+			</regex>
+			<regex codetype="ctlib" name="CS_CUR_NAME">
+				<expression><![CDATA[CS_CUR_NAME]]></expression>
+			</regex>
+			<regex codetype="ctlib" name="CS_CUR_ROWCOUNT">
+				<expression><![CDATA[CS_CUR_ROWCOUNT]]></expression>
+			</regex>
+			<regex codetype="ctlib" name="CS_CUR_STATUS">
+				<expression><![CDATA[CS_CUR_STATUS]]></expression>
+			</regex>
+			<regex codetype="ctlib" name="CS_CURRENT_VERSION">
+				<expression><![CDATA[CS_CURRENT_VERSION]]></expression>
+			</regex>
+			<regex codetype="ctlib" name="CS_CURSOR_CLOSE">
+				<expression><![CDATA[CS_CURSOR_CLOSE]]></expression>
+			</regex>
+			<regex codetype="ctlib" name="CS_CURSOR_DEALLOC">
+				<expression><![CDATA[CS_CURSOR_DEALLOC]]></expression>
+			</regex>
+			<regex codetype="ctlib" name="CS_CURSOR_DECLARE">
+				<expression><![CDATA[CS_CURSOR_DECLARE]]></expression>
+			</regex>
+			<regex codetype="ctlib" name="CS_CURSOR_DELETE">
+				<expression><![CDATA[CS_CURSOR_DELETE]]></expression>
+			</regex>
+			<regex codetype="ctlib" name="CS_CURSOR_FETCH">
+				<expression><![CDATA[CS_CURSOR_FETCH]]></expression>
+			</regex>
+			<regex codetype="ctlib" name="CS_CURSOR_INFO">
+				<expression><![CDATA[CS_CURSOR_INFO]]></expression>
+			</regex>
+			<regex codetype="ctlib" name="CS_CURSOR_OPEN">
+				<expression><![CDATA[CS_CURSOR_OPEN]]></expression>
+			</regex>
+			<regex codetype="ctlib" name="CS_CURSOR_OPTION">
+				<expression><![CDATA[CS_CURSOR_OPTION]]></expression>
+			</regex>
+			<regex codetype="ctlib" name="CS_CURSOR_RESULT">
+				<expression><![CDATA[CS_CURSOR_RESULT]]></expression>
+			</regex>
+			<regex codetype="ctlib" name="CS_CURSOR_ROWS">
+				<expression><![CDATA[CS_CURSOR_ROWS]]></expression>
+			</regex>
+			<regex codetype="ctlib" name="CS_CURSOR_UPDATE">
+				<expression><![CDATA[CS_CURSOR_UPDATE]]></expression>
+			</regex>
+			<regex codetype="ctlib" name="CS_CURSTAT_CLOSED">
+				<expression><![CDATA[CS_CURSTAT_CLOSED]]></expression>
+			</regex>
+			<regex codetype="ctlib" name="CS_CURSTAT_DEALLOC">
+				<expression><![CDATA[CS_CURSTAT_DEALLOC]]></expression>
+			</regex>
+			<regex codetype="ctlib" name="CS_CURSTAT_DECLARED">
+				<expression><![CDATA[CS_CURSTAT_DECLARED]]></expression>
+			</regex>
+			<regex codetype="ctlib" name="CS_CURSTAT_NONE">
+				<expression><![CDATA[CS_CURSTAT_NONE]]></expression>
+			</regex>
+			<regex codetype="ctlib" name="CS_CURSTAT_OPEN">
+				<expression><![CDATA[CS_CURSTAT_OPEN]]></expression>
+			</regex>
+			<regex codetype="ctlib" name="CS_CURSTAT_RDONLY">
+				<expression><![CDATA[CS_CURSTAT_RDONLY]]></expression>
+			</regex>
+			<regex codetype="ctlib" name="CS_CURSTAT_ROWCOUNT">
+				<expression><![CDATA[CS_CURSTAT_ROWCOUNT]]></expression>
+			</regex>
+			<regex codetype="ctlib" name="CS_CURSTAT_UPDATABLE">
+				<expression><![CDATA[CS_CURSTAT_UPDATABLE]]></expression>
+			</regex>
+			<regex codetype="ctlib" name="CS_DATA_BIN">
+				<expression><![CDATA[CS_DATA_BIN]]></expression>
+			</regex>
+			<regex codetype="ctlib" name="CS_DATA_BIT">
+				<expression><![CDATA[CS_DATA_BIT]]></expression>
+			</regex>
+			<regex codetype="ctlib" name="CS_DATA_BITN">
+				<expression><![CDATA[CS_DATA_BITN]]></expression>
+			</regex>
+			<regex codetype="ctlib" name="CS_DATA_BOUNDARY">
+				<expression><![CDATA[CS_DATA_BOUNDARY]]></expression>
+			</regex>
+			<regex codetype="ctlib" name="CS_DATA_CHAR">
+				<expression><![CDATA[CS_DATA_CHAR]]></expression>
+			</regex>
+			<regex codetype="ctlib" name="CS_DATA_COLUMNSTATUS">
+				<expression><![CDATA[CS_DATA_COLUMNSTATUS]]></expression>
+			</regex>
+			<regex codetype="ctlib" name="CS_DATA_DATE4">
+				<expression><![CDATA[CS_DATA_DATE4]]></expression>
+			</regex>
+			<regex codetype="ctlib" name="CS_DATA_DATE8">
+				<expression><![CDATA[CS_DATA_DATE8]]></expression>
+			</regex>
+			<regex codetype="ctlib" name="CS_DATA_DATETIMEN">
+				<expression><![CDATA[CS_DATA_DATETIMEN]]></expression>
+			</regex>
+			<regex codetype="ctlib" name="CS_DATA_DEC">
+				<expression><![CDATA[CS_DATA_DEC]]></expression>
+			</regex>
+			<regex codetype="ctlib" name="CS_DATA_FLT4">
+				<expression><![CDATA[CS_DATA_FLT4]]></expression>
+			</regex>
+			<regex codetype="ctlib" name="CS_DATA_FLT8">
+				<expression><![CDATA[CS_DATA_FLT8]]></expression>
+			</regex>
+			<regex codetype="ctlib" name="CS_DATA_FLTN">
+				<expression><![CDATA[CS_DATA_FLTN]]></expression>
+			</regex>
+			<regex codetype="ctlib" name="CS_DATA_IMAGE">
+				<expression><![CDATA[CS_DATA_IMAGE]]></expression>
+			</regex>
+			<regex codetype="ctlib" name="CS_DATA_INT1">
+				<expression><![CDATA[CS_DATA_INT1]]></expression>
+			</regex>
+			<regex codetype="ctlib" name="CS_DATA_INT2">
+				<expression><![CDATA[CS_DATA_INT2]]></expression>
+			</regex>
+			<regex codetype="ctlib" name="CS_DATA_INT4">
+				<expression><![CDATA[CS_DATA_INT4]]></expression>
+			</regex>
+			<regex codetype="ctlib" name="CS_DATA_INT8">
+				<expression><![CDATA[CS_DATA_INT8]]></expression>
+			</regex>
+			<regex codetype="ctlib" name="CS_DATA_INTN">
+				<expression><![CDATA[CS_DATA_INTN]]></expression>
+			</regex>
+			<regex codetype="ctlib" name="CS_DATA_LBIN">
+				<expression><![CDATA[CS_DATA_LBIN]]></expression>
+			</regex>
+			<regex codetype="ctlib" name="CS_DATA_LCHAR">
+				<expression><![CDATA[CS_DATA_LCHAR]]></expression>
+			</regex>
+			<regex codetype="ctlib" name="CS_DATA_MNY4">
+				<expression><![CDATA[CS_DATA_MNY4]]></expression>
+			</regex>
+			<regex codetype="ctlib" name="CS_DATA_MNY8">
+				<expression><![CDATA[CS_DATA_MNY8]]></expression>
+			</regex>
+			<regex codetype="ctlib" name="CS_DATA_MONEYN">
+				<expression><![CDATA[CS_DATA_MONEYN]]></expression>
+			</regex>
+			<regex codetype="ctlib" name="CS_DATA_NOBIN">
+				<expression><![CDATA[CS_DATA_NOBIN]]></expression>
+			</regex>
+			<regex codetype="ctlib" name="CS_DATA_NOBIT">
+				<expression><![CDATA[CS_DATA_NOBIT]]></expression>
+			</regex>
+			<regex codetype="ctlib" name="CS_DATA_NOBOUNDARY">
+				<expression><![CDATA[CS_DATA_NOBOUNDARY]]></expression>
+			</regex>
+			<regex codetype="ctlib" name="CS_DATA_NOCHAR">
+				<expression><![CDATA[CS_DATA_NOCHAR]]></expression>
+			</regex>
+			<regex codetype="ctlib" name="CS_DATA_NODATE4">
+				<expression><![CDATA[CS_DATA_NODATE4]]></expression>
+			</regex>
+			<regex codetype="ctlib" name="CS_DATA_NODATE8">
+				<expression><![CDATA[CS_DATA_NODATE8]]></expression>
+			</regex>
+			<regex codetype="ctlib" name="CS_DATA_NODATETIMEN">
+				<expression><![CDATA[CS_DATA_NODATETIMEN]]></expression>
+			</regex>
+			<regex codetype="ctlib" name="CS_DATA_NODEC">
+				<expression><![CDATA[CS_DATA_NODEC]]></expression>
+			</regex>
+			<regex codetype="ctlib" name="CS_DATA_NOFLT4">
+				<expression><![CDATA[CS_DATA_NOFLT4]]></expression>
+			</regex>
+			<regex codetype="ctlib" name="CS_DATA_NOFLT8">
+				<expression><![CDATA[CS_DATA_NOFLT8]]></expression>
+			</regex>
+			<regex codetype="ctlib" name="CS_DATA_NOIMAGE">
+				<expression><![CDATA[CS_DATA_NOIMAGE]]></expression>
+			</regex>
+			<regex codetype="ctlib" name="CS_DATA_NOINT1">
+				<expression><![CDATA[CS_DATA_NOINT1]]></expression>
+			</regex>
+			<regex codetype="ctlib" name="CS_DATA_NOINT2">
+				<expression><![CDATA[CS_DATA_NOINT2]]></expression>
+			</regex>
+			<regex codetype="ctlib" name="CS_DATA_NOINT4">
+				<expression><![CDATA[CS_DATA_NOINT4]]></expression>
+			</regex>
+			<regex codetype="ctlib" name="CS_DATA_NOINT8">
+				<expression><![CDATA[CS_DATA_NOINT8]]></expression>
+			</regex>
+			<regex codetype="ctlib" name="CS_DATA_NOINTN">
+				<expression><![CDATA[CS_DATA_NOINTN]]></expression>
+			</regex>
+			<regex codetype="ctlib" name="CS_DATA_NOLBIN">
+				<expression><![CDATA[CS_DATA_NOLBIN]]></expression>
+			</regex>
+			<regex codetype="ctlib" name="CS_DATA_NOLCHAR">
+				<expression><![CDATA[CS_DATA_NOLCHAR]]></expression>
+			</regex>
+			<regex codetype="ctlib" name="CS_DATA_NOMNY4">
+				<expression><![CDATA[CS_DATA_NOMNY4]]></expression>
+			</regex>
+			<regex codetype="ctlib" name="CS_DATA_NOMNY8">
+				<expression><![CDATA[CS_DATA_NOMNY8]]></expression>
+			</regex>
+			<regex codetype="ctlib" name="CS_DATA_NOMONEYN">
+				<expression><![CDATA[CS_DATA_NOMONEYN]]></expression>
+			</regex>
+			<regex codetype="ctlib" name="CS_DATA_NONUM">
+				<expression><![CDATA[CS_DATA_NONUM]]></expression>
+			</regex>
+			<regex codetype="ctlib" name="CS_DATA_NOSENSITIVITY">
+				<expression><![CDATA[CS_DATA_NOSENSITIVITY]]></expression>
+			</regex>
+			<regex codetype="ctlib" name="CS_DATA_NOTEXT">
+				<expression><![CDATA[CS_DATA_NOTEXT]]></expression>
+			</regex>
+			<regex codetype="ctlib" name="CS_DATA_NOUCHAR">
+				<expression><![CDATA[CS_DATA_NOUCHAR]]></expression>
+			</regex>
+			<regex codetype="ctlib" name="CS_DATA_NOUINT2">
+				<expression><![CDATA[CS_DATA_NOUINT2]]></expression>
+			</regex>
+			<regex codetype="ctlib" name="CS_DATA_NOUINT4">
+				<expression><![CDATA[CS_DATA_NOUINT4]]></expression>
+			</regex>
+			<regex codetype="ctlib" name="CS_DATA_NOUINT8">
+				<expression><![CDATA[CS_DATA_NOUINT8]]></expression>
+			</regex>
+			<regex codetype="ctlib" name="CS_DATA_NOUINTN">
+				<expression><![CDATA[CS_DATA_NOUINTN]]></expression>
+			</regex>
+			<regex codetype="ctlib" name="CS_DATA_NOVBIN">
+				<expression><![CDATA[CS_DATA_NOVBIN]]></expression>
+			</regex>
+			<regex codetype="ctlib" name="CS_DATA_NOVCHAR">
+				<expression><![CDATA[CS_DATA_NOVCHAR]]></expression>
+			</regex>
+			<regex codetype="ctlib" name="CS_DATA_NOZEROLEN">
+				<expression><![CDATA[CS_DATA_NOZEROLEN]]></expression>
+			</regex>
+			<regex codetype="ctlib" name="CS_DATA_NUM">
+				<expression><![CDATA[CS_DATA_NUM]]></expression>
+			</regex>
+			<regex codetype="ctlib" name="CS_DATA_SENSITIVITY">
+				<expression><![CDATA[CS_DATA_SENSITIVITY]]></expression>
+			</regex>
+			<regex codetype="ctlib" name="CS_DATA_TEXT">
+				<expression><![CDATA[CS_DATA_TEXT]]></expression>
+			</regex>
+			<regex codetype="ctlib" name="CS_DATA_UCHAR">
+				<expression><![CDATA[CS_DATA_UCHAR]]></expression>
+			</regex>
+			<regex codetype="ctlib" name="CS_DATA_UINT2">
+				<expression><![CDATA[CS_DATA_UINT2]]></expression>
+			</regex>
+			<regex codetype="ctlib" name="CS_DATA_UINT4">
+				<expression><![CDATA[CS_DATA_UINT4]]></expression>
+			</regex>
+			<regex codetype="ctlib" name="CS_DATA_UINT8">
+				<expression><![CDATA[CS_DATA_UINT8]]></expression>
+			</regex>
+			<regex codetype="ctlib" name="CS_DATA_UINTN">
+				<expression><![CDATA[CS_DATA_UINTN]]></expression>
+			</regex>
+			<regex codetype="ctlib" name="CS_DATA_VBIN">
+				<expression><![CDATA[CS_DATA_VBIN]]></expression>
+			</regex>
+			<regex codetype="ctlib" name="CS_DATA_VCHAR">
+				<expression><![CDATA[CS_DATA_VCHAR]]></expression>
+			</regex>
+			<regex codetype="ctlib" name="CS_DATA_VOID">
+				<expression><![CDATA[CS_DATA_VOID]]></expression>
+			</regex>
+			<regex codetype="ctlib" name="CS_DATEORDER">
+				<expression><![CDATA[CS_DATEORDER]]></expression>
+			</regex>
+			<regex codetype="ctlib" name="CS_DAYNAME">
+				<expression><![CDATA[CS_DAYNAME]]></expression>
+			</regex>
+			<regex codetype="ctlib" name="CS_DBG_ALL">
+				<expression><![CDATA[CS_DBG_ALL]]></expression>
+			</regex>
+			<regex codetype="ctlib" name="CS_DBG_API_LOGCALL">
+				<expression><![CDATA[CS_DBG_API_LOGCALL]]></expression>
+			</regex>
+			<regex codetype="ctlib" name="CS_DBG_API_STATES">
+				<expression><![CDATA[CS_DBG_API_STATES]]></expression>
+			</regex>
+			<regex codetype="ctlib" name="CS_DBG_ASYNC">
+				<expression><![CDATA[CS_DBG_ASYNC]]></expression>
+			</regex>
+			<regex codetype="ctlib" name="CS_DBG_DIAG">
+				<expression><![CDATA[CS_DBG_DIAG]]></expression>
+			</regex>
+			<regex codetype="ctlib" name="CS_DBG_ERROR">
+				<expression><![CDATA[CS_DBG_ERROR]]></expression>
+			</regex>
+			<regex codetype="ctlib" name="CS_DBG_MEM">
+				<expression><![CDATA[CS_DBG_MEM]]></expression>
+			</regex>
+			<regex codetype="ctlib" name="CS_DBG_NETWORK">
+				<expression><![CDATA[CS_DBG_NETWORK]]></expression>
+			</regex>
+			<regex codetype="ctlib" name="CS_DBG_PROTOCOL">
+				<expression><![CDATA[CS_DBG_PROTOCOL]]></expression>
+			</regex>
+			<regex codetype="ctlib" name="CS_DBG_PROTOCOL_STATES">
+				<expression><![CDATA[CS_DBG_PROTOCOL_STATES]]></expression>
+			</regex>
+			<regex codetype="ctlib" name="CS_DEALLOC">
+				<expression><![CDATA[CS_DEALLOC]]></expression>
+			</regex>
+			<regex codetype="ctlib" name="CS_DEFER_IO">
+				<expression><![CDATA[CS_DEFER_IO]]></expression>
+			</regex>
+			<regex codetype="ctlib" name="CS_DESCRIBE_INPUT">
+				<expression><![CDATA[CS_DESCRIBE_INPUT]]></expression>
+			</regex>
+			<regex codetype="ctlib" name="CS_DESCRIBE_OUTPUT">
+				<expression><![CDATA[CS_DESCRIBE_OUTPUT]]></expression>
+			</regex>
+			<regex codetype="ctlib" name="CS_DESCRIBE_RESULT">
+				<expression><![CDATA[CS_DESCRIBE_RESULT]]></expression>
+			</regex>
+			<regex codetype="ctlib" name="CS_DIAG_TIMEOUT">
+				<expression><![CDATA[CS_DIAG_TIMEOUT]]></expression>
+			</regex>
+			<regex codetype="ctlib" name="CS_DISABLE_POLL">
+				<expression><![CDATA[CS_DISABLE_POLL]]></expression>
+			</regex>
+			<regex codetype="ctlib" name="CS_DIV">
+				<expression><![CDATA[CS_DIV]]></expression>
+			</regex>
+			<regex codetype="ctlib" name="CS_DOL_BULK">
+				<expression><![CDATA[CS_DOL_BULK]]></expression>
+			</regex>
+			<regex codetype="ctlib" name="CS_DS_CHAIN">
+				<expression><![CDATA[CS_DS_CHAIN]]></expression>
+			</regex>
+			<regex codetype="ctlib" name="CS_DS_COPY">
+				<expression><![CDATA[CS_DS_COPY]]></expression>
+			</regex>
+			<regex codetype="ctlib" name="CS_DS_DITBASE">
+				<expression><![CDATA[CS_DS_DITBASE]]></expression>
+			</regex>
+			<regex codetype="ctlib" name="CS_DS_EXPANDALIAS">
+				<expression><![CDATA[CS_DS_EXPANDALIAS]]></expression>
+			</regex>
+			<regex codetype="ctlib" name="CS_DS_FAILOVER">
+				<expression><![CDATA[CS_DS_FAILOVER]]></expression>
+			</regex>
+			<regex codetype="ctlib" name="CS_DS_LOCALSCOPE">
+				<expression><![CDATA[CS_DS_LOCALSCOPE]]></expression>
+			</regex>
+			<regex codetype="ctlib" name="CS_DS_LOOKUP_CB">
+				<expression><![CDATA[CS_DS_LOOKUP_CB]]></expression>
+			</regex>
+			<regex codetype="ctlib" name="CS_DS_PASSWORD">
+				<expression><![CDATA[CS_DS_PASSWORD]]></expression>
+			</regex>
+			<regex codetype="ctlib" name="CS_DS_PREFERCHAIN">
+				<expression><![CDATA[CS_DS_PREFERCHAIN]]></expression>
+			</regex>
+			<regex codetype="ctlib" name="CS_DS_PRINCIPAL">
+				<expression><![CDATA[CS_DS_PRINCIPAL]]></expression>
+			</regex>
+			<regex codetype="ctlib" name="CS_DS_PROVIDER">
+				<expression><![CDATA[CS_DS_PROVIDER]]></expression>
+			</regex>
+			<regex codetype="ctlib" name="CS_DS_REFERRAL">
+				<expression><![CDATA[CS_DS_REFERRAL]]></expression>
+			</regex>
+			<regex codetype="ctlib" name="CS_DS_SCOPE">
+				<expression><![CDATA[CS_DS_SCOPE]]></expression>
+			</regex>
+			<regex codetype="ctlib" name="CS_DS_SEARCH">
+				<expression><![CDATA[CS_DS_SEARCH]]></expression>
+			</regex>
+			<regex codetype="ctlib" name="CS_DS_SIZELIMIT">
+				<expression><![CDATA[CS_DS_SIZELIMIT]]></expression>
+			</regex>
+			<regex codetype="ctlib" name="CS_DS_TIMELIMIT">
+				<expression><![CDATA[CS_DS_TIMELIMIT]]></expression>
+			</regex>
+			<regex codetype="ctlib" name="CS_DT_CONVFMT">
+				<expression><![CDATA[CS_DT_CONVFMT]]></expression>
+			</regex>
+			<regex codetype="ctlib" name="CS_DYN_CURSOR_DECLARE">
+				<expression><![CDATA[CS_DYN_CURSOR_DECLARE]]></expression>
+			</regex>
+			<regex codetype="ctlib" name="CS_DYNAMIC">
+				<expression><![CDATA[CS_DYNAMIC]]></expression>
+			</regex>
+	
+			<regex codetype="ctlib" name="CS_EED_CMD">
+				<expression><![CDATA[CS_EED_CMD]]></expression>
+			</regex>
+			<regex codetype="ctlib" name="CS_ENCRYPT_CB">
+				<expression><![CDATA[CS_ENCRYPT_CB]]></expression>
+			</regex>
+			<regex codetype="ctlib" name="CS_END">
+				<expression><![CDATA[CS_END]]></expression>
+			</regex>
+			<regex codetype="ctlib" name="CS_ENDPOINT">
+				<expression><![CDATA[CS_ENDPOINT]]></expression>
+			</regex>
+			<regex codetype="ctlib" name="CS_EXEC_IMMEDIATE">
+				<expression><![CDATA[CS_EXEC_IMMEDIATE]]></expression>
+			</regex>
+			<regex codetype="ctlib" name="CS_EXECUTE">
+				<expression><![CDATA[CS_EXECUTE]]></expression>
+			</regex>
+			<regex codetype="ctlib" name="CS_EXPOSE_FMTS">
+				<expression><![CDATA[CS_EXPOSE_FMTS]]></expression>
+			</regex>
+			<regex codetype="ctlib" name="CS_EXTERNAL_CONFIG">
+				<expression><![CDATA[CS_EXTERNAL_CONFIG]]></expression>
+			</regex>
+			<regex codetype="ctlib" name="CS_EXTRA_INF">
+				<expression><![CDATA[CS_EXTRA_INF]]></expression>
+			</regex>
+			<regex codetype="ctlib" name="CS_FIRST">
+				<expression><![CDATA[CS_FIRST]]></expression>
+			</regex>
+			<regex codetype="ctlib" name="CS_FIRST_CHUNK">
+				<expression><![CDATA[CS_FIRST_CHUNK]]></expression>
+			</regex>
+			<regex codetype="ctlib" name="CS_FOR_UPDATE">
+				<expression><![CDATA[CS_FOR_UPDATE]]></expression>
+			</regex>
+			<regex codetype="ctlib" name="CS_FORCE_CLOSE">
+				<expression><![CDATA[CS_FORCE_CLOSE]]></expression>
+			</regex>
+			<regex codetype="ctlib" name="CS_FORCE_EXIT">
+				<expression><![CDATA[CS_FORCE_EXIT]]></expression>
+			</regex>
+			<regex codetype="ctlib" name="CS_GET">
+				<expression><![CDATA[CS_GET]]></expression>
+			</regex>
+			<regex codetype="ctlib" name="CS_GET_IN">
+				<expression><![CDATA[CS_GET_IN]]></expression>
+			</regex>
+			<regex codetype="ctlib" name="CS_GET_OUT">
+				<expression><![CDATA[CS_GET_OUT]]></expression>
+			</regex>
+			<regex codetype="ctlib" name="CS_GETATTR">
+				<expression><![CDATA[CS_GETATTR]]></expression>
+			</regex>
+			<regex codetype="ctlib" name="CS_GETCNT">
+				<expression><![CDATA[CS_GETCNT]]></expression>
+			</regex>
+			<regex codetype="ctlib" name="CS_GOODDATA">
+				<expression><![CDATA[CS_GOODDATA]]></expression>
+			</regex>
+			<regex codetype="ctlib" name="CS_HAFAILOVER">
+				<expression><![CDATA[CS_HAFAILOVER]]></expression>
+			</regex>
+			<regex codetype="ctlib" name="CS_HASEED">
+				<expression><![CDATA[CS_HASEED]]></expression>
+			</regex>
+			<regex codetype="ctlib" name="CS_HAVE_BINDS">
+				<expression><![CDATA[CS_HAVE_BINDS]]></expression>
+			</regex>
+			<regex codetype="ctlib" name="CS_HAVE_CMD">
+				<expression><![CDATA[CS_HAVE_CMD]]></expression>
+			</regex>
+			<regex codetype="ctlib" name="CS_HAVE_CUROPEN">
+				<expression><![CDATA[CS_HAVE_CUROPEN]]></expression>
+			</regex>
+			<regex codetype="ctlib" name="CS_HIDDEN_KEYS">
+				<expression><![CDATA[CS_HIDDEN_KEYS]]></expression>
+			</regex>
+			<regex codetype="ctlib" name="CS_HOSTNAME">
+				<expression><![CDATA[CS_HOSTNAME]]></expression>
+			</regex>
+			<regex codetype="ctlib" name="CS_IFILE">
+				<expression><![CDATA[CS_IFILE]]></expression>
+			</regex>
+			<regex codetype="ctlib" name="CS_IMPCURSTAT_CLOSED">
+				<expression><![CDATA[CS_IMPCURSTAT_CLOSED]]></expression>
+			</regex>
+			<regex codetype="ctlib" name="CS_IMPCURSTAT_DECLARED">
+				<expression><![CDATA[CS_IMPCURSTAT_DECLARED]]></expression>
+			</regex>
+			<regex codetype="ctlib" name="CS_IMPCURSTAT_FINALREAD">
+				<expression><![CDATA[CS_IMPCURSTAT_FINALREAD]]></expression>
+			</regex>
+			<regex codetype="ctlib" name="CS_IMPCURSTAT_NONE">
+				<expression><![CDATA[CS_IMPCURSTAT_NONE]]></expression>
+			</regex>
+			<regex codetype="ctlib" name="CS_IMPCURSTAT_NOSEND">
+				<expression><![CDATA[CS_IMPCURSTAT_NOSEND]]></expression>
+			</regex>
+			<regex codetype="ctlib" name="CS_IMPCURSTAT_NOSENDDONE">
+				<expression><![CDATA[CS_IMPCURSTAT_NOSENDDONE]]></expression>
+			</regex>
+			<regex codetype="ctlib" name="CS_IMPCURSTAT_READROWS">
+				<expression><![CDATA[CS_IMPCURSTAT_READROWS]]></expression>
+			</regex>
+			<regex codetype="ctlib" name="CS_IMPCURSTAT_SENDSUCCESS">
+				<expression><![CDATA[CS_IMPCURSTAT_SENDSUCCESS]]></expression>
+			</regex>
+			<regex codetype="ctlib" name="CS_IMPLICIT_CURSOR">
+				<expression><![CDATA[CS_IMPLICIT_CURSOR]]></expression>
+			</regex>
+			<regex codetype="ctlib" name="CS_INIT">
+				<expression><![CDATA[CS_INIT]]></expression>
+			</regex>
+			<regex codetype="ctlib" name="CS_IODATA">
+				<expression><![CDATA[CS_IODATA]]></expression>
+			</regex>
+			<regex codetype="ctlib" name="CS_ISBROWSE">
+				<expression><![CDATA[CS_ISBROWSE]]></expression>
+			</regex>
+			<regex codetype="ctlib" name="CS_LANG_CMD">
+				<expression><![CDATA[CS_LANG_CMD]]></expression>
+			</regex>
+			<regex codetype="ctlib" name="CS_LAST">
+				<expression><![CDATA[CS_LAST]]></expression>
+			</regex>
+			<regex codetype="ctlib" name="CS_LAST_CHUNK">
+				<expression><![CDATA[CS_LAST_CHUNK]]></expression>
+			</regex>
+			<regex codetype="ctlib" name="CS_LOC_PROP">
+				<expression><![CDATA[CS_LOC_PROP]]></expression>
+			</regex>
+			<regex codetype="ctlib" name="CS_LOGIN_REMOTE_PASSWD">
+				<expression><![CDATA[CS_LOGIN_REMOTE_PASSWD]]></expression>
+			</regex>
+			<regex codetype="ctlib" name="CS_LOGIN_REMOTE_SERVER">
+				<expression><![CDATA[CS_LOGIN_REMOTE_SERVER]]></expression>
+			</regex>
+			<regex codetype="ctlib" name="CS_LOGIN_STATUS">
+				<expression><![CDATA[CS_LOGIN_STATUS]]></expression>
+			</regex>
+			<regex codetype="ctlib" name="CS_LOGIN_TIMEOUT">
+				<expression><![CDATA[CS_LOGIN_TIMEOUT]]></expression>
+			</regex>
+			<regex codetype="ctlib" name="CS_LOGIN_TYPE">
+				<expression><![CDATA[CS_LOGIN_TYPE]]></expression>
+			</regex>
+			<regex codetype="ctlib" name="CS_LOGINFO">
+				<expression><![CDATA[CS_LOGINFO]]></expression>
+			</regex>
+			<regex codetype="ctlib" name="CS_LOOP_DELAY">
+				<expression><![CDATA[CS_LOOP_DELAY]]></expression>
+			</regex>
+			<regex codetype="ctlib" name="CS_MAX_CAPVALUE">
+				<expression><![CDATA[CS_MAX_CAPVALUE]]></expression>
+			</regex>
+			<regex codetype="ctlib" name="CS_MAX_CONNECT">
+				<expression><![CDATA[CS_MAX_CONNECT]]></expression>
+			</regex>
+			<regex codetype="ctlib" name="CS_MAX_MSG">
+				<expression><![CDATA[CS_MAX_MSG]]></expression>
+			</regex>
+			<regex codetype="ctlib" name="CS_MAX_OIDLEN">
+				<expression><![CDATA[CS_MAX_OIDLEN]]></expression>
+			</regex>
+			<regex codetype="ctlib" name="CS_MAX_OPTION">
+				<expression><![CDATA[CS_MAX_OPTION]]></expression>
+			</regex>
+			<regex codetype="ctlib" name="CS_MAX_REQ_CAP">
+				<expression><![CDATA[CS_MAX_REQ_CAP]]></expression>
+			</regex>
+			<regex codetype="ctlib" name="CS_MAX_RES_CAP">
+				<expression><![CDATA[CS_MAX_RES_CAP]]></expression>
+			</regex>
+			<regex codetype="ctlib" name="CS_MEM_POOL">
+				<expression><![CDATA[CS_MEM_POOL]]></expression>
+			</regex>
+			<regex codetype="ctlib" name="CS_MESSAGE_CB">
+				<expression><![CDATA[CS_MESSAGE_CB]]></expression>
+			</regex>
+			<regex codetype="ctlib" name="CS_MIN_CAPVALUE">
+				<expression><![CDATA[CS_MIN_CAPVALUE]]></expression>
+			</regex>
+			<regex codetype="ctlib" name="CS_MIN_OPTION">
+				<expression><![CDATA[CS_MIN_OPTION]]></expression>
+			</regex>
+			<regex codetype="ctlib" name="CS_MIN_REQ_CAP">
+				<expression><![CDATA[CS_MIN_REQ_CAP]]></expression>
+			</regex>
+			<regex codetype="ctlib" name="CS_MIN_RES_CAP">
+				<expression><![CDATA[CS_MIN_RES_CAP]]></expression>
+			</regex>
+			<regex codetype="ctlib" name="CS_MONTH">
+				<expression><![CDATA[CS_MONTH]]></expression>
+			</regex>
+			<regex codetype="ctlib" name="CS_MORE">
+				<expression><![CDATA[CS_MORE]]></expression>
+			</regex>
+			<regex codetype="ctlib" name="CS_MSG_CMD">
+				<expression><![CDATA[CS_MSG_CMD]]></expression>
+			</regex>
+			<regex codetype="ctlib" name="CS_MSG_GETLABELS">
+				<expression><![CDATA[CS_MSG_GETLABELS]]></expression>
+			</regex>
+			<regex codetype="ctlib" name="CS_MSG_LABELS">
+				<expression><![CDATA[CS_MSG_LABELS]]></expression>
+			</regex>
+			<regex codetype="ctlib" name="CS_MSG_RESULT">
+				<expression><![CDATA[CS_MSG_RESULT]]></expression>
+			</regex>
+			<regex codetype="ctlib" name="CS_MSG_TABLENAME">
+				<expression><![CDATA[CS_MSG_TABLENAME]]></expression>
+			</regex>
+			<regex codetype="ctlib" name="CS_MSGLIMIT">
+				<expression><![CDATA[CS_MSGLIMIT]]></expression>
+			</regex>
+			<regex codetype="ctlib" name="CS_MSGTYPE">
+				<expression><![CDATA[CS_MSGTYPE]]></expression>
+			</regex>
+			<regex codetype="ctlib" name="CS_MULT">
+				<expression><![CDATA[CS_MULT]]></expression>
+			</regex>
+			<regex codetype="ctlib" name="CS_NET_TRANADDR">
+				<expression><![CDATA[CS_NET_TRANADDR]]></expression>
+			</regex>
+			<regex codetype="ctlib" name="CS_NETIO">
+				<expression><![CDATA[CS_NETIO]]></expression>
+			</regex>
+			<regex codetype="ctlib" name="CS_NEXT">
+				<expression><![CDATA[CS_NEXT]]></expression>
+			</regex>
+			<regex codetype="ctlib" name="CS_NO_COUNT">
+				<expression><![CDATA[CS_NO_COUNT]]></expression>
+			</regex>
+			<regex codetype="ctlib" name="CS_NO_RECOMPILE">
+				<expression><![CDATA[CS_NO_RECOMPILE]]></expression>
+			</regex>
+			<regex codetype="ctlib" name="CS_NO_TRUNCATE">
+				<expression><![CDATA[CS_NO_TRUNCATE]]></expression>
+			</regex>
+			<regex codetype="ctlib" name="CS_NOAPI_CHK">
+				<expression><![CDATA[CS_NOAPI_CHK]]></expression>
+			</regex>
+			<regex codetype="ctlib" name="CS_NOCHARSETCNV_REQD">
+				<expression><![CDATA[CS_NOCHARSETCNV_REQD]]></expression>
+			</regex>
+			<regex codetype="ctlib" name="CS_NOINTERRUPT">
+				<expression><![CDATA[CS_NOINTERRUPT]]></expression>
+			</regex>
+			<regex codetype="ctlib" name="CS_NOTIF_CB">
+				<expression><![CDATA[CS_NOTIF_CB]]></expression>
+			</regex>
+			<regex codetype="ctlib" name="CS_NOTIF_CMD">
+				<expression><![CDATA[CS_NOTIF_CMD]]></expression>
+			</regex>
+			<regex codetype="ctlib" name="CS_NOTIFY_ALWAYS">
+				<expression><![CDATA[CS_NOTIFY_ALWAYS]]></expression>
+			</regex>
+			<regex codetype="ctlib" name="CS_NOTIFY_NOWAIT">
+				<expression><![CDATA[CS_NOTIFY_NOWAIT]]></expression>
+			</regex>
+			<regex codetype="ctlib" name="CS_NOTIFY_ONCE">
+				<expression><![CDATA[CS_NOTIFY_ONCE]]></expression>
+			</regex>
+			<regex codetype="ctlib" name="CS_NOTIFY_WAIT">
+				<expression><![CDATA[CS_NOTIFY_WAIT]]></expression>
+			</regex>
+			<regex codetype="ctlib" name="CS_NOWIDETABLES">
+				<expression><![CDATA[CS_NOWIDETABLES]]></expression>
+			</regex>
+			<regex codetype="ctlib" name="CS_NULLDATA">
+				<expression><![CDATA[CS_NULLDATA]]></expression>
+			</regex>
+			<regex codetype="ctlib" name="CS_NUM_COMPUTES">
+				<expression><![CDATA[CS_NUM_COMPUTES]]></expression>
+			</regex>
+			<regex codetype="ctlib" name="CS_NUMDATA">
+				<expression><![CDATA[CS_NUMDATA]]></expression>
+			</regex>
+			<regex codetype="ctlib" name="CS_NUMORDERCOLS">
+				<expression><![CDATA[CS_NUMORDERCOLS]]></expression>
+			</regex>
+			<regex codetype="ctlib" name="CS_OBJ_ATRRIBUTE">
+				<expression><![CDATA[CS_OBJ_ATRRIBUTE]]></expression>
+			</regex>
+			<regex codetype="ctlib" name="CS_OBJ_CLASSOID">
+				<expression><![CDATA[CS_OBJ_CLASSOID]]></expression>
+			</regex>
+			<regex codetype="ctlib" name="CS_OBJ_DNAME">
+				<expression><![CDATA[CS_OBJ_DNAME]]></expression>
+			</regex>
+			<regex codetype="ctlib" name="CS_OBJ_NAME">
+				<expression><![CDATA[CS_OBJ_NAME]]></expression>
+			</regex>
+			<regex codetype="ctlib" name="CS_OBJ_NUMATTR">
+				<expression><![CDATA[CS_OBJ_NUMATTR]]></expression>
+			</regex>
+			<regex codetype="ctlib" name="CS_OBJECT_BINARY">
+				<expression><![CDATA[CS_OBJECT_BINARY]]></expression>
+			</regex>
+			<regex codetype="ctlib" name="CS_OBJECT_CHAR">
+				<expression><![CDATA[CS_OBJECT_CHAR]]></expression>
+			</regex>
+			<regex codetype="ctlib" name="CS_OBJECT_JAVA1">
+				<expression><![CDATA[CS_OBJECT_JAVA1]]></expression>
+			</regex>
+			<regex codetype="ctlib" name="CS_OBJECT_NOBINARY">
+				<expression><![CDATA[CS_OBJECT_NOBINARY]]></expression>
+			</regex>
+			<regex codetype="ctlib" name="CS_OBJECT_NOCHAR">
+				<expression><![CDATA[CS_OBJECT_NOCHAR]]></expression>
+			</regex>
+			<regex codetype="ctlib" name="CS_OBJECT_NOJAVA1">
+				<expression><![CDATA[CS_OBJECT_NOJAVA1]]></expression>
+			</regex>
+			<regex codetype="ctlib" name="CS_OP_AVG">
+				<expression><![CDATA[CS_OP_AVG]]></expression>
+			</regex>
+			<regex codetype="ctlib" name="CS_OP_COUNT">
+				<expression><![CDATA[CS_OP_COUNT]]></expression>
+			</regex>
+			<regex codetype="ctlib" name="CS_OP_MAX">
+				<expression><![CDATA[CS_OP_MAX]]></expression>
+			</regex>
+			<regex codetype="ctlib" name="CS_OP_MIN">
+				<expression><![CDATA[CS_OP_MIN]]></expression>
+			</regex>
+			<regex codetype="ctlib" name="CS_OP_SUM">
+				<expression><![CDATA[CS_OP_SUM]]></expression>
+			</regex>
+			<regex codetype="ctlib" name="CS_OPT_ANSINULL">
+				<expression><![CDATA[CS_OPT_ANSINULL]]></expression>
+			</regex>
+			<regex codetype="ctlib" name="CS_OPT_ANSIPERM">
+				<expression><![CDATA[CS_OPT_ANSIPERM]]></expression>
+			</regex>
+			<regex codetype="ctlib" name="CS_OPT_ARITHABORT">
+				<expression><![CDATA[CS_OPT_ARITHABORT]]></expression>
+			</regex>
+			<regex codetype="ctlib" name="CS_OPT_ARITHIGNORE">
+				<expression><![CDATA[CS_OPT_ARITHIGNORE]]></expression>
+			</regex>
+			<regex codetype="ctlib" name="CS_OPT_AUTHOFF">
+				<expression><![CDATA[CS_OPT_AUTHOFF]]></expression>
+			</regex>
+			<regex codetype="ctlib" name="CS_OPT_AUTHON">
+				<expression><![CDATA[CS_OPT_AUTHON]]></expression>
+			</regex>
+			<regex codetype="ctlib" name="CS_OPT_CHAINXACTS">
+				<expression><![CDATA[CS_OPT_CHAINXACTS]]></expression>
+			</regex>
+			<regex codetype="ctlib" name="CS_OPT_CHARSET">
+				<expression><![CDATA[CS_OPT_CHARSET]]></expression>
+			</regex>
+			<regex codetype="ctlib" name="CS_OPT_CURCLOSEONXACT">
+				<expression><![CDATA[CS_OPT_CURCLOSEONXACT]]></expression>
+			</regex>
+			<regex codetype="ctlib" name="CS_OPT_CURREAD">
+				<expression><![CDATA[CS_OPT_CURREAD]]></expression>
+			</regex>
+			<regex codetype="ctlib" name="CS_OPT_CURWRITE">
+				<expression><![CDATA[CS_OPT_CURWRITE]]></expression>
+			</regex>
+			<regex codetype="ctlib" name="CS_OPT_DATEFIRST">
+				<expression><![CDATA[CS_OPT_DATEFIRST]]></expression>
+			</regex>
+			<regex codetype="ctlib" name="CS_OPT_DATEFORMAT">
+				<expression><![CDATA[CS_OPT_DATEFORMAT]]></expression>
+			</regex>
+			<regex codetype="ctlib" name="CS_OPT_FIPSFLAG">
+				<expression><![CDATA[CS_OPT_FIPSFLAG]]></expression>
+			</regex>
+			<regex codetype="ctlib" name="CS_OPT_FMTDMY">
+				<expression><![CDATA[CS_OPT_FMTDMY]]></expression>
+			</regex>
+			<regex codetype="ctlib" name="CS_OPT_FMTDYM">
+				<expression><![CDATA[CS_OPT_FMTDYM]]></expression>
+			</regex>
+			<regex codetype="ctlib" name="CS_OPT_FMTMDY">
+				<expression><![CDATA[CS_OPT_FMTMDY]]></expression>
+			</regex>
+			<regex codetype="ctlib" name="CS_OPT_FMTMYD">
+				<expression><![CDATA[CS_OPT_FMTMYD]]></expression>
+			</regex>
+			<regex codetype="ctlib" name="CS_OPT_FMTYDM">
+				<expression><![CDATA[CS_OPT_FMTYDM]]></expression>
+			</regex>
+			<regex codetype="ctlib" name="CS_OPT_FMTYMD">
+				<expression><![CDATA[CS_OPT_FMTYMD]]></expression>
+			</regex>
+			<regex codetype="ctlib" name="CS_OPT_FORCEPLAN">
+				<expression><![CDATA[CS_OPT_FORCEPLAN]]></expression>
+			</regex>
+			<regex codetype="ctlib" name="CS_OPT_FORMATONLY">
+				<expression><![CDATA[CS_OPT_FORMATONLY]]></expression>
+			</regex>
+			<regex codetype="ctlib" name="CS_OPT_FRIDAY">
+				<expression><![CDATA[CS_OPT_FRIDAY]]></expression>
+			</regex>
+			<regex codetype="ctlib" name="CS_OPT_GETDATA">
+				<expression><![CDATA[CS_OPT_GETDATA]]></expression>
+			</regex>
+			<regex codetype="ctlib" name="CS_OPT_IDENTITYOFF">
+				<expression><![CDATA[CS_OPT_IDENTITYOFF]]></expression>
+			</regex>
+			<regex codetype="ctlib" name="CS_OPT_IDENTITYON">
+				<expression><![CDATA[CS_OPT_IDENTITYON]]></expression>
+			</regex>
+			<regex codetype="ctlib" name="CS_OPT_ISOLATION">
+				<expression><![CDATA[CS_OPT_ISOLATION]]></expression>
+			</regex>
+			<regex codetype="ctlib" name="CS_OPT_LEVEL0">
+				<expression><![CDATA[CS_OPT_LEVEL0]]></expression>
+			</regex>
+			<regex codetype="ctlib" name="CS_OPT_LEVEL1">
+				<expression><![CDATA[CS_OPT_LEVEL1]]></expression>
+			</regex>
+			<regex codetype="ctlib" name="CS_OPT_LEVEL2">
+				<expression><![CDATA[CS_OPT_LEVEL2]]></expression>
+			</regex>
+			<regex codetype="ctlib" name="CS_OPT_LEVEL3">
+				<expression><![CDATA[CS_OPT_LEVEL3]]></expression>
+			</regex>
+			<regex codetype="ctlib" name="CS_OPT_MONDAY">
+				<expression><![CDATA[CS_OPT_MONDAY]]></expression>
+			</regex>
+			<regex codetype="ctlib" name="CS_OPT_NATLANG">
+				<expression><![CDATA[CS_OPT_NATLANG]]></expression>
+			</regex>
+			<regex codetype="ctlib" name="CS_OPT_NOCOUNT">
+				<expression><![CDATA[CS_OPT_NOCOUNT]]></expression>
+			</regex>
+			<regex codetype="ctlib" name="CS_OPT_NOEXEC">
+				<expression><![CDATA[CS_OPT_NOEXEC]]></expression>
+			</regex>
+			<regex codetype="ctlib" name="CS_OPT_PARSEONLY">
+				<expression><![CDATA[CS_OPT_PARSEONLY]]></expression>
+			</regex>
+			<regex codetype="ctlib" name="CS_OPT_QUOTED_IDENT">
+				<expression><![CDATA[CS_OPT_QUOTED_IDENT]]></expression>
+			</regex>
+			<regex codetype="ctlib" name="CS_OPT_RESTREES">
+				<expression><![CDATA[CS_OPT_RESTREES]]></expression>
+			</regex>
+			<regex codetype="ctlib" name="CS_OPT_ROWCOUNT">
+				<expression><![CDATA[CS_OPT_ROWCOUNT]]></expression>
+			</regex>
+			<regex codetype="ctlib" name="CS_OPT_SATURDAY">
+				<expression><![CDATA[CS_OPT_SATURDAY]]></expression>
+			</regex>
+			<regex codetype="ctlib" name="CS_OPT_SHOWPLAN">
+				<expression><![CDATA[CS_OPT_SHOWPLAN]]></expression>
+			</regex>
+			<regex codetype="ctlib" name="CS_OPT_SORTMERGE">
+				<expression><![CDATA[CS_OPT_SORTMERGE]]></expression>
+			</regex>
+			<regex codetype="ctlib" name="CS_OPT_STATS_IO">
+				<expression><![CDATA[CS_OPT_STATS_IO]]></expression>
+			</regex>
+			<regex codetype="ctlib" name="CS_OPT_STATS_TIME">
+				<expression><![CDATA[CS_OPT_STATS_TIME]]></expression>
+			</regex>
+			<regex codetype="ctlib" name="CS_OPT_STR_RTRUNC">
+				<expression><![CDATA[CS_OPT_STR_RTRUNC]]></expression>
+			</regex>
+			<regex codetype="ctlib" name="CS_OPT_SUNDAY">
+				<expression><![CDATA[CS_OPT_SUNDAY]]></expression>
+			</regex>
+			<regex codetype="ctlib" name="CS_OPT_TEXTSIZE">
+				<expression><![CDATA[CS_OPT_TEXTSIZE]]></expression>
+			</regex>
+			<regex codetype="ctlib" name="CS_OPT_THURSDAY">
+				<expression><![CDATA[CS_OPT_THURSDAY]]></expression>
+			</regex>
+			<regex codetype="ctlib" name="CS_OPT_TRUNCIGNORE">
+				<expression><![CDATA[CS_OPT_TRUNCIGNORE]]></expression>
+			</regex>
+			<regex codetype="ctlib" name="CS_OPT_TUESDAY">
+				<expression><![CDATA[CS_OPT_TUESDAY]]></expression>
+			</regex>
+			<regex codetype="ctlib" name="CS_OPT_WEDNESDAY">
+				<expression><![CDATA[CS_OPT_WEDNESDAY]]></expression>
+			</regex>
+			<regex codetype="ctlib" name="CS_OPTION_GET">
+				<expression><![CDATA[CS_OPTION_GET]]></expression>
+			</regex>
+			<regex codetype="ctlib" name="CS_ORDERBY_COLS">
+				<expression><![CDATA[CS_ORDERBY_COLS]]></expression>
+			</regex>
+			<regex codetype="ctlib" name="CS_PACKAGE_CMD">
+				<expression><![CDATA[CS_PACKAGE_CMD]]></expression>
+			</regex>
+			<regex codetype="ctlib" name="CS_PACKETSIZE">
+				<expression><![CDATA[CS_PACKETSIZE]]></expression>
+			</regex>
+			<regex codetype="ctlib" name="CS_PARAM_RESULT">
+				<expression><![CDATA[CS_PARAM_RESULT]]></expression>
+			</regex>
+			<regex codetype="ctlib" name="CS_PARENT_HANDLE">
+				<expression><![CDATA[CS_PARENT_HANDLE]]></expression>
+			</regex>
+			<regex codetype="ctlib" name="CS_PARSE_TREE">
+				<expression><![CDATA[CS_PARSE_TREE]]></expression>
+			</regex>
+			<regex codetype="ctlib" name="CS_PASSWORD">
+				<expression><![CDATA[CS_PASSWORD]]></expression>
+			</regex>
+			<regex codetype="ctlib" name="CS_PREPARE">
+				<expression><![CDATA[CS_PREPARE]]></expression>
+			</regex>
+			<regex codetype="ctlib" name="CS_PREV">
+				<expression><![CDATA[CS_PREV]]></expression>
+			</regex>
+			<regex codetype="ctlib" name="CS_PROCNAME">
+				<expression><![CDATA[CS_PROCNAME]]></expression>
+			</regex>
+			<regex codetype="ctlib" name="CS_PROP_SSL_CA">
+				<expression><![CDATA[CS_PROP_SSL_CA]]></expression>
+			</regex>
+			<regex codetype="ctlib" name="CS_PROP_SSL_CIPHER">
+				<expression><![CDATA[CS_PROP_SSL_CIPHER]]></expression>
+			</regex>
+			<regex codetype="ctlib" name="CS_PROP_SSL_LOCALID">
+				<expression><![CDATA[CS_PROP_SSL_LOCALID]]></expression>
+			</regex>
+			<regex codetype="ctlib" name="CS_PROP_SSL_PROTOVERSION">
+				<expression><![CDATA[CS_PROP_SSL_PROTOVERSION]]></expression>
+			</regex>
+			<regex codetype="ctlib" name="CS_PROP_TLS_KEYREGEN">
+				<expression><![CDATA[CS_PROP_TLS_KEYREGEN]]></expression>
+			</regex>
+			<regex codetype="ctlib" name="CS_PROTO_BULK">
+				<expression><![CDATA[CS_PROTO_BULK]]></expression>
+			</regex>
+			<regex codetype="ctlib" name="CS_PROTO_DYNAMIC">
+				<expression><![CDATA[CS_PROTO_DYNAMIC]]></expression>
+			</regex>
+			<regex codetype="ctlib" name="CS_PROTO_DYNPROC">
+				<expression><![CDATA[CS_PROTO_DYNPROC]]></expression>
+			</regex>
+			<regex codetype="ctlib" name="CS_PROTO_NOBULK">
+				<expression><![CDATA[CS_PROTO_NOBULK]]></expression>
+			</regex>
+			<regex codetype="ctlib" name="CS_PROTO_NOTEXT">
+				<expression><![CDATA[CS_PROTO_NOTEXT]]></expression>
+			</regex>
+			<regex codetype="ctlib" name="CS_PROTO_TEXT">
+				<expression><![CDATA[CS_PROTO_TEXT]]></expression>
+			</regex>
+	
+			<regex codetype="ctlib" name="CS_BROWSEDESC">
+				<expression><![CDATA[CS_BROWSEDESC]]></expression>
+			</regex>
+			<!--
+				<regex codetype="ctlib" name="ESC">
+				<expression><![CDATA[ESC]]></expression> 
+				</regex>
+			-->
+			<regex codetype="ctlib" name="CS_CLIENTMSG">
+				<expression><![CDATA[CS_CLIENTMSG]]></expression>
+			</regex>
+			<regex codetype="ctlib" name="CS_IODESC">
+				<expression><![CDATA[CS_IODESC]]></expression>
+			</regex>
+			<regex codetype="ctlib" name="CS_SERVERMSG">
+				<expression><![CDATA[CS_SERVERMSG]]></expression>
+			</regex>
+			<regex codetype="ctlib" name="CS_SSLCERT">
+				<expression><![CDATA[CS_SSLCERT]]></expression>
+			</regex>
+			<regex codetype="ctlib" name="CS_SSLCERT_FIELD">
+				<expression><![CDATA[CS_SSLCERT_FIELD]]></expression>
+			</regex>
+			<regex codetype="ctlib" name="CS_SSLIDENTITY">
+				<expression><![CDATA[CS_SSLIDENTITY]]></expression>
+			</regex>
+	
+			<regex codetype="ctlib" name="CS_BITS_PER_BYTE">
+				<expression><![CDATA[CS_BITS_PER_BYTE]]></expression>
+			</regex>
+			<regex codetype="ctlib" name="CS_BOOL">
+				<expression><![CDATA[CS_BOOL]]></expression>
+			</regex>
+			<regex codetype="ctlib" name="CS_CONST">
+				<expression><![CDATA[CS_CONST]]></expression>
+			</regex>
+			<regex codetype="ctlib" name="CS_ELLIPSE">
+				<expression><![CDATA[CS_ELLIPSE]]></expression>
+			</regex>
+			<regex codetype="ctlib" name="CS_END_EXTERN_C">
+				<expression><![CDATA[CS_END_EXTERN_C]]></expression>
+			</regex>
+			<regex codetype="ctlib" name="CS_FLOAT">
+				<expression><![CDATA[CS_FLOAT]]></expression>
+			</regex>
+			<regex codetype="ctlib" name="CS_FORCE_PROTOTYPES">
+				<expression><![CDATA[CS_FORCE_PROTOTYPES]]></expression>
+			</regex>
+			<regex codetype="ctlib" name="CS_INT">
+				<expression><![CDATA[CS_INT]]></expression>
+			</regex>
+			<regex codetype="ctlib" name="CS_INTERNAL">
+				<expression><![CDATA[CS_INTERNAL]]></expression>
+			</regex>
+			<regex codetype="ctlib" name="CS_PUBLIC">
+				<expression><![CDATA[CS_PUBLIC]]></expression>
+			</regex>
+			<regex codetype="ctlib" name="CS_START_EXTERN_C">
+				<expression><![CDATA[CS_START_EXTERN_C]]></expression>
+			</regex>
+			<regex codetype="ctlib" name="CS_STATIC">
+				<expression><![CDATA[CS_STATIC]]></expression>
+			</regex>
+			<regex codetype="ctlib" name="CS_THRDRES">
+				<expression><![CDATA[CS_THRDRES]]></expression>
+			</regex>
+			<regex codetype="ctlib" name="CS_UINT">
+				<expression><![CDATA[CS_UINT]]></expression>
+			</regex>
+			<regex codetype="ctlib" name="CS_VARARGS">
+				<expression><![CDATA[CS_VARARGS]]></expression>
+			</regex>
+			<regex codetype="ctlib" name="CS_VOID">
+				<expression><![CDATA[CS_VOID]]></expression>
+			</regex>
+			<regex codetype="ctlib" name="SYB__STDC__">
+				<expression><![CDATA[SYB__STDC__]]></expression>
+			</regex>
+			<regex codetype="ctlib" name="SYB_MSC_VER">
+				<expression><![CDATA[SYB_MSC_VER]]></expression>
+			</regex>
+	
+			<regex codetype="ctlib" name="CS_ACCESS_ADMIN">
+				<expression><![CDATA[CS_ACCESS_ADMIN]]></expression>
+			</regex>
+			<regex codetype="ctlib" name="CS_ACCESS_ADMIN_MASTER">
+				<expression><![CDATA[CS_ACCESS_ADMIN_MASTER]]></expression>
+			</regex>
+			<regex codetype="ctlib" name="CS_ACCESS_ADMIN_QUERY">
+				<expression><![CDATA[CS_ACCESS_ADMIN_QUERY]]></expression>
+			</regex>
+			<regex codetype="ctlib" name="CS_ACCESS_CLIENT">
+				<expression><![CDATA[CS_ACCESS_CLIENT]]></expression>
+			</regex>
+			<regex codetype="ctlib" name="CS_ACCESS_CLIENT_MASTER">
+				<expression><![CDATA[CS_ACCESS_CLIENT_MASTER]]></expression>
+			</regex>
+			<regex codetype="ctlib" name="CS_ACCESS_CLIENT_QUERY">
+				<expression><![CDATA[CS_ACCESS_CLIENT_QUERY]]></expression>
+			</regex>
+			<regex codetype="ctlib" name="CS_ACCESS_MGMTAGENT">
+				<expression><![CDATA[CS_ACCESS_MGMTAGENT]]></expression>
+			</regex>
+			<regex codetype="ctlib" name="CS_ACCESS_MGMTAGENT_MASTER">
+				<expression><![CDATA[CS_ACCESS_MGMTAGENT_MASTER]]></expression>
+			</regex>
+			<regex codetype="ctlib" name="_MGMTAGENT_QUERY">
+				<expression><![CDATA[_MGMTAGENT_QUERY]]></expression>
+			</regex>
+			<regex codetype="ctlib" name="CS_ASYNC_RESTORE">
+				<expression><![CDATA[CS_ASYNC_RESTORE]]></expression>
+			</regex>
+			<regex codetype="ctlib" name="CS_ATTR_SYNTAX_BOOLEAN">
+				<expression><![CDATA[CS_ATTR_SYNTAX_BOOLEAN]]></expression>
+			</regex>
+			<regex codetype="ctlib" name="CS_ATTR_SYNTAX_ENUMERATION">
+				<expression><![CDATA[CS_ATTR_SYNTAX_ENUMERATION]]></expression>
+			</regex>
+			<regex codetype="ctlib" name="YNTAX_INTEGER">
+				<expression><![CDATA[YNTAX_INTEGER]]></expression>
+			</regex>
+			<regex codetype="ctlib" name="CS_ATTR_SYNTAX_NOOP">
+				<expression><![CDATA[CS_ATTR_SYNTAX_NOOP]]></expression>
+			</regex>
+			<regex codetype="ctlib" name="CS_ACCESS_ADMIN">
+				<expression><![CDATA[CS_ACCESS_ADMIN]]></expression>
+			</regex>
+			<regex codetype="ctlib" name="CS_ACCESS_ADMIN_MASTER">
+				<expression><![CDATA[CS_ACCESS_ADMIN_MASTER]]></expression>
+			</regex>
+			<regex codetype="ctlib" name="CS_ACCESS_ADMIN_QUERY">
+				<expression><![CDATA[CS_ACCESS_ADMIN_QUERY]]></expression>
+			</regex>
+			<regex codetype="ctlib" name="CS_ACCESS_CLIENT">
+				<expression><![CDATA[CS_ACCESS_CLIENT]]></expression>
+			</regex>
+			<regex codetype="ctlib" name="CS_ACCESS_CLIENT_MASTER">
+				<expression><![CDATA[CS_ACCESS_CLIENT_MASTER]]></expression>
+			</regex>
+			<regex codetype="ctlib" name="CS_ACCESS_CLIENT_QUERY">
+				<expression><![CDATA[CS_ACCESS_CLIENT_QUERY]]></expression>
+			</regex>
+			<regex codetype="ctlib" name="CS_ACCESS_MGMTAGENT">
+				<expression><![CDATA[CS_ACCESS_MGMTAGENT]]></expression>
+			</regex>
+			<regex codetype="ctlib" name="CS_ACCESS_MGMTAGENT_MASTER">
+				<expression><![CDATA[CS_ACCESS_MGMTAGENT_MASTER]]></expression>
+			</regex>
+			<regex codetype="ctlib" name="_MGMTAGENT_QUERY">
+				<expression><![CDATA[_MGMTAGENT_QUERY]]></expression>
+			</regex>
+			<regex codetype="ctlib" name="CS_ASYNC_RESTORE">
+				<expression><![CDATA[CS_ASYNC_RESTORE]]></expression>
+			</regex>
+			<regex codetype="ctlib" name="CS_ATTR_SYNTAX_BOOLEAN">
+				<expression><![CDATA[CS_ATTR_SYNTAX_BOOLEAN]]></expression>
+			</regex>
+			<regex codetype="ctlib" name="CS_ATTR_SYNTAX_ENUMERATION">
+				<expression><![CDATA[CS_ATTR_SYNTAX_ENUMERATION]]></expression>
+			</regex>
+			<regex codetype="ctlib" name="YNTAX_INTEGER">
+				<expression><![CDATA[YNTAX_INTEGER]]></expression>
+			</regex>
+			<regex codetype="ctlib" name="CS_ATTR_SYNTAX_NOOP">
+				<expression><![CDATA[CS_ATTR_SYNTAX_NOOP]]></expression>
+			</regex>
+			<regex codetype="ctlib" name="CS_ATTR_SYNTAX_OID">
+				<expression><![CDATA[CS_ATTR_SYNTAX_OID]]></expression>
+			</regex>
+			<regex codetype="ctlib" name="CS_ATTR_SYNTAX_STRING">
+				<expression><![CDATA[CS_ATTR_SYNTAX_STRING]]></expression>
+			</regex>
+			<regex codetype="ctlib" name="CS_ATTR_SYNTAX_TRANADDR">
+				<expression><![CDATA[CS_ATTR_SYNTAX_TRANADDR]]></expression>
+			</regex>
+			<regex codetype="ctlib" name="CS_BINARY_TYPE">
+				<expression><![CDATA[CS_BINARY_TYPE]]></expression>
+			</regex>
+			<regex codetype="ctlib" name="CS_BIT_TYPE">
+				<expression><![CDATA[CS_BIT_TYPE]]></expression>
+			</regex>
+			<regex codetype="ctlib" name="CS_BLK_HAS_TEXT">
+				<expression><![CDATA[CS_BLK_HAS_TEXT]]></expression>
+			</regex>
+			<regex codetype="ctlib" name="CS_BLOB_TYPE">
+				<expression><![CDATA[CS_BLOB_TYPE]]></expression>
+			</regex>
+			<regex codetype="ctlib" name="CS_BOUNDARY_TYPE">
+				<expression><![CDATA[CS_BOUNDARY_TYPE]]></expression>
+			</regex>
+			<regex codetype="ctlib" name="CS_BUSY">
+				<expression><![CDATA[CS_BUSY]]></expression>
+			</regex>
+			<regex codetype="ctlib" name="CS_CANBENULL">
+				<expression><![CDATA[CS_CANBENULL]]></expression>
+			</regex>
+			<regex codetype="ctlib" name="CS_CANCELED">
+				<expression><![CDATA[CS_CANCELED]]></expression>
+			</regex>
+			<regex codetype="ctlib" name="CS_CHAR_TYPE">
+				<expression><![CDATA[CS_CHAR_TYPE]]></expression>
+			</regex>
+			<regex codetype="ctlib" name="CS_COMN_ERR">
+				<expression><![CDATA[CS_COMN_ERR]]></expression>
+			</regex>
+			<regex codetype="ctlib" name="CS_CONNECTNAME">
+				<expression><![CDATA[CS_CONNECTNAME]]></expression>
+			</regex>
+			<regex codetype="ctlib" name="CS_CONTINUE">
+				<expression><![CDATA[CS_CONTINUE]]></expression>
+			</regex>
+			<regex codetype="ctlib" name="CS_CONV_ERR">
+				<expression><![CDATA[CS_CONV_ERR]]></expression>
+			</regex>
+			<regex codetype="ctlib" name="CS_CURRENT_CONNECTION">
+				<expression><![CDATA[CS_CURRENT_CONNECTION]]></expression>
+			</regex>
+			<regex codetype="ctlib" name="CS_CURSORNAME">
+				<expression><![CDATA[CS_CURSORNAME]]></expression>
+			</regex>
+			<regex codetype="ctlib" name="CS_DATES_DMY1">
+				<expression><![CDATA[CS_DATES_DMY1]]></expression>
+			</regex>
+			<regex codetype="ctlib" name="CS_DATES_DMY1_YYYY">
+				<expression><![CDATA[CS_DATES_DMY1_YYYY]]></expression>
+			</regex>
+			<regex codetype="ctlib" name="CS_DATES_DMY2">
+				<expression><![CDATA[CS_DATES_DMY2]]></expression>
+			</regex>
+			<regex codetype="ctlib" name="CS_DATES_DMY2_YYYY">
+				<expression><![CDATA[CS_DATES_DMY2_YYYY]]></expression>
+			</regex>
+			<regex codetype="ctlib" name="CS_DATES_DMY3">
+				<expression><![CDATA[CS_DATES_DMY3]]></expression>
+			</regex>
+			<regex codetype="ctlib" name="CS_DATES_DMY3_YYYY">
+				<expression><![CDATA[CS_DATES_DMY3_YYYY]]></expression>
+			</regex>
+			<regex codetype="ctlib" name="CS_DATES_DMY4">
+				<expression><![CDATA[CS_DATES_DMY4]]></expression>
+			</regex>
+			<regex codetype="ctlib" name="CS_DATES_DMY4_YYYY">
+				<expression><![CDATA[CS_DATES_DMY4_YYYY]]></expression>
+			</regex>
+			<regex codetype="ctlib" name="CS_DATES_DYM1">
+				<expression><![CDATA[CS_DATES_DYM1]]></expression>
+			</regex>
+			<regex codetype="ctlib" name="CS_DATES_HMS">
+				<expression><![CDATA[CS_DATES_HMS]]></expression>
+			</regex>
+			<regex codetype="ctlib" name="CS_DATES_HMS_ALT">
+				<expression><![CDATA[CS_DATES_HMS_ALT]]></expression>
+			</regex>
+			<regex codetype="ctlib" name="CS_DATES_LONG">
+				<expression><![CDATA[CS_DATES_LONG]]></expression>
+			</regex>
+			<regex codetype="ctlib" name="CS_DATES_LONG_ALT">
+				<expression><![CDATA[CS_DATES_LONG_ALT]]></expression>
+			</regex>
+			<regex codetype="ctlib" name="CS_DATES_MDY1">
+				<expression><![CDATA[CS_DATES_MDY1]]></expression>
+			</regex>
+			<regex codetype="ctlib" name="CS_DATES_MDY1_YYYY">
+				<expression><![CDATA[CS_DATES_MDY1_YYYY]]></expression>
+			</regex>
+			<regex codetype="ctlib" name="CS_DATES_MDY2">
+				<expression><![CDATA[CS_DATES_MDY2]]></expression>
+			</regex>
+			<regex codetype="ctlib" name="CS_DATES_MDY2_YYYY">
+				<expression><![CDATA[CS_DATES_MDY2_YYYY]]></expression>
+			</regex>
+			<regex codetype="ctlib" name="CS_DATES_MDY3">
+				<expression><![CDATA[CS_DATES_MDY3]]></expression>
+			</regex>
+			<regex codetype="ctlib" name="CS_DATES_MDY3_YYYY">
+				<expression><![CDATA[CS_DATES_MDY3_YYYY]]></expression>
+			</regex>
+			<regex codetype="ctlib" name="CS_DATES_MYD1">
+				<expression><![CDATA[CS_DATES_MYD1]]></expression>
+			</regex>
+			<regex codetype="ctlib" name="CS_DATES_SHORT">
+				<expression><![CDATA[CS_DATES_SHORT]]></expression>
+			</regex>
+			<regex codetype="ctlib" name="CS_DATES_SHORT_ALT">
+				<expression><![CDATA[CS_DATES_SHORT_ALT]]></expression>
+			</regex>
+			<regex codetype="ctlib" name="CS_DATES_YDM1">
+				<expression><![CDATA[CS_DATES_YDM1]]></expression>
+			</regex>
+			<regex codetype="ctlib" name="CS_DATES_YMD1_YYYY">
+				<expression><![CDATA[CS_DATES_YMD1_YYYY]]></expression>
+			</regex>
+			<regex codetype="ctlib" name="CS_DATES_YMD2">
+				<expression><![CDATA[CS_DATES_YMD2]]></expression>
+			</regex>
+			<regex codetype="ctlib" name="CS_DATES_YMD2_YYYY">
+				<expression><![CDATA[CS_DATES_YMD2_YYYY]]></expression>
+			</regex>
+			<regex codetype="ctlib" name="CS_DATES_YMD3">
+				<expression><![CDATA[CS_DATES_YMD3]]></expression>
+			</regex>
+			<regex codetype="ctlib" name="CS_DATES_YMD3_YYYY">
+				<expression><![CDATA[CS_DATES_YMD3_YYYY]]></expression>
+			</regex>
+			<regex codetype="ctlib" name="CS_DATETIME_TYPE">
+				<expression><![CDATA[CS_DATETIME_TYPE]]></expression>
+			</regex>
+			<regex codetype="ctlib" name="CS_DATETIME4_TYPE">
+				<expression><![CDATA[CS_DATETIME4_TYPE]]></expression>
+			</regex>
+			<regex codetype="ctlib" name="CS_DECIMAL_TYPE">
+				<expression><![CDATA[CS_DECIMAL_TYPE]]></expression>
+			</regex>
+			<regex codetype="ctlib" name="CS_DEF_PREC">
+				<expression><![CDATA[CS_DEF_PREC]]></expression>
+			</regex>
+			<regex codetype="ctlib" name="CS_DEF_SCALE">
+				<expression><![CDATA[CS_DEF_SCALE]]></expression>
+			</regex>
+			<regex codetype="ctlib" name="CS_DESCIN">
+				<expression><![CDATA[CS_DESCIN]]></expression>
+			</regex>
+			<regex codetype="ctlib" name="CS_DESCOUT">
+				<expression><![CDATA[CS_DESCOUT]]></expression>
+			</regex>
+			<regex codetype="ctlib" name="CS_DS_ATTRIBUTE">
+				<expression><![CDATA[CS_DS_ATTRIBUTE]]></expression>
+			</regex>
+			<regex codetype="ctlib" name="CS_DS_ATTRVALS">
+				<expression><![CDATA[CS_DS_ATTRVALS]]></expression>
+			</regex>
+			<regex codetype="ctlib" name="CS_DS_CLASSOID">
+				<expression><![CDATA[CS_DS_CLASSOID]]></expression>
+			</regex>
+			<regex codetype="ctlib" name="CS_DS_DIST_NAME">
+				<expression><![CDATA[CS_DS_DIST_NAME]]></expression>
+			</regex>
+			<regex codetype="ctlib" name="CS_DS_RESULT">
+				<expression><![CDATA[CS_DS_RESULT]]></expression>
+			</regex>
+			<regex codetype="ctlib" name="CS_EBADPARAM">
+				<expression><![CDATA[CS_EBADPARAM]]></expression>
+			</regex>
+			<regex codetype="ctlib" name="CS_EBADXLT">
+				<expression><![CDATA[CS_EBADXLT]]></expression>
+			</regex>
+			<regex codetype="ctlib" name="CS_EDIVZERO">
+				<expression><![CDATA[CS_EDIVZERO]]></expression>
+			</regex>
+			<regex codetype="ctlib" name="CS_EDOMAIN">
+				<expression><![CDATA[CS_EDOMAIN]]></expression>
+			</regex>
+			<regex codetype="ctlib" name="CS_EFORMAT">
+				<expression><![CDATA[CS_EFORMAT]]></expression>
+			</regex>
+			<regex codetype="ctlib" name="CS_END_DATA">
+				<expression><![CDATA[CS_END_DATA]]></expression>
+			</regex>
+			<regex codetype="ctlib" name="CS_END_ITEM">
+				<expression><![CDATA[CS_END_ITEM]]></expression>
+			</regex>
+			<regex codetype="ctlib" name="CS_END_RESULTS">
+				<expression><![CDATA[CS_END_RESULTS]]></expression>
+			</regex>
+			<regex codetype="ctlib" name="CS_ENOBIND">
+				<expression><![CDATA[CS_ENOBIND]]></expression>
+			</regex>
+			<regex codetype="ctlib" name="CS_ENOCNVRT">
+				<expression><![CDATA[CS_ENOCNVRT]]></expression>
+			</regex>
+			<regex codetype="ctlib" name="CS_ENOXLT">
+				<expression><![CDATA[CS_ENOXLT]]></expression>
+			</regex>
+			<regex codetype="ctlib" name="CS_ENULLNOIND">
+				<expression><![CDATA[CS_ENULLNOIND]]></expression>
+			</regex>
+			<regex codetype="ctlib" name="CS_EOVERFLOW">
+				<expression><![CDATA[CS_EOVERFLOW]]></expression>
+			</regex>
+			<regex codetype="ctlib" name="CS_EPRECISION">
+				<expression><![CDATA[CS_EPRECISION]]></expression>
+			</regex>
+			<regex codetype="ctlib" name="CS_ERESOURCE">
+				<expression><![CDATA[CS_ERESOURCE]]></expression>
+			</regex>
+			<regex codetype="ctlib" name="CS_ESCALE">
+				<expression><![CDATA[CS_ESCALE]]></expression>
+			</regex>
+			<regex codetype="ctlib" name="CS_ESTYLE">
+				<expression><![CDATA[CS_ESTYLE]]></expression>
+			</regex>
+			<regex codetype="ctlib" name="CS_ESYNTAX">
+				<expression><![CDATA[CS_ESYNTAX]]></expression>
+			</regex>
+			<regex codetype="ctlib" name="CS_ETRUNCNOIND">
+				<expression><![CDATA[CS_ETRUNCNOIND]]></expression>
+			</regex>
+			<regex codetype="ctlib" name="CS_EUNDERFLOW">
+				<expression><![CDATA[CS_EUNDERFLOW]]></expression>
+			</regex>
+			<regex codetype="ctlib" name="CS_EXPRESSION">
+				<expression><![CDATA[CS_EXPRESSION]]></expression>
+			</regex>
+			<regex codetype="ctlib" name="CS_EXTERNAL_ERR">
+				<expression><![CDATA[CS_EXTERNAL_ERR]]></expression>
+			</regex>
+			<regex codetype="ctlib" name="CS_FAIL">
+				<expression><![CDATA[CS_FAIL]]></expression>
+			</regex>
+			<regex codetype="ctlib" name="CS_FALSE">
+				<expression><![CDATA[CS_FALSE]]></expression>
+			</regex>
+			<regex codetype="ctlib" name="CS_FATAL">
+				<expression><![CDATA[CS_FATAL]]></expression>
+			</regex>
+			<regex codetype="ctlib" name="CS_FLOAT_TYPE">
+				<expression><![CDATA[CS_FLOAT_TYPE]]></expression>
+			</regex>
+			<regex codetype="ctlib" name="CS_FMT_JUSTIFY_RT">
+				<expression><![CDATA[CS_FMT_JUSTIFY_RT]]></expression>
+			</regex>
+			<regex codetype="ctlib" name="CS_FMT_NULLTERM">
+				<expression><![CDATA[CS_FMT_NULLTERM]]></expression>
+			</regex>
+			<regex codetype="ctlib" name="CS_FMT_PADBLANK">
+				<expression><![CDATA[CS_FMT_PADBLANK]]></expression>
+			</regex>
+			<regex codetype="ctlib" name="CS_FMT_PADNULL">
+				<expression><![CDATA[CS_FMT_PADNULL]]></expression>
+			</regex>
+			<regex codetype="ctlib" name="CS_FMT_SAFESTR">
+				<expression><![CDATA[CS_FMT_SAFESTR]]></expression>
+			</regex>
+			<regex codetype="ctlib" name="CS_FMT_STRIPBLANKS">
+				<expression><![CDATA[CS_FMT_STRIPBLANKS]]></expression>
+			</regex>
+			<regex codetype="ctlib" name="CS_FMT_UNUSED">
+				<expression><![CDATA[CS_FMT_UNUSED]]></expression>
+			</regex>
+			<regex codetype="ctlib" name="CS_HIDDEN">
+				<expression><![CDATA[CS_HIDDEN]]></expression>
+			</regex>
+			<regex codetype="ctlib" name="CS_IDENTITY">
+				<expression><![CDATA[CS_IDENTITY]]></expression>
+			</regex>
+			<regex codetype="ctlib" name="CS_ILLEGAL_TYPE">
+				<expression><![CDATA[CS_ILLEGAL_TYPE]]></expression>
+			</regex>
+			<regex codetype="ctlib" name="CS_IMAGE_TYPE">
+				<expression><![CDATA[CS_IMAGE_TYPE]]></expression>
+			</regex>
+			<regex codetype="ctlib" name="CS_INPUTVALUE">
+				<expression><![CDATA[CS_INPUTVALUE]]></expression>
+			</regex>
+			<regex codetype="ctlib" name="CS_INT_TYPE">
+				<expression><![CDATA[CS_INT_TYPE]]></expression>
+			</regex>
+			<regex codetype="ctlib" name="CS_INTERNAL_ERR">
+				<expression><![CDATA[CS_INTERNAL_ERR]]></expression>
+			</regex>
+			<regex codetype="ctlib" name="CS_INTERRUPT">
+				<expression><![CDATA[CS_INTERRUPT]]></expression>
+			</regex>
+			<regex codetype="ctlib" name="CS_KEY">
+				<expression><![CDATA[CS_KEY]]></expression>
+			</regex>
+			<regex codetype="ctlib" name="CS_LAYER">
+				<expression><![CDATA[CS_LAYER]]></expression>
+			</regex>
+			<regex codetype="ctlib" name="CS_LC_ALL">
+				<expression><![CDATA[CS_LC_ALL]]></expression>
+			</regex>
+			<regex codetype="ctlib" name="CS_LC_COLLATE">
+				<expression><![CDATA[CS_LC_COLLATE]]></expression>
+			</regex>
+			<regex codetype="ctlib" name="CS_LC_CTYPE">
+				<expression><![CDATA[CS_LC_CTYPE]]></expression>
+			</regex>
+			<regex codetype="ctlib" name="CS_LC_MESSAGE">
+				<expression><![CDATA[CS_LC_MESSAGE]]></expression>
+			</regex>
+			<regex codetype="ctlib" name="CS_LC_MONETARY">
+				<expression><![CDATA[CS_LC_MONETARY]]></expression>
+			</regex>
+			<regex codetype="ctlib" name="CS_LC_NUMERIC">
+				<expression><![CDATA[CS_LC_NUMERIC]]></expression>
+			</regex>
+			<regex codetype="ctlib" name="CS_LC_TIME">
+				<expression><![CDATA[CS_LC_TIME]]></expression>
+			</regex>
+			<regex codetype="ctlib" name="CS_LONG_TYPE">
+				<expression><![CDATA[CS_LONG_TYPE]]></expression>
+			</regex>
+			<regex codetype="ctlib" name="CS_LONGBINARY_TYPE">
+				<expression><![CDATA[CS_LONGBINARY_TYPE]]></expression>
+			</regex>
+			<regex codetype="ctlib" name="CS_LONGCHAR_TYPE">
+				<expression><![CDATA[CS_LONGCHAR_TYPE]]></expression>
+			</regex>
+			<regex codetype="ctlib" name="CS_MAX_CHAR">
+				<expression><![CDATA[CS_MAX_CHAR]]></expression>
+			</regex>
+			<regex codetype="ctlib" name="CS_MAX_DS_STRING">
+				<expression><![CDATA[CS_MAX_DS_STRING]]></expression>
+			</regex>
+			<regex codetype="ctlib" name="CS_MAX_NUMLEN">
+				<expression><![CDATA[CS_MAX_NUMLEN]]></expression>
+			</regex>
+			<regex codetype="ctlib" name="CS_MAX_PASS">
+				<expression><![CDATA[CS_MAX_PASS]]></expression>
+			</regex>
+			<regex codetype="ctlib" name="CS_MAX_PREC">
+				<expression><![CDATA[CS_MAX_PREC]]></expression>
+			</regex>
+			<regex codetype="ctlib" name="CS_MAX_SCALE">
+				<expression><![CDATA[CS_MAX_SCALE]]></expression>
+			</regex>
+			<regex codetype="ctlib" name="CS_MAX_SYBTYPE">
+				<expression><![CDATA[CS_MAX_SYBTYPE]]></expression>
+			</regex>
+			<regex codetype="ctlib" name="CS_MAXSYB_TYPE">
+				<expression><![CDATA[CS_MAXSYB_TYPE]]></expression>
+			</regex>
+			<regex codetype="ctlib" name="CS_MEM_ERROR">
+				<expression><![CDATA[CS_MEM_ERROR]]></expression>
+			</regex>
+			<regex codetype="ctlib" name="CS_MIN_PREC">
+				<expression><![CDATA[CS_MIN_PREC]]></expression>
+			</regex>
+			<regex codetype="ctlib" name="CS_MIN_SCALE">
+				<expression><![CDATA[CS_MIN_SCALE]]></expression>
+			</regex>
+			<regex codetype="ctlib" name="CS_MIN_SYBTYPE">
+				<expression><![CDATA[CS_MIN_SYBTYPE]]></expression>
+			</regex>
+			<regex codetype="ctlib" name="CS_MIN_USERDATA">
+				<expression><![CDATA[CS_MIN_USERDATA]]></expression>
+			</regex>
+			<regex codetype="ctlib" name="CS_MONEY_TYPE">
+				<expression><![CDATA[CS_MONEY_TYPE]]></expression>
+			</regex>
+			<regex codetype="ctlib" name="CS_MONEY4_TYPE">
+				<expression><![CDATA[CS_MONEY4_TYPE]]></expression>
+			</regex>
+			<regex codetype="ctlib" name="CS_NO_LIMIT">
+				<expression><![CDATA[CS_NO_LIMIT]]></expression>
+			</regex>
+			<regex codetype="ctlib" name="CS_NODATA">
+				<expression><![CDATA[CS_NODATA]]></expression>
+			</regex>
+			<regex codetype="ctlib" name="CS_NODEFAULT">
+				<expression><![CDATA[CS_NODEFAULT]]></expression>
+			</regex>
+			<regex codetype="ctlib" name="CS_NOMSG">
+				<expression><![CDATA[CS_NOMSG]]></expression>
+			</regex>
+			<regex codetype="ctlib" name="CS_NULLTERM">
+				<expression><![CDATA[CS_NULLTERM]]></expression>
+			</regex>
+			<regex codetype="ctlib" name="CS_NUMERIC_TYPE">
+				<expression><![CDATA[CS_NUMERIC_TYPE]]></expression>
+			</regex>
+			<regex codetype="ctlib" name="CS_OID_ATTRADDRESS">
+				<expression><![CDATA[CS_OID_ATTRADDRESS]]></expression>
+			</regex>
+			<regex codetype="ctlib" name="CS_OID_ATTRDATABASENAME">
+				<expression><![CDATA[CS_OID_ATTRDATABASENAME]]></expression>
+			</regex>
+			<regex codetype="ctlib" name="CS_OID_ATTRHAFAILOVER">
+				<expression><![CDATA[CS_OID_ATTRHAFAILOVER]]></expression>
+			</regex>
+			<regex codetype="ctlib" name="CS_OID_ATTRJCPROPERTY">
+				<expression><![CDATA[CS_OID_ATTRJCPROPERTY]]></expression>
+			</regex>
+			<regex codetype="ctlib" name="CS_OID_ATTRJCPROTOCOL">
+				<expression><![CDATA[CS_OID_ATTRJCPROTOCOL]]></expression>
+			</regex>
+			<regex codetype="ctlib" name="CS_OID_ATTRJDBCDSI">
+				<expression><![CDATA[CS_OID_ATTRJDBCDSI]]></expression>
+			</regex>
+			<regex codetype="ctlib" name="CS_OID_ATTRLOOPDELAY">
+				<expression><![CDATA[CS_OID_ATTRLOOPDELAY]]></expression>
+			</regex>
+			<regex codetype="ctlib" name="CS_OID_ATTRRETRYCOUNT">
+				<expression><![CDATA[CS_OID_ATTRRETRYCOUNT]]></expression>
+			</regex>
+			<regex codetype="ctlib" name="CS_OID_ATTRRMNAME">
+				<expression><![CDATA[CS_OID_ATTRRMNAME]]></expression>
+			</regex>
+			<regex codetype="ctlib" name="CS_OID_ATTRRMTYPE">
+				<expression><![CDATA[CS_OID_ATTRRMTYPE]]></expression>
+			</regex>
+			<regex codetype="ctlib" name="CS_OID_ATTRSECMECH">
+				<expression><![CDATA[CS_OID_ATTRSECMECH]]></expression>
+			</regex>
+			<regex codetype="ctlib" name="CS_OID_ATTRSERVERTYPE">
+				<expression><![CDATA[CS_OID_ATTRSERVERTYPE]]></expression>
+			</regex>
+			<regex codetype="ctlib" name="CS_OID_ATTRSERVICE">
+				<expression><![CDATA[CS_OID_ATTRSERVICE]]></expression>
+			</regex>
+			<regex codetype="ctlib" name="CS_OID_ATTRSERVNAME">
+				<expression><![CDATA[CS_OID_ATTRSERVNAME]]></expression>
+			</regex>
+			<regex codetype="ctlib" name="CS_OID_ATTRSTATUS">
+				<expression><![CDATA[CS_OID_ATTRSTATUS]]></expression>
+			</regex>
+			<regex codetype="ctlib" name="CS_OID_ATTRSYNTAX">
+				<expression><![CDATA[CS_OID_ATTRSYNTAX]]></expression>
+			</regex>
+			<regex codetype="ctlib" name="CS_OID_ATTRTYPE">
+				<expression><![CDATA[CS_OID_ATTRTYPE]]></expression>
+			</regex>
+			<regex codetype="ctlib" name="CS_OID_ATTRVERSION">
+				<expression><![CDATA[CS_OID_ATTRVERSION]]></expression>
+			</regex>
+			<regex codetype="ctlib" name="CS_OID_DIRECTORY">
+				<expression><![CDATA[CS_OID_DIRECTORY]]></expression>
+			</regex>
+			<regex codetype="ctlib" name="CS_OID_OBJCLASS">
+				<expression><![CDATA[CS_OID_OBJCLASS]]></expression>
+			</regex>
+			<regex codetype="ctlib" name="CS_OID_OBJSERVER">
+				<expression><![CDATA[CS_OID_OBJSERVER]]></expression>
+			</regex>
+			<regex codetype="ctlib" name="CS_OID_SYBASE">
+				<expression><![CDATA[CS_OID_SYBASE]]></expression>
+			</regex>
+			<regex codetype="ctlib" name="CS_ORIGIN">
+				<expression><![CDATA[CS_ORIGIN]]></expression>
+			</regex>
+			<regex codetype="ctlib" name="CS_PASSTHRU_EOM">
+				<expression><![CDATA[CS_PASSTHRU_EOM]]></expression>
+			</regex>
+			<regex codetype="ctlib" name="CS_PASSTHRU_MORE">
+				<expression><![CDATA[CS_PASSTHRU_MORE]]></expression>
+			</regex>
+			<regex codetype="ctlib" name="CS_PENDING">
+				<expression><![CDATA[CS_PENDING]]></expression>
+			</regex>
+			<regex codetype="ctlib" name="CS_QUIET">
+				<expression><![CDATA[CS_QUIET]]></expression>
+			</regex>
+			<regex codetype="ctlib" name="CS_REAL_TYPE">
+				<expression><![CDATA[CS_REAL_TYPE]]></expression>
+			</regex>
+			<regex codetype="ctlib" name="CS_RENAMED">
+				<expression><![CDATA[CS_RENAMED]]></expression>
+			</regex>
+			<regex codetype="ctlib" name="CS_RET_HAFAILOVER">
+				<expression><![CDATA[CS_RET_HAFAILOVER]]></expression>
+			</regex>
+			<regex codetype="ctlib" name="CS_RETCODE">
+				<expression><![CDATA[CS_RETCODE]]></expression>
+			</regex>
+			<regex codetype="ctlib" name="CS_RETURN">
+				<expression><![CDATA[CS_RETURN]]></expression>
+			</regex>
+			<regex codetype="ctlib" name="CS_RETURN_CANBENULL">
+				<expression><![CDATA[CS_RETURN_CANBENULL]]></expression>
+			</regex>
+			<regex codetype="ctlib" name="CS_ROW_FAIL">
+				<expression><![CDATA[CS_ROW_FAIL]]></expression>
+			</regex>
+			<regex codetype="ctlib" name="CS_SENSITIVITY_TYPE">
+				<expression><![CDATA[CS_SENSITIVITY_TYPE]]></expression>
+			</regex>
+			<regex codetype="ctlib" name="CS_SEVERITY">
+				<expression><![CDATA[CS_SEVERITY]]></expression>
+			</regex>
+			<regex codetype="ctlib" name="CS_SIGNAL_BLOCK">
+				<expression><![CDATA[CS_SIGNAL_BLOCK]]></expression>
+			</regex>
+			<regex codetype="ctlib" name="CS_SIGNAL_DEFAULT">
+				<expression><![CDATA[CS_SIGNAL_DEFAULT]]></expression>
+			</regex>
+			<regex codetype="ctlib" name="CS_SIGNAL_IGNORE">
+				<expression><![CDATA[CS_SIGNAL_IGNORE]]></expression>
+			</regex>
+			<regex codetype="ctlib" name="CS_SIGNAL_UNBLOCK">
+				<expression><![CDATA[CS_SIGNAL_UNBLOCK]]></expression>
+			</regex>
+			<regex codetype="ctlib" name="CS_SIZEOF">
+				<expression><![CDATA[CS_SIZEOF]]></expression>
+			</regex>
+			<regex codetype="ctlib" name="CS_SMALLINT_TYPE">
+				<expression><![CDATA[CS_SMALLINT_TYPE]]></expression>
+			</regex>
+			<regex codetype="ctlib" name="CS_SRC_VALUE">
+				<expression><![CDATA[CS_SRC_VALUE]]></expression>
+			</regex>
+			<regex codetype="ctlib" name="CS_STATEMENTNAME">
+				<expression><![CDATA[CS_STATEMENTNAME]]></expression>
+			</regex>
+			<regex codetype="ctlib" name="CS_STATUS_ACTIVE">
+				<expression><![CDATA[CS_STATUS_ACTIVE]]></expression>
+			</regex>
+			<regex codetype="ctlib" name="CS_STATUS_FAILED">
+				<expression><![CDATA[CS_STATUS_FAILED]]></expression>
+			</regex>
+			<regex codetype="ctlib" name="CS_STATUS_STOPPED">
+				<expression><![CDATA[CS_STATUS_STOPPED]]></expression>
+			</regex>
+			<regex codetype="ctlib" name="CS_STATUS_UNKNOWN">
+				<expression><![CDATA[CS_STATUS_UNKNOWN]]></expression>
+			</regex>
+			<regex codetype="ctlib" name="CS_SUCCEED">
+				<expression><![CDATA[CS_SUCCEED]]></expression>
+			</regex>
+			<regex codetype="ctlib" name="CS_SV_API_FAIL">
+				<expression><![CDATA[CS_SV_API_FAIL]]></expression>
+			</regex>
+			<regex codetype="ctlib" name="CS_SV_COMM_FAIL">
+				<expression><![CDATA[CS_SV_COMM_FAIL]]></expression>
+			</regex>
+			<regex codetype="ctlib" name="CS_SV_CONFIG_FAIL">
+				<expression><![CDATA[CS_SV_CONFIG_FAIL]]></expression>
+			</regex>
+			<regex codetype="ctlib" name="CS_SV_FATAL">
+				<expression><![CDATA[CS_SV_FATAL]]></expression>
+			</regex>
+			macbookpro:~ barry$ cat ttt
+			<regex codetype="ctlib" name="CS_ACCESS_ADMIN">
+				<expression><![CDATA[CS_ACCESS_ADMIN]]></expression>
+			</regex>
+			<regex codetype="ctlib" name="CS_ACCESS_ADMIN_MASTER">
+				<expression><![CDATA[CS_ACCESS_ADMIN_MASTER]]></expression>
+			</regex>
+			<regex codetype="ctlib" name="CS_ACCESS_ADMIN_QUERY">
+				<expression><![CDATA[CS_ACCESS_ADMIN_QUERY]]></expression>
+			</regex>
+			<regex codetype="ctlib" name="CS_ACCESS_CLIENT">
+				<expression><![CDATA[CS_ACCESS_CLIENT]]></expression>
+			</regex>
+			<regex codetype="ctlib" name="CS_ACCESS_CLIENT_MASTER">
+				<expression><![CDATA[CS_ACCESS_CLIENT_MASTER]]></expression>
+			</regex>
+			<regex codetype="ctlib" name="CS_ACCESS_CLIENT_QUERY">
+				<expression><![CDATA[CS_ACCESS_CLIENT_QUERY]]></expression>
+			</regex>
+			<regex codetype="ctlib" name="CS_ACCESS_MGMTAGENT">
+				<expression><![CDATA[CS_ACCESS_MGMTAGENT]]></expression>
+			</regex>
+			<regex codetype="ctlib" name="CS_ACCESS_MGMTAGENT_MASTER">
+				<expression><![CDATA[CS_ACCESS_MGMTAGENT_MASTER]]></expression>
+			</regex>
+			<regex codetype="ctlib" name="_MGMTAGENT_QUERY">
+				<expression><![CDATA[_MGMTAGENT_QUERY]]></expression>
+			</regex>
+			<regex codetype="ctlib" name="CS_ASYNC_RESTORE">
+				<expression><![CDATA[CS_ASYNC_RESTORE]]></expression>
+			</regex>
+			<regex codetype="ctlib" name="CS_ATTR_SYNTAX_BOOLEAN">
+				<expression><![CDATA[CS_ATTR_SYNTAX_BOOLEAN]]></expression>
+			</regex>
+			<regex codetype="ctlib" name="CS_ATTR_SYNTAX_ENUMERATION">
+				<expression><![CDATA[CS_ATTR_SYNTAX_ENUMERATION]]></expression>
+			</regex>
+			<regex codetype="ctlib" name="YNTAX_INTEGER">
+				<expression><![CDATA[YNTAX_INTEGER]]></expression>
+			</regex>
+			<regex codetype="ctlib" name="CS_ATTR_SYNTAX_NOOP">
+				<expression><![CDATA[CS_ATTR_SYNTAX_NOOP]]></expression>
+			</regex>
+			<regex codetype="ctlib" name="CS_ACCESS_ADMIN">
+				<expression><![CDATA[CS_ACCESS_ADMIN]]></expression>
+			</regex>
+			<regex codetype="ctlib" name="CS_ACCESS_ADMIN_MASTER">
+				<expression><![CDATA[CS_ACCESS_ADMIN_MASTER]]></expression>
+			</regex>
+			<regex codetype="ctlib" name="CS_ACCESS_ADMIN_QUERY">
+				<expression><![CDATA[CS_ACCESS_ADMIN_QUERY]]></expression>
+			</regex>
+			<regex codetype="ctlib" name="CS_ACCESS_CLIENT">
+				<expression><![CDATA[CS_ACCESS_CLIENT]]></expression>
+			</regex>
+			<regex codetype="ctlib" name="CS_ACCESS_CLIENT_MASTER">
+				<expression><![CDATA[CS_ACCESS_CLIENT_MASTER]]></expression>
+			</regex>
+			<regex codetype="ctlib" name="CS_ACCESS_CLIENT_QUERY">
+				<expression><![CDATA[CS_ACCESS_CLIENT_QUERY]]></expression>
+			</regex>
+			<regex codetype="ctlib" name="CS_ACCESS_MGMTAGENT">
+				<expression><![CDATA[CS_ACCESS_MGMTAGENT]]></expression>
+			</regex>
+			<regex codetype="ctlib" name="CS_ACCESS_MGMTAGENT_MASTER">
+				<expression><![CDATA[CS_ACCESS_MGMTAGENT_MASTER]]></expression>
+			</regex>
+			<regex codetype="ctlib" name="_MGMTAGENT_QUERY">
+				<expression><![CDATA[_MGMTAGENT_QUERY]]></expression>
+			</regex>
+			<regex codetype="ctlib" name="CS_ASYNC_RESTORE">
+				<expression><![CDATA[CS_ASYNC_RESTORE]]></expression>
+			</regex>
+			<regex codetype="ctlib" name="CS_ATTR_SYNTAX_BOOLEAN">
+				<expression><![CDATA[CS_ATTR_SYNTAX_BOOLEAN]]></expression>
+			</regex>
+			<regex codetype="ctlib" name="CS_ATTR_SYNTAX_ENUMERATION">
+				<expression><![CDATA[CS_ATTR_SYNTAX_ENUMERATION]]></expression>
+			</regex>
+			<regex codetype="ctlib" name="YNTAX_INTEGER">
+				<expression><![CDATA[YNTAX_INTEGER]]></expression>
+			</regex>
+			<regex codetype="ctlib" name="CS_ATTR_SYNTAX_NOOP">
+				<expression><![CDATA[CS_ATTR_SYNTAX_NOOP]]></expression>
+			</regex>
+			<regex codetype="ctlib" name="CS_ATTR_SYNTAX_OID">
+				<expression><![CDATA[CS_ATTR_SYNTAX_OID]]></expression>
+			</regex>
+			<regex codetype="ctlib" name="CS_ATTR_SYNTAX_STRING">
+				<expression><![CDATA[CS_ATTR_SYNTAX_STRING]]></expression>
+			</regex>
+			<regex codetype="ctlib" name="CS_ATTR_SYNTAX_TRANADDR">
+				<expression><![CDATA[CS_ATTR_SYNTAX_TRANADDR]]></expression>
+			</regex>
+			<regex codetype="ctlib" name="CS_BINARY_TYPE">
+				<expression><![CDATA[CS_BINARY_TYPE]]></expression>
+			</regex>
+			<regex codetype="ctlib" name="CS_BIT_TYPE">
+				<expression><![CDATA[CS_BIT_TYPE]]></expression>
+			</regex>
+			<regex codetype="ctlib" name="CS_BLK_HAS_TEXT">
+				<expression><![CDATA[CS_BLK_HAS_TEXT]]></expression>
+			</regex>
+			<regex codetype="ctlib" name="CS_BLOB_TYPE">
+				<expression><![CDATA[CS_BLOB_TYPE]]></expression>
+			</regex>
+			<regex codetype="ctlib" name="CS_BOUNDARY_TYPE">
+				<expression><![CDATA[CS_BOUNDARY_TYPE]]></expression>
+			</regex>
+			<regex codetype="ctlib" name="CS_BUSY">
+				<expression><![CDATA[CS_BUSY]]></expression>
+			</regex>
+			<regex codetype="ctlib" name="CS_CANBENULL">
+				<expression><![CDATA[CS_CANBENULL]]></expression>
+			</regex>
+			<regex codetype="ctlib" name="CS_CANCELED">
+				<expression><![CDATA[CS_CANCELED]]></expression>
+			</regex>
+			<regex codetype="ctlib" name="CS_CHAR_TYPE">
+				<expression><![CDATA[CS_CHAR_TYPE]]></expression>
+			</regex>
+			<regex codetype="ctlib" name="CS_COMN_ERR">
+				<expression><![CDATA[CS_COMN_ERR]]></expression>
+			</regex>
+			<regex codetype="ctlib" name="CS_CONNECTNAME">
+				<expression><![CDATA[CS_CONNECTNAME]]></expression>
+			</regex>
+			<regex codetype="ctlib" name="CS_CONTINUE">
+				<expression><![CDATA[CS_CONTINUE]]></expression>
+			</regex>
+			<regex codetype="ctlib" name="CS_CONV_ERR">
+				<expression><![CDATA[CS_CONV_ERR]]></expression>
+			</regex>
+			<regex codetype="ctlib" name="CS_CURRENT_CONNECTION">
+				<expression><![CDATA[CS_CURRENT_CONNECTION]]></expression>
+			</regex>
+			<regex codetype="ctlib" name="CS_CURSORNAME">
+				<expression><![CDATA[CS_CURSORNAME]]></expression>
+			</regex>
+			<regex codetype="ctlib" name="CS_DATES_DMY1">
+				<expression><![CDATA[CS_DATES_DMY1]]></expression>
+			</regex>
+			<regex codetype="ctlib" name="CS_DATES_DMY1_YYYY">
+				<expression><![CDATA[CS_DATES_DMY1_YYYY]]></expression>
+			</regex>
+			<regex codetype="ctlib" name="CS_DATES_DMY2">
+				<expression><![CDATA[CS_DATES_DMY2]]></expression>
+			</regex>
+			<regex codetype="ctlib" name="CS_DATES_DMY2_YYYY">
+				<expression><![CDATA[CS_DATES_DMY2_YYYY]]></expression>
+			</regex>
+			<regex codetype="ctlib" name="CS_DATES_DMY3">
+				<expression><![CDATA[CS_DATES_DMY3]]></expression>
+			</regex>
+			<regex codetype="ctlib" name="CS_DATES_DMY3_YYYY">
+				<expression><![CDATA[CS_DATES_DMY3_YYYY]]></expression>
+			</regex>
+			<regex codetype="ctlib" name="CS_DATES_DMY4">
+				<expression><![CDATA[CS_DATES_DMY4]]></expression>
+			</regex>
+			<regex codetype="ctlib" name="CS_DATES_DMY4_YYYY">
+				<expression><![CDATA[CS_DATES_DMY4_YYYY]]></expression>
+			</regex>
+			<regex codetype="ctlib" name="CS_DATES_DYM1">
+				<expression><![CDATA[CS_DATES_DYM1]]></expression>
+			</regex>
+			<regex codetype="ctlib" name="CS_DATES_HMS">
+				<expression><![CDATA[CS_DATES_HMS]]></expression>
+			</regex>
+			<regex codetype="ctlib" name="CS_DATES_HMS_ALT">
+				<expression><![CDATA[CS_DATES_HMS_ALT]]></expression>
+			</regex>
+			<regex codetype="ctlib" name="CS_DATES_LONG">
+				<expression><![CDATA[CS_DATES_LONG]]></expression>
+			</regex>
+			<regex codetype="ctlib" name="CS_DATES_LONG_ALT">
+				<expression><![CDATA[CS_DATES_LONG_ALT]]></expression>
+			</regex>
+			<regex codetype="ctlib" name="CS_DATES_MDY1">
+				<expression><![CDATA[CS_DATES_MDY1]]></expression>
+			</regex>
+			<regex codetype="ctlib" name="CS_DATES_MDY1_YYYY">
+				<expression><![CDATA[CS_DATES_MDY1_YYYY]]></expression>
+			</regex>
+			<regex codetype="ctlib" name="CS_DATES_MDY2">
+				<expression><![CDATA[CS_DATES_MDY2]]></expression>
+			</regex>
+			<regex codetype="ctlib" name="CS_DATES_MDY2_YYYY">
+				<expression><![CDATA[CS_DATES_MDY2_YYYY]]></expression>
+			</regex>
+			<regex codetype="ctlib" name="CS_DATES_MDY3">
+				<expression><![CDATA[CS_DATES_MDY3]]></expression>
+			</regex>
+			<regex codetype="ctlib" name="CS_DATES_MDY3_YYYY">
+				<expression><![CDATA[CS_DATES_MDY3_YYYY]]></expression>
+			</regex>
+			<regex codetype="ctlib" name="CS_DATES_MYD1">
+				<expression><![CDATA[CS_DATES_MYD1]]></expression>
+			</regex>
+			<regex codetype="ctlib" name="CS_DATES_SHORT">
+				<expression><![CDATA[CS_DATES_SHORT]]></expression>
+			</regex>
+			<regex codetype="ctlib" name="CS_DATES_SHORT_ALT">
+				<expression><![CDATA[CS_DATES_SHORT_ALT]]></expression>
+			</regex>
+			<regex codetype="ctlib" name="CS_DATES_YDM1">
+				<expression><![CDATA[CS_DATES_YDM1]]></expression>
+			</regex>
+			<regex codetype="ctlib" name="CS_DATES_YMD1_YYYY">
+				<expression><![CDATA[CS_DATES_YMD1_YYYY]]></expression>
+			</regex>
+			<regex codetype="ctlib" name="CS_DATES_YMD2">
+				<expression><![CDATA[CS_DATES_YMD2]]></expression>
+			</regex>
+			<regex codetype="ctlib" name="CS_DATES_YMD2_YYYY">
+				<expression><![CDATA[CS_DATES_YMD2_YYYY]]></expression>
+			</regex>
+			<regex codetype="ctlib" name="CS_DATES_YMD3">
+				<expression><![CDATA[CS_DATES_YMD3]]></expression>
+			</regex>
+			<regex codetype="ctlib" name="CS_DATES_YMD3_YYYY">
+				<expression><![CDATA[CS_DATES_YMD3_YYYY]]></expression>
+			</regex>
+			<regex codetype="ctlib" name="CS_DATETIME_TYPE">
+				<expression><![CDATA[CS_DATETIME_TYPE]]></expression>
+			</regex>
+			<regex codetype="ctlib" name="CS_DATETIME4_TYPE">
+				<expression><![CDATA[CS_DATETIME4_TYPE]]></expression>
+			</regex>
+			<regex codetype="ctlib" name="CS_DECIMAL_TYPE">
+				<expression><![CDATA[CS_DECIMAL_TYPE]]></expression>
+			</regex>
+			<regex codetype="ctlib" name="CS_DEF_PREC">
+				<expression><![CDATA[CS_DEF_PREC]]></expression>
+			</regex>
+			<regex codetype="ctlib" name="CS_DEF_SCALE">
+				<expression><![CDATA[CS_DEF_SCALE]]></expression>
+			</regex>
+			<regex codetype="ctlib" name="CS_DESCIN">
+				<expression><![CDATA[CS_DESCIN]]></expression>
+			</regex>
+			<regex codetype="ctlib" name="CS_DESCOUT">
+				<expression><![CDATA[CS_DESCOUT]]></expression>
+			</regex>
+			<regex codetype="ctlib" name="CS_DS_ATTRIBUTE">
+				<expression><![CDATA[CS_DS_ATTRIBUTE]]></expression>
+			</regex>
+			<regex codetype="ctlib" name="CS_DS_ATTRVALS">
+				<expression><![CDATA[CS_DS_ATTRVALS]]></expression>
+			</regex>
+			<regex codetype="ctlib" name="CS_DS_CLASSOID">
+				<expression><![CDATA[CS_DS_CLASSOID]]></expression>
+			</regex>
+			<regex codetype="ctlib" name="CS_DS_DIST_NAME">
+				<expression><![CDATA[CS_DS_DIST_NAME]]></expression>
+			</regex>
+			<regex codetype="ctlib" name="CS_DS_RESULT">
+				<expression><![CDATA[CS_DS_RESULT]]></expression>
+			</regex>
+			<regex codetype="ctlib" name="CS_EBADPARAM">
+				<expression><![CDATA[CS_EBADPARAM]]></expression>
+			</regex>
+			<regex codetype="ctlib" name="CS_EBADXLT">
+				<expression><![CDATA[CS_EBADXLT]]></expression>
+			</regex>
+			<regex codetype="ctlib" name="CS_EDIVZERO">
+				<expression><![CDATA[CS_EDIVZERO]]></expression>
+			</regex>
+			<regex codetype="ctlib" name="CS_EDOMAIN">
+				<expression><![CDATA[CS_EDOMAIN]]></expression>
+			</regex>
+			<regex codetype="ctlib" name="CS_EFORMAT">
+				<expression><![CDATA[CS_EFORMAT]]></expression>
+			</regex>
+			<regex codetype="ctlib" name="CS_END_DATA">
+				<expression><![CDATA[CS_END_DATA]]></expression>
+			</regex>
+			<regex codetype="ctlib" name="CS_END_ITEM">
+				<expression><![CDATA[CS_END_ITEM]]></expression>
+			</regex>
+			<regex codetype="ctlib" name="CS_END_RESULTS">
+				<expression><![CDATA[CS_END_RESULTS]]></expression>
+			</regex>
+			<regex codetype="ctlib" name="CS_ENOBIND">
+				<expression><![CDATA[CS_ENOBIND]]></expression>
+			</regex>
+			<regex codetype="ctlib" name="CS_ENOCNVRT">
+				<expression><![CDATA[CS_ENOCNVRT]]></expression>
+			</regex>
+			<regex codetype="ctlib" name="CS_ENOXLT">
+				<expression><![CDATA[CS_ENOXLT]]></expression>
+			</regex>
+			<regex codetype="ctlib" name="CS_ENULLNOIND">
+				<expression><![CDATA[CS_ENULLNOIND]]></expression>
+			</regex>
+			<regex codetype="ctlib" name="CS_EOVERFLOW">
+				<expression><![CDATA[CS_EOVERFLOW]]></expression>
+			</regex>
+			<regex codetype="ctlib" name="CS_EPRECISION">
+				<expression><![CDATA[CS_EPRECISION]]></expression>
+			</regex>
+			<regex codetype="ctlib" name="CS_ERESOURCE">
+				<expression><![CDATA[CS_ERESOURCE]]></expression>
+			</regex>
+			<regex codetype="ctlib" name="CS_ESCALE">
+				<expression><![CDATA[CS_ESCALE]]></expression>
+			</regex>
+			<regex codetype="ctlib" name="CS_ESTYLE">
+				<expression><![CDATA[CS_ESTYLE]]></expression>
+			</regex>
+			<regex codetype="ctlib" name="CS_ESYNTAX">
+				<expression><![CDATA[CS_ESYNTAX]]></expression>
+			</regex>
+			<regex codetype="ctlib" name="CS_ETRUNCNOIND">
+				<expression><![CDATA[CS_ETRUNCNOIND]]></expression>
+			</regex>
+			<regex codetype="ctlib" name="CS_EUNDERFLOW">
+				<expression><![CDATA[CS_EUNDERFLOW]]></expression>
+			</regex>
+			<regex codetype="ctlib" name="CS_EXPRESSION">
+				<expression><![CDATA[CS_EXPRESSION]]></expression>
+			</regex>
+			<regex codetype="ctlib" name="CS_EXTERNAL_ERR">
+				<expression><![CDATA[CS_EXTERNAL_ERR]]></expression>
+			</regex>
+			<regex codetype="ctlib" name="CS_FAIL">
+				<expression><![CDATA[CS_FAIL]]></expression>
+			</regex>
+			<regex codetype="ctlib" name="CS_FALSE">
+				<expression><![CDATA[CS_FALSE]]></expression>
+			</regex>
+			<regex codetype="ctlib" name="CS_FATAL">
+				<expression><![CDATA[CS_FATAL]]></expression>
+			</regex>
+			<regex codetype="ctlib" name="CS_FLOAT_TYPE">
+				<expression><![CDATA[CS_FLOAT_TYPE]]></expression>
+			</regex>
+			<regex codetype="ctlib" name="CS_FMT_JUSTIFY_RT">
+				<expression><![CDATA[CS_FMT_JUSTIFY_RT]]></expression>
+			</regex>
+			<regex codetype="ctlib" name="CS_FMT_NULLTERM">
+				<expression><![CDATA[CS_FMT_NULLTERM]]></expression>
+			</regex>
+			<regex codetype="ctlib" name="CS_FMT_PADBLANK">
+				<expression><![CDATA[CS_FMT_PADBLANK]]></expression>
+			</regex>
+			<regex codetype="ctlib" name="CS_FMT_PADNULL">
+				<expression><![CDATA[CS_FMT_PADNULL]]></expression>
+			</regex>
+			<regex codetype="ctlib" name="CS_FMT_SAFESTR">
+				<expression><![CDATA[CS_FMT_SAFESTR]]></expression>
+			</regex>
+			<regex codetype="ctlib" name="CS_FMT_STRIPBLANKS">
+				<expression><![CDATA[CS_FMT_STRIPBLANKS]]></expression>
+			</regex>
+			<regex codetype="ctlib" name="CS_FMT_UNUSED">
+				<expression><![CDATA[CS_FMT_UNUSED]]></expression>
+			</regex>
+			<regex codetype="ctlib" name="CS_HIDDEN">
+				<expression><![CDATA[CS_HIDDEN]]></expression>
+			</regex>
+			<regex codetype="ctlib" name="CS_IDENTITY">
+				<expression><![CDATA[CS_IDENTITY]]></expression>
+			</regex>
+			<regex codetype="ctlib" name="CS_ILLEGAL_TYPE">
+				<expression><![CDATA[CS_ILLEGAL_TYPE]]></expression>
+			</regex>
+			<regex codetype="ctlib" name="CS_IMAGE_TYPE">
+				<expression><![CDATA[CS_IMAGE_TYPE]]></expression>
+			</regex>
+			<regex codetype="ctlib" name="CS_INPUTVALUE">
+				<expression><![CDATA[CS_INPUTVALUE]]></expression>
+			</regex>
+			<regex codetype="ctlib" name="CS_INT_TYPE">
+				<expression><![CDATA[CS_INT_TYPE]]></expression>
+			</regex>
+			<regex codetype="ctlib" name="CS_INTERNAL_ERR">
+				<expression><![CDATA[CS_INTERNAL_ERR]]></expression>
+			</regex>
+			<regex codetype="ctlib" name="CS_INTERRUPT">
+				<expression><![CDATA[CS_INTERRUPT]]></expression>
+			</regex>
+			<regex codetype="ctlib" name="CS_KEY">
+				<expression><![CDATA[CS_KEY]]></expression>
+			</regex>
+			<regex codetype="ctlib" name="CS_LAYER">
+				<expression><![CDATA[CS_LAYER]]></expression>
+			</regex>
+			<regex codetype="ctlib" name="CS_LC_ALL">
+				<expression><![CDATA[CS_LC_ALL]]></expression>
+			</regex>
+			<regex codetype="ctlib" name="CS_LC_COLLATE">
+				<expression><![CDATA[CS_LC_COLLATE]]></expression>
+			</regex>
+			<regex codetype="ctlib" name="CS_LC_CTYPE">
+				<expression><![CDATA[CS_LC_CTYPE]]></expression>
+			</regex>
+			<regex codetype="ctlib" name="CS_LC_MESSAGE">
+				<expression><![CDATA[CS_LC_MESSAGE]]></expression>
+			</regex>
+			<regex codetype="ctlib" name="CS_LC_MONETARY">
+				<expression><![CDATA[CS_LC_MONETARY]]></expression>
+			</regex>
+			<regex codetype="ctlib" name="CS_LC_NUMERIC">
+				<expression><![CDATA[CS_LC_NUMERIC]]></expression>
+			</regex>
+			<regex codetype="ctlib" name="CS_LC_TIME">
+				<expression><![CDATA[CS_LC_TIME]]></expression>
+			</regex>
+			<regex codetype="ctlib" name="CS_LONG_TYPE">
+				<expression><![CDATA[CS_LONG_TYPE]]></expression>
+			</regex>
+			<regex codetype="ctlib" name="CS_LONGBINARY_TYPE">
+				<expression><![CDATA[CS_LONGBINARY_TYPE]]></expression>
+			</regex>
+			<regex codetype="ctlib" name="CS_LONGCHAR_TYPE">
+				<expression><![CDATA[CS_LONGCHAR_TYPE]]></expression>
+			</regex>
+			<regex codetype="ctlib" name="CS_MAX_CHAR">
+				<expression><![CDATA[CS_MAX_CHAR]]></expression>
+			</regex>
+			<regex codetype="ctlib" name="CS_MAX_DS_STRING">
+				<expression><![CDATA[CS_MAX_DS_STRING]]></expression>
+			</regex>
+			<regex codetype="ctlib" name="CS_MAX_NUMLEN">
+				<expression><![CDATA[CS_MAX_NUMLEN]]></expression>
+			</regex>
+			<regex codetype="ctlib" name="CS_MAX_PASS">
+				<expression><![CDATA[CS_MAX_PASS]]></expression>
+			</regex>
+			<regex codetype="ctlib" name="CS_MAX_PREC">
+				<expression><![CDATA[CS_MAX_PREC]]></expression>
+			</regex>
+			<regex codetype="ctlib" name="CS_MAX_SCALE">
+				<expression><![CDATA[CS_MAX_SCALE]]></expression>
+			</regex>
+			<regex codetype="ctlib" name="CS_MAX_SYBTYPE">
+				<expression><![CDATA[CS_MAX_SYBTYPE]]></expression>
+			</regex>
+			<regex codetype="ctlib" name="CS_MAXSYB_TYPE">
+				<expression><![CDATA[CS_MAXSYB_TYPE]]></expression>
+			</regex>
+			<regex codetype="ctlib" name="CS_MEM_ERROR">
+				<expression><![CDATA[CS_MEM_ERROR]]></expression>
+			</regex>
+			<regex codetype="ctlib" name="CS_MIN_PREC">
+				<expression><![CDATA[CS_MIN_PREC]]></expression>
+			</regex>
+			<regex codetype="ctlib" name="CS_MIN_SCALE">
+				<expression><![CDATA[CS_MIN_SCALE]]></expression>
+			</regex>
+			<regex codetype="ctlib" name="CS_MIN_SYBTYPE">
+				<expression><![CDATA[CS_MIN_SYBTYPE]]></expression>
+			</regex>
+			<regex codetype="ctlib" name="CS_MIN_USERDATA">
+				<expression><![CDATA[CS_MIN_USERDATA]]></expression>
+			</regex>
+			<regex codetype="ctlib" name="CS_MONEY_TYPE">
+				<expression><![CDATA[CS_MONEY_TYPE]]></expression>
+			</regex>
+			<regex codetype="ctlib" name="CS_MONEY4_TYPE">
+				<expression><![CDATA[CS_MONEY4_TYPE]]></expression>
+			</regex>
+			<regex codetype="ctlib" name="CS_NO_LIMIT">
+				<expression><![CDATA[CS_NO_LIMIT]]></expression>
+			</regex>
+			<regex codetype="ctlib" name="CS_NODATA">
+				<expression><![CDATA[CS_NODATA]]></expression>
+			</regex>
+			<regex codetype="ctlib" name="CS_NODEFAULT">
+				<expression><![CDATA[CS_NODEFAULT]]></expression>
+			</regex>
+			<regex codetype="ctlib" name="CS_NOMSG">
+				<expression><![CDATA[CS_NOMSG]]></expression>
+			</regex>
+			<regex codetype="ctlib" name="CS_NULLTERM">
+				<expression><![CDATA[CS_NULLTERM]]></expression>
+			</regex>
+			<regex codetype="ctlib" name="CS_NUMERIC_TYPE">
+				<expression><![CDATA[CS_NUMERIC_TYPE]]></expression>
+			</regex>
+			<regex codetype="ctlib" name="CS_OID_ATTRADDRESS">
+				<expression><![CDATA[CS_OID_ATTRADDRESS]]></expression>
+			</regex>
+			<regex codetype="ctlib" name="CS_OID_ATTRDATABASENAME">
+				<expression><![CDATA[CS_OID_ATTRDATABASENAME]]></expression>
+			</regex>
+			<regex codetype="ctlib" name="CS_OID_ATTRHAFAILOVER">
+				<expression><![CDATA[CS_OID_ATTRHAFAILOVER]]></expression>
+			</regex>
+			<regex codetype="ctlib" name="CS_OID_ATTRJCPROPERTY">
+				<expression><![CDATA[CS_OID_ATTRJCPROPERTY]]></expression>
+			</regex>
+			<regex codetype="ctlib" name="CS_OID_ATTRJCPROTOCOL">
+				<expression><![CDATA[CS_OID_ATTRJCPROTOCOL]]></expression>
+			</regex>
+			<regex codetype="ctlib" name="CS_OID_ATTRJDBCDSI">
+				<expression><![CDATA[CS_OID_ATTRJDBCDSI]]></expression>
+			</regex>
+			<regex codetype="ctlib" name="CS_OID_ATTRLOOPDELAY">
+				<expression><![CDATA[CS_OID_ATTRLOOPDELAY]]></expression>
+			</regex>
+			<regex codetype="ctlib" name="CS_OID_ATTRRETRYCOUNT">
+				<expression><![CDATA[CS_OID_ATTRRETRYCOUNT]]></expression>
+			</regex>
+			<regex codetype="ctlib" name="CS_OID_ATTRRMNAME">
+				<expression><![CDATA[CS_OID_ATTRRMNAME]]></expression>
+			</regex>
+			<regex codetype="ctlib" name="CS_OID_ATTRRMTYPE">
+				<expression><![CDATA[CS_OID_ATTRRMTYPE]]></expression>
+			</regex>
+			<regex codetype="ctlib" name="CS_OID_ATTRSECMECH">
+				<expression><![CDATA[CS_OID_ATTRSECMECH]]></expression>
+			</regex>
+			<regex codetype="ctlib" name="CS_OID_ATTRSERVERTYPE">
+				<expression><![CDATA[CS_OID_ATTRSERVERTYPE]]></expression>
+			</regex>
+			<regex codetype="ctlib" name="CS_OID_ATTRSERVICE">
+				<expression><![CDATA[CS_OID_ATTRSERVICE]]></expression>
+			</regex>
+			<regex codetype="ctlib" name="CS_OID_ATTRSERVNAME">
+				<expression><![CDATA[CS_OID_ATTRSERVNAME]]></expression>
+			</regex>
+			<regex codetype="ctlib" name="CS_OID_ATTRSTATUS">
+				<expression><![CDATA[CS_OID_ATTRSTATUS]]></expression>
+			</regex>
+			<regex codetype="ctlib" name="CS_OID_ATTRSYNTAX">
+				<expression><![CDATA[CS_OID_ATTRSYNTAX]]></expression>
+			</regex>
+			<regex codetype="ctlib" name="CS_OID_ATTRTYPE">
+				<expression><![CDATA[CS_OID_ATTRTYPE]]></expression>
+			</regex>
+			<regex codetype="ctlib" name="CS_OID_ATTRVERSION">
+				<expression><![CDATA[CS_OID_ATTRVERSION]]></expression>
+			</regex>
+			<regex codetype="ctlib" name="CS_OID_DIRECTORY">
+				<expression><![CDATA[CS_OID_DIRECTORY]]></expression>
+			</regex>
+			<regex codetype="ctlib" name="CS_OID_OBJCLASS">
+				<expression><![CDATA[CS_OID_OBJCLASS]]></expression>
+			</regex>
+			<regex codetype="ctlib" name="CS_OID_OBJSERVER">
+				<expression><![CDATA[CS_OID_OBJSERVER]]></expression>
+			</regex>
+			<regex codetype="ctlib" name="CS_OID_SYBASE">
+				<expression><![CDATA[CS_OID_SYBASE]]></expression>
+			</regex>
+			<regex codetype="ctlib" name="CS_ORIGIN">
+				<expression><![CDATA[CS_ORIGIN]]></expression>
+			</regex>
+			<regex codetype="ctlib" name="CS_PASSTHRU_EOM">
+				<expression><![CDATA[CS_PASSTHRU_EOM]]></expression>
+			</regex>
+			<regex codetype="ctlib" name="CS_PASSTHRU_MORE">
+				<expression><![CDATA[CS_PASSTHRU_MORE]]></expression>
+			</regex>
+			<regex codetype="ctlib" name="CS_PENDING">
+				<expression><![CDATA[CS_PENDING]]></expression>
+			</regex>
+			<regex codetype="ctlib" name="CS_QUIET">
+				<expression><![CDATA[CS_QUIET]]></expression>
+			</regex>
+			<regex codetype="ctlib" name="CS_REAL_TYPE">
+				<expression><![CDATA[CS_REAL_TYPE]]></expression>
+			</regex>
+			<regex codetype="ctlib" name="CS_RENAMED">
+				<expression><![CDATA[CS_RENAMED]]></expression>
+			</regex>
+			<regex codetype="ctlib" name="CS_RET_HAFAILOVER">
+				<expression><![CDATA[CS_RET_HAFAILOVER]]></expression>
+			</regex>
+			<regex codetype="ctlib" name="CS_RETCODE">
+				<expression><![CDATA[CS_RETCODE]]></expression>
+			</regex>
+			<regex codetype="ctlib" name="CS_RETURN">
+				<expression><![CDATA[CS_RETURN]]></expression>
+			</regex>
+			<regex codetype="ctlib" name="CS_RETURN_CANBENULL">
+				<expression><![CDATA[CS_RETURN_CANBENULL]]></expression>
+			</regex>
+			<regex codetype="ctlib" name="CS_ROW_FAIL">
+				<expression><![CDATA[CS_ROW_FAIL]]></expression>
+			</regex>
+			<regex codetype="ctlib" name="CS_SENSITIVITY_TYPE">
+				<expression><![CDATA[CS_SENSITIVITY_TYPE]]></expression>
+			</regex>
+			<regex codetype="ctlib" name="CS_SEVERITY">
+				<expression><![CDATA[CS_SEVERITY]]></expression>
+			</regex>
+			<regex codetype="ctlib" name="CS_SIGNAL_BLOCK">
+				<expression><![CDATA[CS_SIGNAL_BLOCK]]></expression>
+			</regex>
+			<regex codetype="ctlib" name="CS_SIGNAL_DEFAULT">
+				<expression><![CDATA[CS_SIGNAL_DEFAULT]]></expression>
+			</regex>
+			<regex codetype="ctlib" name="CS_SIGNAL_IGNORE">
+				<expression><![CDATA[CS_SIGNAL_IGNORE]]></expression>
+			</regex>
+			<regex codetype="ctlib" name="CS_SIGNAL_UNBLOCK">
+				<expression><![CDATA[CS_SIGNAL_UNBLOCK]]></expression>
+			</regex>
+			<regex codetype="ctlib" name="CS_SIZEOF">
+				<expression><![CDATA[CS_SIZEOF]]></expression>
+			</regex>
+			<regex codetype="ctlib" name="CS_SMALLINT_TYPE">
+				<expression><![CDATA[CS_SMALLINT_TYPE]]></expression>
+			</regex>
+			<regex codetype="ctlib" name="CS_SRC_VALUE">
+				<expression><![CDATA[CS_SRC_VALUE]]></expression>
+			</regex>
+			<regex codetype="ctlib" name="CS_STATEMENTNAME">
+				<expression><![CDATA[CS_STATEMENTNAME]]></expression>
+			</regex>
+			<regex codetype="ctlib" name="CS_STATUS_ACTIVE">
+				<expression><![CDATA[CS_STATUS_ACTIVE]]></expression>
+			</regex>
+			<regex codetype="ctlib" name="CS_STATUS_FAILED">
+				<expression><![CDATA[CS_STATUS_FAILED]]></expression>
+			</regex>
+			<regex codetype="ctlib" name="CS_STATUS_STOPPED">
+				<expression><![CDATA[CS_STATUS_STOPPED]]></expression>
+			</regex>
+			<regex codetype="ctlib" name="CS_STATUS_UNKNOWN">
+				<expression><![CDATA[CS_STATUS_UNKNOWN]]></expression>
+			</regex>
+			<regex codetype="ctlib" name="CS_SUCCEED">
+				<expression><![CDATA[CS_SUCCEED]]></expression>
+			</regex>
+			<regex codetype="ctlib" name="CS_SV_API_FAIL">
+				<expression><![CDATA[CS_SV_API_FAIL]]></expression>
+			</regex>
+			<regex codetype="ctlib" name="CS_SV_COMM_FAIL">
+				<expression><![CDATA[CS_SV_COMM_FAIL]]></expression>
+			</regex>
+			<regex codetype="ctlib" name="CS_SV_CONFIG_FAIL">
+				<expression><![CDATA[CS_SV_CONFIG_FAIL]]></expression>
+			</regex>
+			<regex codetype="ctlib" name="CS_SV_FATAL">
+				<expression><![CDATA[CS_SV_FATAL]]></expression>
+			</regex>
+			<regex codetype="ctlib" name="CS_SV_INFORM">
+				<expression><![CDATA[CS_SV_INFORM]]></expression>
+			</regex>
+			<regex codetype="ctlib" name="CS_SV_INTERNAL_FAIL">
+				<expression><![CDATA[CS_SV_INTERNAL_FAIL]]></expression>
+			</regex>
+			<regex codetype="ctlib" name="CS_SV_RESOURCE_FAIL">
+				<expression><![CDATA[CS_SV_RESOURCE_FAIL]]></expression>
+			</regex>
+			<regex codetype="ctlib" name="CS_SV_RETRY_FAIL">
+				<expression><![CDATA[CS_SV_RETRY_FAIL]]></expression>
+			</regex>
+			<regex codetype="ctlib" name="CS_SYB_CHARSET">
+				<expression><![CDATA[CS_SYB_CHARSET]]></expression>
+			</regex>
+			<regex codetype="ctlib" name="CS_SYB_COLLATE">
+				<expression><![CDATA[CS_SYB_COLLATE]]></expression>
+			</regex>
+			<regex codetype="ctlib" name="CS_SYB_LANG">
+				<expression><![CDATA[CS_SYB_LANG]]></expression>
+			</regex>
+			<regex codetype="ctlib" name="CS_SYB_LANG_CHARSET">
+				<expression><![CDATA[CS_SYB_LANG_CHARSET]]></expression>
+			</regex>
+			<regex codetype="ctlib" name="CS_SYB_MONETARY">
+				<expression><![CDATA[CS_SYB_MONETARY]]></expression>
+			</regex>
+			<regex codetype="ctlib" name="CS_SYB_NUMERIC">
+				<expression><![CDATA[CS_SYB_NUMERIC]]></expression>
+			</regex>
+			<regex codetype="ctlib" name="CS_SYB_SORTORDER">
+				<expression><![CDATA[CS_SYB_SORTORDER]]></expression>
+			</regex>
+			<regex codetype="ctlib" name="CS_SYB_TIME">
+				<expression><![CDATA[CS_SYB_TIME]]></expression>
+			</regex>
+			<regex codetype="ctlib" name="CS_TEXT_TYPE">
+				<expression><![CDATA[CS_TEXT_TYPE]]></expression>
+			</regex>
+			<regex codetype="ctlib" name="CS_THRDRES">
+				<expression><![CDATA[CS_THRDRES]]></expression>
+			</regex>
+			<regex codetype="ctlib" name="CS_TIMED_OUT">
+				<expression><![CDATA[CS_TIMED_OUT]]></expression>
+			</regex>
+			<regex codetype="ctlib" name="CS_TIMESTAMP">
+				<expression><![CDATA[CS_TIMESTAMP]]></expression>
+			</regex>
+			<regex codetype="ctlib" name="CS_TINYINT_TYPE">
+				<expression><![CDATA[CS_TINYINT_TYPE]]></expression>
+			</regex>
+			<regex codetype="ctlib" name="CS_TRUE">
+				<expression><![CDATA[CS_TRUE]]></expression>
+			</regex>
+			<regex codetype="ctlib" name="CS_TRUNCATED">
+				<expression><![CDATA[CS_TRUNCATED]]></expression>
+			</regex>
+			<regex codetype="ctlib" name="CS_UNEXPIRED">
+				<expression><![CDATA[CS_UNEXPIRED]]></expression>
+			</regex>
+			<regex codetype="ctlib" name="CS_UNICHAR_TYPE">
+				<expression><![CDATA[CS_UNICHAR_TYPE]]></expression>
+			</regex>
+			<regex codetype="ctlib" name="CS_UNUSED">
+				<expression><![CDATA[CS_UNUSED]]></expression>
+			</regex>
+			<regex codetype="ctlib" name="CS_UPDATABLE">
+				<expression><![CDATA[CS_UPDATABLE]]></expression>
+			</regex>
+			<regex codetype="ctlib" name="CS_UPDATECOL">
+				<expression><![CDATA[CS_UPDATECOL]]></expression>
+			</regex>
+			<regex codetype="ctlib" name="CS_USER_TYPE">
+				<expression><![CDATA[CS_USER_TYPE]]></expression>
+			</regex>
+			<regex codetype="ctlib" name="CS_USEREP">
+				<expression><![CDATA[CS_USEREP]]></expression>
+			</regex>
+			<regex codetype="ctlib" name="CS_USHORT_TYPE">
+				<expression><![CDATA[CS_USHORT_TYPE]]></expression>
+			</regex>
+			<regex codetype="ctlib" name="CS_VARBINARY_TYPE">
+				<expression><![CDATA[CS_VARBINARY_TYPE]]></expression>
+			</regex>
+			<regex codetype="ctlib" name="CS_VARCHAR_TYPE">
+				<expression><![CDATA[CS_VARCHAR_TYPE]]></expression>
+			</regex>
+			<regex codetype="ctlib" name="CS_VERSION_KEY">
+				<expression><![CDATA[CS_VERSION_KEY]]></expression>
+			</regex>
+			<regex codetype="ctlib" name="CS_VOID_TYPE">
+				<expression><![CDATA[CS_VOID_TYPE]]></expression>
+			</regex>
+			<regex codetype="ctlib" name="CS_VOIDDATA">
+				<expression><![CDATA[CS_VOIDDATA]]></expression>
+			</regex>
+			<regex codetype="ctlib" name="CS_WILDCARD">
+				<expression><![CDATA[CS_WILDCARD]]></expression>
+			</regex>
+			<regex codetype="ctlib" name="USER_UNICHAR_TYPE">
+				<expression><![CDATA[USER_UNICHAR_TYPE]]></expression>
+			</regex>
+			<regex codetype="ctlib" name="USER_UNIVARCHAR_TYPE">
+				<expression><![CDATA[USER_UNIVARCHAR_TYPE]]></expression>
+			</regex>
+	
+			<regex codetype="ctlib" name="CS_ATTRIBUTE">
+				<expression><![CDATA[CS_ATTRIBUTE]]></expression>
+			</regex>
+			<regex codetype="ctlib" name="CS_ATTRVALUE">
+				<expression><![CDATA[CS_ATTRVALUE]]></expression>
+			</regex>
+			<regex codetype="ctlib" name="CS_COMMAND">
+				<expression><![CDATA[CS_COMMAND]]></expression>
+			</regex>
+			<regex codetype="ctlib" name="CS_CONNECTION">
+				<expression><![CDATA[CS_CONNECTION]]></expression>
+			</regex>
+			<regex codetype="ctlib" name="CS_CONTEXT">
+				<expression><![CDATA[CS_CONTEXT]]></expression>
+			</regex>
+			<regex codetype="ctlib" name="CS_DATAFMT">
+				<expression><![CDATA[CS_DATAFMT]]></expression>
+			</regex>
+			<regex codetype="ctlib" name="CS_DATEREC">
+				<expression><![CDATA[CS_DATEREC]]></expression>
+			</regex>
+			<regex codetype="ctlib" name="CS_DATETIME">
+				<expression><![CDATA[CS_DATETIME]]></expression>
+			</regex>
+			<regex codetype="ctlib" name="CS_DATETIME4">
+				<expression><![CDATA[CS_DATETIME4]]></expression>
+			</regex>
+			<regex codetype="ctlib" name="CS_DECIMAL">
+				<expression><![CDATA[CS_DECIMAL]]></expression>
+			</regex>
+			<regex codetype="ctlib" name="CS_DS_LOOKUP_INFO">
+				<expression><![CDATA[CS_DS_LOOKUP_INFO]]></expression>
+			</regex>
+			<regex codetype="ctlib" name="CS_DS_OBJECT">
+				<expression><![CDATA[CS_DS_OBJECT]]></expression>
+			</regex>
+			<regex codetype="ctlib" name="CS_DS_RESULT">
+				<expression><![CDATA[CS_DS_RESULT]]></expression>
+			</regex>
+			<regex codetype="ctlib" name="CS_LOCALE">
+				<expression><![CDATA[CS_LOCALE]]></expression>
+			</regex>
+			<regex codetype="ctlib" name="CS_MONEY">
+				<expression><![CDATA[CS_MONEY]]></expression>
+			</regex>
+			<regex codetype="ctlib" name="CS_MONEY4">
+				<expression><![CDATA[CS_MONEY4]]></expression>
+			</regex>
+			<regex codetype="ctlib" name="CS_NUMERIC">
+				<expression><![CDATA[CS_NUMERIC]]></expression>
+				<replacement type="regex"><![CDATA[NUMBER]]></replacement>
+			</regex>
+			<regex codetype="ctlib" name="CS_OBJDATA">
+				<expression><![CDATA[CS_OBJDATA]]></expression>
+			</regex>
+			<regex codetype="ctlib" name="CS_OBJNAME">
+				<expression><![CDATA[CS_OBJNAME]]></expression>
+			</regex>
+			<regex codetype="ctlib" name="CS_OID">
+				<expression><![CDATA[CS_OID]]></expression>
+			</regex>
+			<regex codetype="ctlib" name="CS_STRING">
+				<expression><![CDATA[CS_STRING]]></expression>
+			</regex>
+			<regex codetype="ctlib" name="CS_THREAD">
+				<expression><![CDATA[CS_THREAD]]></expression>
+			</regex>
+			<regex codetype="ctlib" name="CS_TRANADDR">
+				<expression><![CDATA[CS_TRANADDR]]></expression>
+			</regex>
+			<regex codetype="ctlib" name="CS_VARBINARY">
+				<expression><![CDATA[CS_VARBINARY]]></expression>
+			</regex>
+			<regex codetype="ctlib" name="CS_VARCHAR">
+				<expression><![CDATA[CS_VARCHAR]]></expression>
+			</regex>
+	
+			<regex codetype="ctlib" name="CS_BINARY">
+				<expression><![CDATA[CS_BINARY]]></expression>
+			</regex>
+			<regex codetype="ctlib" name="CS_BIT">
+				<expression><![CDATA[CS_BIT]]></expression>
+			</regex>
+			<regex codetype="ctlib" name="CS_BYTE">
+				<expression><![CDATA[CS_BYTE]]></expression>
+			</regex>
+			<regex codetype="ctlib" name="CS_CHAR">
+				<expression><![CDATA[CS_CHAR]]></expression>
+			</regex>
+			<regex codetype="ctlib" name="CS_CTX_GLOBS">
+				<expression><![CDATA[CS_CTX_GLOBS]]></expression>
+			</regex>
+			<regex codetype="ctlib" name="CS_CTX_LOCGLOBS">
+				<expression><![CDATA[CS_CTX_LOCGLOBS]]></expression>
+			</regex>
+			<regex codetype="ctlib" name="CS_IMAGE">
+				<expression><![CDATA[CS_IMAGE]]></expression>
+			</regex>
+			<regex codetype="ctlib" name="CS_LONG">
+				<expression><![CDATA[CS_LONG]]></expression>
+			</regex>
+			<regex codetype="ctlib" name="CS_LONGBINARY">
+				<expression><![CDATA[CS_LONGBINARY]]></expression>
+			</regex>
+			<regex codetype="ctlib" name="CS_LONGCHAR">
+				<expression><![CDATA[CS_LONGCHAR]]></expression>
+			</regex>
+			<regex codetype="ctlib" name="CS_REAL">
+				<expression><![CDATA[CS_REAL]]></expression>
+			</regex>
+			<regex codetype="ctlib" name="CS_SMALLINT">
+				<expression><![CDATA[CS_SMALLINT]]></expression>
+			</regex>
+			<regex codetype="ctlib" name="CS_TEXT">
+				<expression><![CDATA[CS_TEXT]]></expression>
+			</regex>
+			<regex codetype="ctlib" name="CS_TINYINT">
+				<expression><![CDATA[CS_TINYINT]]></expression>
+			</regex>
+			<regex codetype="ctlib" name="CS_UNICHAR">
+				<expression><![CDATA[CS_UNICHAR]]></expression>
+			</regex>
+			<regex codetype="ctlib" name="CS_USHORT">
+				<expression><![CDATA[CS_USHORT]]></expression>
+			</regex>
+			<regex codetype="ctlib" name="CS_VOIDDATA">
+				<expression><![CDATA[CS_VOIDDATA]]></expression>
+			</regex>
+		 </rules>
+	</ruleset>
+
+</rulesfile>

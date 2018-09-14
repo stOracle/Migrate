@@ -1,0 +1,8 @@
+Our project is a music visualization tool that allows the user to see different chords and how they appear geometrically. It also includes three different modes that the wheel can be used in: Free mode, instrument mode, and song mode, which are explained in more detail in the README file. 
+
+The biggest challenges were getting a song editor to work nicely with reading input and then playing that input in a song form. 
+
+Kenneth Small worked on the Song Editor, which allowed the user to generate chord progressions, 
+or "songs" that could be played in Song Mode. 
+
+Matthew Wimberley and Stephen Rauner worked on the main interface and modes of the music wheel. 

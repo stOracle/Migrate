@@ -1,0 +1,58 @@
+<?xml version = '1.0' encoding = 'UTF-8'?>
+<Entity class="oracle.dbtools.crest.model.design.logical.Entity" directorySegmentName="seg_0" id="373CD77E-EB97-08FE-827C-4CC28502C2DB" name="DBF_Room">
+<createdBy>Stephen</createdBy>
+<createdTime>2016-11-30 00:35:07 UTC</createdTime>
+<ownerDesignName>HospitalModel</ownerDesignName>
+<engineerTo>
+<item key="AD605F01-77C0-DDF1-D65B-9F0A845D94CC" value="true"/>
+</engineerTo>
+<adequatelyNormalized>NO</adequatelyNormalized>
+<expectedVolumes>0</expectedVolumes>
+<fwdEngineeringStrategyName>Single Table</fwdEngineeringStrategyName>
+<growthPercent>0</growthPercent>
+<growthType>Year</growthType>
+<maxVolumes>9999999</maxVolumes>
+<minVolumes>0</minVolumes>
+<normalForm>Third</normalForm>
+<attributes itemClass="oracle.dbtools.crest.model.design.logical.Attribute">
+<Attribute name="room_id" id="951D4F56-2E5B-D042-ED43-6289AADA2E3B">
+<createdBy>Stephen</createdBy>
+<createdTime>2016-11-30 00:35:14 UTC</createdTime>
+<ownerDesignName>HospitalModel</ownerDesignName>
+<engineerTo>
+<item key="AD605F01-77C0-DDF1-D65B-9F0A845D94CC" value="true"/>
+</engineerTo>
+<useDomainConstraints>false</useDomainConstraints>
+<use>1</use>
+<ownDataTypeParameters>,,</ownDataTypeParameters>
+</Attribute>
+<Attribute name="ward_id" id="EFDC2991-2A3D-A062-6D8F-9C0EA46B77DA">
+<createdBy>Stephen</createdBy>
+<createdTime>2016-11-30 01:04:57 UTC</createdTime>
+<generatorID>6D9F332D-052C-095C-A200-BD3EFEF63B56</generatorID>
+<ownerDesignName>HospitalModel</ownerDesignName>
+<engineerTo>
+<item key="AD605F01-77C0-DDF1-D65B-9F0A845D94CC" value="true"/>
+</engineerTo>
+<referedAttribute>35D7EC63-4324-09C3-FF8B-DF9D37056758</referedAttribute>
+<useDomainConstraints>false</useDomainConstraints>
+<use>1</use>
+<logicalDatatype>LOGDT011</logicalDatatype>
+<ownDataTypeParameters>,,</ownDataTypeParameters>
+</Attribute>
+</attributes>
+<identifiers itemClass="oracle.dbtools.crest.model.design.logical.CandidateKey">
+<identifier id="5A5C9AD9-CDAE-B773-243E-D2C4D3DFDD63" name="DBF_Room PK">
+<createdBy>Stephen</createdBy>
+<createdTime>2016-11-30 00:35:21 UTC</createdTime>
+<ownerDesignName>HospitalModel</ownerDesignName>
+<engineerTo>
+<item key="AD605F01-77C0-DDF1-D65B-9F0A845D94CC" value="true"/>
+</engineerTo>
+<pk>true</pk>
+<usedAttributes>
+<attributeRef>951D4F56-2E5B-D042-ED43-6289AADA2E3B</attributeRef>
+</usedAttributes>
+</identifier>
+</identifiers>
+</Entity>

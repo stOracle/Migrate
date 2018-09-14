@@ -1,0 +1,22 @@
+Notes:
+
+Class Point:
+  1. Change equality to be within an error tolerance
+
+class sphere:
+
+  1. finish is_inside_cube once you know cube formulas
+  2. and the rest of the cube and cylinder interactions
+
+Class Cube:
+
+  1. Figure out how to know if a point is inside
+
+
+
+
+
+
+READ TURTLE NOTES
+
+  

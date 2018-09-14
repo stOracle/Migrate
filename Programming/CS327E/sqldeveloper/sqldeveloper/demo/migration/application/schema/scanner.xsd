@@ -1,0 +1,181 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<xs:schema xmlns:xs="http://www.w3.org/2001/XMLSchema">
+  <xs:annotation>
+    <xs:documentation> Copyright 2011 by Oracle Corporation, 500 Oracle Parkway, Redwood
+      Shores, California, 94065, U.S.A.</xs:documentation>
+  </xs:annotation>
+  <xs:element name="rulesfile">
+    <xs:annotation>
+      <xs:documentation>There will be one rulefile in any file.</xs:documentation>
+    </xs:annotation>
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element ref="recognizer" minOccurs="0" maxOccurs="unbounded" />
+        <xs:element ref="ruleset" minOccurs="0" maxOccurs="unbounded" />
+      </xs:sequence>
+      <xs:attribute name="name" type="xs:string" use="required" />
+      <xs:attribute name="description" type="xs:string" />
+      <xs:attribute name="version" type="xs:string" use="required" />
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="ruleset">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element ref="required" maxOccurs="1" />
+        <xs:element ref="rules" />
+      </xs:sequence>
+      <xs:attribute name="type" use="required" type="xs:string">
+        <xs:annotation>
+          <xs:documentation>This denotes the Source database code we will search, eg.,
+            sybase.</xs:documentation>
+        </xs:annotation>
+      </xs:attribute>
+      <xs:attribute name="target" use="optional" type="xs:string" default="ORACLE">
+        <xs:annotation>
+          <xs:documentation>This is the target platform which the replacement rules would
+            be aimed at. This defaults to Oracle</xs:documentation>
+        </xs:annotation>
+      </xs:attribute>
+      <xs:attribute name="source" use="required" type="xs:string">
+        <xs:annotation>
+          <xs:documentation>This is the type of source code to search. For example, C,
+            Java, Perl etc. If there is a recognizer defined for these types as defined
+            here, they will be used.</xs:documentation>
+        </xs:annotation>
+      </xs:attribute>
+      <xs:attribute name="name" use="required" type="xs:string">
+        <xs:annotation>
+          <xs:documentation>This is the name of the ruleset which will be applied to a set
+            of code.</xs:documentation>
+        </xs:annotation>
+      </xs:attribute>
+      <xs:attribute name="description" use="required" type="xs:string" />
+      <xs:attribute name="codetype" use="required" type="xs:string">
+        <xs:annotation>
+          <xs:documentation>The code type is the type of source that the ruleset applies
+            to. This is not the source language, but rather the subset of that language
+            being looked for. For example, in sybase, these would be DBLIB or CTLIB
+          </xs:documentation>
+        </xs:annotation>
+      </xs:attribute>
+      <xs:attribute name="enable" type="xs:boolean" use="required">
+        <xs:annotation>
+          <xs:documentation>Enable or diable a set of rules</xs:documentation>
+        </xs:annotation>
+      </xs:attribute>
+      <xs:attribute name="helpurl" type="xs:string" use="optional">
+        <xs:annotation>
+          <xs:documentation>This is the helpurl of any page which is of use in deciphering
+            the rules. for example, if this was teradata, we might put a reference to a
+            url in a technical document. This is the URL is a page</xs:documentation>
+        </xs:annotation>
+      </xs:attribute>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="rules">
+    <xs:annotation>
+      <xs:documentation>The rules clause holds a set of regex's which will be applied to
+        the source code.</xs:documentation>
+    </xs:annotation>
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element ref="regex" maxOccurs="unbounded" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="recognizer">
+    <xs:annotation>
+      <xs:documentation>Users can define how we recognize a file, either by file suffix,
+        or by searching for certain known patterns in unknown types of files. So for
+        example, a Korn Shell file could be called MyKornShell, but would really be
+        recognized by searching the file for #!/usr/bin.ksh at the top, which would denote
+        this type of file.</xs:documentation>
+    </xs:annotation>
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element ref="fileExtension" minOccurs="1" />
+        <xs:element ref="expression" minOccurs="0" maxOccurs="unbounded" />
+        <xs:element ref="comments" minOccurs="0" maxOccurs="1" />
+      </xs:sequence>
+      <xs:attribute name="name" type="xs:string" />
+      <xs:attribute name="description" type="xs:string" />
+      <xs:attribute name="enabled" type="xs:boolean" />
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="comments">
+    <xs:annotation>
+      <xs:documentation>There are three attributes associated with comments. 1. single
+        line comments, 2. The start enclosure for multiline comments. 3. the end enclosure
+        for multiline comments</xs:documentation>
+    </xs:annotation>
+    <xs:complexType>
+      <xs:attribute name="single" type="xs:string" />
+      <xs:attribute name="startMulti" type="xs:string" />
+      <xs:attribute name="endMulti" type="xs:string" />
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="fileExtension">
+    <xs:annotation>
+      <xs:documentation>A file extension is normally used to identify a file.
+      </xs:documentation>
+    </xs:annotation>
+    <xs:complexType>
+      <xs:attribute name="extension" type="xs:string">
+        <xs:annotation>
+          <xs:documentation>This extension should a a comma separated list of the file
+            extensions. For example, for C, it would be "c,h"</xs:documentation>
+        </xs:annotation>
+      </xs:attribute>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="required">
+    <xs:annotation>
+      <xs:documentation>The required section is a section of regex's which get run first
+        on a piece of code to identify if the rest of the rules should be run. For
+        example, in dblib code, written in C, if there is no occurance of a header file,
+        like #include "sybfront.h"</xs:documentation>
+    </xs:annotation>
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element ref="regex" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="regex">
+    <xs:annotation>
+      <xs:documentation>A regex is a set of expressions and replacements which can be
+        applied to a piece of text. Each expression will be searched for in a file and
+        each occurance reported. A regex will only be used if the ruleset passes the
+        required section.</xs:documentation>
+    </xs:annotation>
+    <xs:complexType>
+      <xs:choice>
+        <xs:sequence>
+          <xs:element ref="example" minOccurs="0" />
+          <xs:element ref="expression" minOccurs="1" />
+          <xs:element ref="replacement" minOccurs="0" />
+        </xs:sequence>
+      </xs:choice>
+      <xs:attribute name="name" type="xs:string" use="optional" />
+      <xs:attribute name="description" type="xs:string" use="optional" />
+      <xs:attribute name="codetype" type="xs:string" use="optional" />
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="expression" type="xs:string">
+    <xs:annotation>
+      <xs:documentation>This is the expression which will be used to identify a piece of
+        code in a file.</xs:documentation>
+    </xs:annotation>
+  </xs:element>
+  <xs:element name="example" type="xs:string">    <xs:annotation>
+      <xs:documentation>This is an example of the string which would match the regular
+        expression you are writing.</xs:documentation>
+    </xs:annotation>
+  </xs:element>
+  <xs:element name="replacement" type="xs:string">
+    <xs:annotation>
+      <xs:documentation>This is the replacement string which is used to replace the
+        corresponding expression</xs:documentation>
+    </xs:annotation>
+  </xs:element>
+</xs:schema>

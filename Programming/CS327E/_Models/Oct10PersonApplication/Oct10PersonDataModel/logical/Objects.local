@@ -1,0 +1,8 @@
+<?xml version = '1.0' encoding = 'UTF-8'?>
+<oracle.dbtools.crest.model.design.logical.LogicalDesign>
+   <object objectType="Entity" objectID="115B2F04-E8F3-87F2-DCF4-8723825EB4FC" name="oct10_person" seqName="seg_0" propertyClassName="oracle.dbtools.crest.model.design.logical.Entity" propertyParentId="D93CBCC5-36D9-D460-9220-696BE2E66FEB" propertySourceId="" propertyTargetId=""/>
+   <object objectType="Entity" objectID="2CEC86CF-2CBF-C21F-4AE3-8F73B9978D19" name="oct10_mgr" seqName="seg_0" propertyClassName="oracle.dbtools.crest.model.design.logical.Entity" propertyParentId="D93CBCC5-36D9-D460-9220-696BE2E66FEB" propertySourceId="" propertyTargetId=""/>
+   <object objectType="Entity" objectID="87E84FAB-74C8-DC0F-FFC0-380B0F018C07" name="oct10_emp" seqName="seg_0" propertyClassName="oracle.dbtools.crest.model.design.logical.Entity" propertyParentId="D93CBCC5-36D9-D460-9220-696BE2E66FEB" propertySourceId="" propertyTargetId=""/>
+   <object objectType="Hierarchy relation" objectID="2664F92F-F924-C451-2AEC-220555CDD88F" name="Hierarchy_2" seqName="seg_0" propertyClassName="oracle.dbtools.crest.model.design.logical.InheritanceRelation" propertyParentId="D93CBCC5-36D9-D460-9220-696BE2E66FEB" propertySourceId="115B2F04-E8F3-87F2-DCF4-8723825EB4FC" propertyTargetId="2CEC86CF-2CBF-C21F-4AE3-8F73B9978D19"/>
+   <object objectType="Hierarchy relation" objectID="2CD2C64D-11D5-353E-34BF-003A5C1A7B0B" name="Hierarchy_1" seqName="seg_0" propertyClassName="oracle.dbtools.crest.model.design.logical.InheritanceRelation" propertyParentId="D93CBCC5-36D9-D460-9220-696BE2E66FEB" propertySourceId="115B2F04-E8F3-87F2-DCF4-8723825EB4FC" propertyTargetId="87E84FAB-74C8-DC0F-FFC0-380B0F018C07"/>
+</oracle.dbtools.crest.model.design.logical.LogicalDesign>

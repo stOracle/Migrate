@@ -1,0 +1,6 @@
+<?xml version = '1.0' encoding = 'UTF-8'?>
+<oracle.dbtools.crest.model.design.relational.RelationalDesign>
+   <object objectType="main_view" objectID="62C74412-0F00-8EBA-58D8-F9ED03276A6C" name="Relational_1" visible="true"/>
+   <object objectType="sub_view" objectID="862E9CD6-5FEF-0699-7CD1-19011DFDD204" name="From_LM_" visible="false"/>
+   <object objectType="" objectID="dwsync" name="" seqName="_notes" propertyClassName="" propertyParentId="" propertySourceId="" propertyTargetId=""/>
+</oracle.dbtools.crest.model.design.relational.RelationalDesign>

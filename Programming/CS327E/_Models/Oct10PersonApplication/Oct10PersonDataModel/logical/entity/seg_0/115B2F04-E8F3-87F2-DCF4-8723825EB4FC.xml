@@ -1,0 +1,74 @@
+<?xml version = '1.0' encoding = 'UTF-8'?>
+<Entity class="oracle.dbtools.crest.model.design.logical.Entity" directorySegmentName="seg_0" id="115B2F04-E8F3-87F2-DCF4-8723825EB4FC" name="oct10_person">
+<createdBy>pcannata</createdBy>
+<createdTime>2016-10-10 21:55:08 UTC</createdTime>
+<ownerDesignName>Oct10PersonDataModel</ownerDesignName>
+<engineerTo>
+<item key="C440380F-19B6-7BCE-42F0-46B9CB6D7A07" value="true"/>
+</engineerTo>
+<adequatelyNormalized>NO</adequatelyNormalized>
+<expectedVolumes>0</expectedVolumes>
+<fwdEngineeringStrategyName>Single Table</fwdEngineeringStrategyName>
+<growthPercent>0</growthPercent>
+<growthType>Year</growthType>
+<maxVolumes>9999999</maxVolumes>
+<minVolumes>0</minVolumes>
+<normalForm>Third</normalForm>
+<generateDiscrimColumn>true</generateDiscrimColumn>
+<discriminatorColumnName>type</discriminatorColumnName>
+<attributes itemClass="oracle.dbtools.crest.model.design.logical.Attribute">
+<Attribute name="person_id" id="62707BC0-0710-CB19-29A7-885291FBDBB7">
+<createdBy>pcannata</createdBy>
+<createdTime>2016-10-10 21:55:28 UTC</createdTime>
+<ownerDesignName>Oct10PersonDataModel</ownerDesignName>
+<engineerTo>
+<item key="C440380F-19B6-7BCE-42F0-46B9CB6D7A07" value="true"/>
+</engineerTo>
+<useDomainConstraints>false</useDomainConstraints>
+<use>1</use>
+<logicalDatatype>LOGDT011</logicalDatatype>
+<ownDataTypeParameters>,,</ownDataTypeParameters>
+</Attribute>
+<Attribute name="name" id="3E3F50BE-CBC9-67F0-AA0B-194F9B14C0BC">
+<createdBy>pcannata</createdBy>
+<createdTime>2016-10-10 21:55:51 UTC</createdTime>
+<ownerDesignName>Oct10PersonDataModel</ownerDesignName>
+<engineerTo>
+<item key="C440380F-19B6-7BCE-42F0-46B9CB6D7A07" value="true"/>
+</engineerTo>
+<nullsAllowed>true</nullsAllowed>
+<useDomainConstraints>false</useDomainConstraints>
+<use>1</use>
+<logicalDatatype>LOGDT024</logicalDatatype>
+<dataTypeSize>256</dataTypeSize>
+<ownDataTypeParameters>256,,</ownDataTypeParameters>
+</Attribute>
+<Attribute name="age" id="0C85E1E9-BC18-1E73-4FC5-1659A1406313">
+<createdBy>pcannata</createdBy>
+<createdTime>2016-10-10 21:56:11 UTC</createdTime>
+<ownerDesignName>Oct10PersonDataModel</ownerDesignName>
+<engineerTo>
+<item key="C440380F-19B6-7BCE-42F0-46B9CB6D7A07" value="true"/>
+</engineerTo>
+<nullsAllowed>true</nullsAllowed>
+<useDomainConstraints>false</useDomainConstraints>
+<use>1</use>
+<logicalDatatype>LOGDT011</logicalDatatype>
+<ownDataTypeParameters>,,</ownDataTypeParameters>
+</Attribute>
+</attributes>
+<identifiers itemClass="oracle.dbtools.crest.model.design.logical.CandidateKey">
+<identifier id="AD75D498-96D6-BD3F-B91B-76E5A1A82B50" name="oct10_person PK">
+<createdBy>pcannata</createdBy>
+<createdTime>2016-10-10 21:55:38 UTC</createdTime>
+<ownerDesignName>Oct10PersonDataModel</ownerDesignName>
+<engineerTo>
+<item key="C440380F-19B6-7BCE-42F0-46B9CB6D7A07" value="true"/>
+</engineerTo>
+<pk>true</pk>
+<usedAttributes>
+<attributeRef>62707BC0-0710-CB19-29A7-885291FBDBB7</attributeRef>
+</usedAttributes>
+</identifier>
+</identifiers>
+</Entity>

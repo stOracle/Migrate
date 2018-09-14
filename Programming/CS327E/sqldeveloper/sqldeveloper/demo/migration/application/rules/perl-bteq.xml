@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<rulesfile description="" name="perl-bteq" version="0.1"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xsi:noNamespaceSchemaLocation="scanner.xsd">
+	<ruleset codetype="bteq" description="Identify embedded SQL in BTEQ" enable="true" helpurl=""
+		name="DDL in BTEQ" source="perl" target="ORACLE" type="TERADATA">
+		<required>
+			<regex codetype="bteq" description="Find CREATE TABLE" name="DDLDMLIdentifier" >
+			   <expression><![CDATA[CREATE *TABLE|INSERT *INTO|DROP *TABLE]]></expression>
+			</regex>
+		</required>
+		<rules>
+			<regex codetype="bteq" description="find create table in emebedded bteq" name="CREATE_TABLE">
+			  <expression><![CDATA[CREATE *TABLE.*;]]></expression>
+			  <replacement translator="oracle.dbtools.translators.teradata.Convert" />
+			</regex>
+		</rules>
+	</ruleset>
+</rulesfile>

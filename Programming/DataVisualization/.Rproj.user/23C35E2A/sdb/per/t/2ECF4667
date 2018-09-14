@@ -1,0 +1,20 @@
+{
+    "collab_server" : "",
+    "contents" : "require(\"jsonlite\")\nrequire(\"RCurl\")\n# Change the USER and PASS below to be your UTEid\ndf <- data.frame(fromJSON(getURL(URLencode('oraclerest.cs.utexas.edu:5001/rest/native/?query=\"select * from titanic where sex is not null\"'),httpheader=c(DB='jdbc:oracle:thin:@aevum.cs.utexas.edu:1521/f16pdb', USER='cs329e_UTEid', PASS='orcl_uteid', MODE='native_mode', MODEL='model', returnDimensions = 'False', returnFor = 'JSON'), verbose = TRUE), ))\nsummary(df)\nhead(df)\n\nrequire(extrafont)\nggplot() + \n  coord_cartesian() + \n  scale_x_continuous() +\n  scale_y_continuous() +\n  #facet_wrap(~SURVIVED) +\n  facet_grid(.~SURVIVED, labeller=label_both) + # Same as facet_wrap but with a label.\n  #facet_grid(PCLASS~SURVIVED, labeller=label_both) +\n  labs(title='Titanic') +\n  labs(x=\"Age\", y=paste(\"Fare\")) +\n  \n  layer(data=df, \n        mapping=aes(x=as.numeric(as.character(AGE)), y=as.numeric(as.character(FARE)), color=SEX),  \n        geom=\"point\",\n        #geom_params=list(), \n        stat=\"identity\", \n        #stat_params=list(),\n        #position=position_identity()\n        position=position_jitter(width=0.3, height=0)\n  )\n\nggplot() + \n  coord_cartesian() + \n  scale_x_discrete() +\n  scale_y_continuous() +\n  #facet_grid(PCLASS~SURVIVED, labeller=label_both) +\n  labs(title='Titanic') +\n  labs(x=\"SURVIVED\", y=paste(\"FARE\")) +\n  \n  layer(data=df, \n        mapping=aes(x=SEX, y=as.numeric(as.character(FARE)), color=as.character(SURVIVED)),  \n        geom=\"point\",\n        #geom_params=list(),\n        stat=\"identity\", \n        #stat_params=list(), \n        #position=position_identity()\n        position=position_jitter(width=0.3, height=0)\n  )",
+    "created" : 1473375422119.000,
+    "dirty" : false,
+    "encoding" : "UTF-8",
+    "folds" : "",
+    "hash" : "795118692",
+    "id" : "2ECF4667",
+    "lastKnownWriteTime" : 1473372021,
+    "last_content_update" : 1473372021,
+    "path" : "C:/DataVisualization/DrCannata/RWorkshop/03 Grammar of Graphics with R & ggplot2/Titanic Analysis.R",
+    "project_path" : "DrCannata/RWorkshop/03 Grammar of Graphics with R & ggplot2/Titanic Analysis.R",
+    "properties" : {
+    },
+    "relative_order" : 1,
+    "source_on_save" : false,
+    "source_window" : "",
+    "type" : "r_source"
+}

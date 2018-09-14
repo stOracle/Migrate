@@ -1,0 +1,64 @@
+<?xml version = '1.0' encoding = 'UTF-8'?>
+<Table class="oracle.dbtools.crest.model.design.relational.Table" directorySegmentName="seg_0" id="E4C4F67D-7748-8C85-4E6A-7FE37FB763F2" name="sep28_match">
+<createdBy>Stephen</createdBy>
+<createdTime>2016-10-03 21:42:16 UTC</createdTime>
+<generatorID>EE5A4E77-C50D-A657-69F9-16E8094FB21A</generatorID>
+<ownerDesignName>Sep28TeamDataModel</ownerDesignName>
+<allowColumnReorder>false</allowColumnReorder>
+<existDependencyGenerateInDDl>true</existDependencyGenerateInDDl>
+<parsed>true</parsed>
+<columns itemClass="oracle.dbtools.crest.model.design.relational.Column">
+<Column name="match_id" id="F83F9D1A-063C-3F8D-B040-5B705B47A2E4">
+<createdBy>Stephen</createdBy>
+<createdTime>2016-10-03 21:42:16 UTC</createdTime>
+<generatorID>3E47E5C2-7E00-C5F5-F7C0-E1CC48467EF3</generatorID>
+<ownerDesignName>Sep28TeamDataModel</ownerDesignName>
+<useDomainConstraints>false</useDomainConstraints>
+<use>1</use>
+<logicalDatatype>LOGDT011</logicalDatatype>
+<ownDataTypeParameters>,,</ownDataTypeParameters>
+<autoIncrementColumn>true</autoIncrementColumn>
+<identityColumn>true</identityColumn>
+<autoIncrementCycle>false</autoIncrementCycle>
+</Column>
+<Column name="date" id="A30EBEAE-FE25-EC94-66B1-638C694E486B">
+<createdBy>Stephen</createdBy>
+<createdTime>2016-10-03 21:42:16 UTC</createdTime>
+<generatorID>00A36807-38F9-40ED-60DE-DDB1DD6B7E2B</generatorID>
+<ownerDesignName>Sep28TeamDataModel</ownerDesignName>
+<nullsAllowed>true</nullsAllowed>
+<useDomainConstraints>false</useDomainConstraints>
+<use>1</use>
+<logicalDatatype>LOGDT007</logicalDatatype>
+<ownDataTypeParameters>,,</ownDataTypeParameters>
+<autoIncrementCycle>false</autoIncrementCycle>
+</Column>
+<Column name="venue" id="F4FC9B12-A252-7CAA-3A8B-7C5AA915A287">
+<createdBy>Stephen</createdBy>
+<createdTime>2016-10-03 21:42:16 UTC</createdTime>
+<generatorID>9B8EF9B9-6890-C435-CAA3-83A9844E1D83</generatorID>
+<ownerDesignName>Sep28TeamDataModel</ownerDesignName>
+<nullsAllowed>true</nullsAllowed>
+<useDomainConstraints>false</useDomainConstraints>
+<use>1</use>
+<logicalDatatype>LOGDT024</logicalDatatype>
+<dataTypeSize>256</dataTypeSize>
+<ownDataTypeParameters>256,,</ownDataTypeParameters>
+<autoIncrementCycle>false</autoIncrementCycle>
+</Column>
+</columns>
+<indexes itemClass="oracle.dbtools.crest.model.design.relational.Index">
+<ind_PK_UK id="7B5F00CD-20B4-F594-22C7-818C3300383E" name="sep28_match_PK">
+<createdBy>Stephen</createdBy>
+<createdTime>2016-10-03 21:42:16 UTC</createdTime>
+<generatorID>569D42E8-B397-1D8D-C1BA-7C9ACFAF6915</generatorID>
+<ownerDesignName>Sep28TeamDataModel</ownerDesignName>
+<pk>true</pk>
+<indexState>Primary Constraint</indexState>
+<isSurrogateKey>false</isSurrogateKey>
+<indexColumnUsage>
+<colUsage columnID="F83F9D1A-063C-3F8D-B040-5B705B47A2E4"/>
+</indexColumnUsage>
+</ind_PK_UK>
+</indexes>
+</Table>

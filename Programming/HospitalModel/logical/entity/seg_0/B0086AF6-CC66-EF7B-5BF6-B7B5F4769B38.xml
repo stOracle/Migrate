@@ -1,0 +1,46 @@
+<?xml version = '1.0' encoding = 'UTF-8'?>
+<Entity class="oracle.dbtools.crest.model.design.logical.Entity" directorySegmentName="seg_0" id="B0086AF6-CC66-EF7B-5BF6-B7B5F4769B38" name="DBF_Part_Time">
+<createdBy>Stephen</createdBy>
+<createdTime>2016-11-30 01:00:46 UTC</createdTime>
+<ownerDesignName>HospitalModel</ownerDesignName>
+<engineerTo>
+<item key="AD605F01-77C0-DDF1-D65B-9F0A845D94CC" value="true"/>
+</engineerTo>
+<adequatelyNormalized>NO</adequatelyNormalized>
+<expectedVolumes>0</expectedVolumes>
+<fwdEngineeringStrategyName>Single Table</fwdEngineeringStrategyName>
+<growthPercent>0</growthPercent>
+<growthType>Year</growthType>
+<hierarchicalParent>DA6F9ADD-7426-B4E5-C4DC-D83CED4BD76C</hierarchicalParent>
+<maxVolumes>9999999</maxVolumes>
+<minVolumes>0</minVolumes>
+<normalForm>Third</normalForm>
+<attributes itemClass="oracle.dbtools.crest.model.design.logical.Attribute">
+<Attribute name="wage_hour" id="A1576589-0F2F-4BD6-3F56-C197BD5E8BFC">
+<createdBy>Stephen</createdBy>
+<createdTime>2016-11-30 01:01:07 UTC</createdTime>
+<ownerDesignName>HospitalModel</ownerDesignName>
+<engineerTo>
+<item key="AD605F01-77C0-DDF1-D65B-9F0A845D94CC" value="true"/>
+</engineerTo>
+<useDomainConstraints>false</useDomainConstraints>
+<use>1</use>
+<logicalDatatype>LOGDT011</logicalDatatype>
+<ownDataTypeParameters>,,</ownDataTypeParameters>
+</Attribute>
+</attributes>
+<identifiers itemClass="oracle.dbtools.crest.model.design.logical.CandidateKey">
+<identifier id="B5BAC348-2139-A333-D0E9-969F4478EFF4" name="DBF_Part_Time PK">
+<createdBy>Stephen</createdBy>
+<createdTime>2016-11-30 01:01:21 UTC</createdTime>
+<ownerDesignName>HospitalModel</ownerDesignName>
+<engineerTo>
+<item key="AD605F01-77C0-DDF1-D65B-9F0A845D94CC" value="true"/>
+</engineerTo>
+<pk>true</pk>
+<usedAttributes>
+<attributeRef>A1576589-0F2F-4BD6-3F56-C197BD5E8BFC</attributeRef>
+</usedAttributes>
+</identifier>
+</identifiers>
+</Entity>

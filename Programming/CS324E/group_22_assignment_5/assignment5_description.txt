@@ -1,0 +1,7 @@
+In this code, we improved on the previous project and simulate balls and cubes that more realistically interact with each other in terms of bounces, spins, and gravity. The simulation starts with a clump of cubes in the center. The user presses one of the keys 0-9 to generate balls of increasing mass. When these balls strike the clump, smaller cubes break off and scatter, interacting with each other, as well as the other balls. The user can press "P" at any time to pause the simulation, and can press "R" to reset it.
+
+Stephen Rauner added the ability to spawn balls by pressing the keys 0-9, and added the code to reset the simulation upon striking "R". He was also responsible for creating the initial cube clump and coding how the cubes would break off of the clump.
+
+Kenneth Small worked on incorporating realistic momentum-based bounces between the balls. He also implemented timers and the ability to change the speed of the simulation without affecting frame rate.
+
+Matthew Wimberley worked on improving the Cube class by improving cube-to-cube and cube-to-ball interactions, specifically how the cubes bounce off other objects and how they spin in response to collisions.

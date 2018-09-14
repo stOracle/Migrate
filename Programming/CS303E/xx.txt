@@ -1,0 +1,4 @@
+div = 1
+while div > 1405
+  if ((div ** 2) +((div + 1) ** 2) == 1405):
+    print ("The squares of", div, "and", (div + 1), "sum to 1405", end = ".")

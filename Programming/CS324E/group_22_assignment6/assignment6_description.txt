@@ -1,0 +1,23 @@
+The game is a timed maze game where the player can use items to assist in reaching the finish.
+Items include markers that help the player to nagivate, clocks that can be used to add more time,
+and bombs that can be used to destroy walls of the maze. A score based on time and items remaining 
+is awarded to a player who reaches the finish and "wins". No score is given to a player who runs out 
+of time and "loses".
+
+There are two separate supporting .py files, one for the GUI and one for the game engine.
+
+In the GUI file are classes for displaying windows, buttons, and text. The GUI allows for a 
+parent-child relation between GUI objects that allows certain GUI elements to be grouped together.
+
+In the game engine file are the necessary classes for displaying, updating, and managing interaction
+between game objects. The Actor class is the super class to most game objects. It also contains functions 
+that manage the game rules and makes use of the GUI to display certain game elements.
+
+The main .pyde file makes use of the other two .py files to build a game world and maintain constant checks
+on engine functions such as checking for collision. 
+
+Kenneth Small was responsible for implementing the GUI classes allowing for the creation of windows, buttons, and text.
+
+Matthew Wimberley was responsible for creation of the game engine and game functionality.
+
+Stephen Rauner was reponsible for creation and design of the maze and game world.

@@ -1,0 +1,18 @@
+Master Cube is what iterates and makes dim^2 cubes in a grid
+
+The mousePressed algorithm isn't too fancy - you can change if you'd like. 
+To move around, just hold down the mouse.
+
+So here is what I am trying to do and can't find out the problem:
+  cube gets called to update,
+  cube calls is_hit() to return how many things are hitting it. If you check the print statement, it is working.
+  however, in update, it always takes the second option and I don't know why. 
+    (for instance, switch the if and elif under Cube.update and the cubes will be red; i don't get it - 
+     probably an easy fix though)
+  So I want it to be green when it's being intersected, red when it's not. This will look cool if we made a 
+  really large master_cube of a lot of small cubes. 
+  Just stuck on the color changing part.
+  But, it actually recognizes getting hit!! haha
+
+good luck
+stephen 

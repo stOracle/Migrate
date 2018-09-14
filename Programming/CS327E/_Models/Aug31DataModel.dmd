@@ -1,0 +1,8 @@
+<?xml version = '1.0' encoding = 'UTF-8'?>
+<OSDM_Design class="oracle.dbtools.crest.model.design.Design" name="Aug31DataModel" id="96AB1EEE-802E-8518-76F0-809E8EE9C23E" version="3.5">
+<createdBy>pcannata</createdBy>
+<createdTime>2016-08-31 22:03:26 UTC</createdTime>
+<ownerDesignName>Aug31DataModel</ownerDesignName>
+<capitalNames>false</capitalNames>
+<designId>96AB1EEE-802E-8518-76F0-809E8EE9C23E</designId>
+</OSDM_Design>

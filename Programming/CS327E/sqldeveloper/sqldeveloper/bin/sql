@@ -1,0 +1,100 @@
+#!/bin/bash
+########################################################################
+#  (@)sql.sh
+#
+#  Copyright 2014 by Oracle Corporation,
+#  500 Oracle Parkway, Redwood Shores, California, 94065, U.S.A.
+#  All rights reserved.
+#
+#  This software is the confidential and proprietary information
+#  of Oracle Corporation.
+#
+# NAME	sql
+#
+# DESC 	This script starts SQL CL.
+#
+# AUTHOR bamcgill
+#
+# MODIFIED
+#	bamcgill	21/03/2014	Created
+#   bamcgill    18/07/2014  Simplified classpaths and args
+#   bamcgill    11/12/2014  Renamed script and contents
+#   bamcgill    16/01/2015  Renamed script and contents
+#   bamcgill    05/02/2015  Added STD_ARGS for adding headless and other args
+#   cdivilly    12/02/2015  Locate home folder via symlinks
+#   bamcgill    10/06/2015  Quote jarfiles for dirs with spaces
+########################################################################
+
+# resolve the folder where this script is located, traversing any symlinks
+PRG="$0"
+# loop while $PRG is a symlink
+while [ -h "$PRG" ] ; do
+  # figure out target of the symlink
+  ls=`ls -ld "$PRG"`
+  link=`expr "$ls" : '.*-> \(.*\)$'`
+  # traverse to the target of the symlink
+  if expr "$link" : '/.*' > /dev/null; then
+  PRG="$link"
+  else
+  PRG=`dirname "$PRG"`"/$link"
+  fi
+done
+
+#script is in ${SQL_HOME}/bin
+SQL_HOME=`dirname "$PRG"`/..
+
+# convert path to absolute canoncial path
+SQL_HOME=`cd "${SQL_HOME}" > /dev/null && pwd`
+
+
+if [[ -e $ORACLE_HOME/jdbc/lib/ojdbc.jar  ]]; then
+CUSTOM_JDBC="-Xbootclasspath/a:$ORACLE_HOME/jdbc/lib/ojdbc6.jar"
+fi
+
+
+STD_ARGS="-Djava.awt.headless=true -Dapple.awt.UIElement=true"
+JARFILE=$SQL_HOME/lib/oracle.sqldeveloper.sqlcl.jar
+ISDEBUG=0
+
+#
+# if we have a debug flag, we want to remove it, but also tell java
+# to switch on debugging. Hence we'll need a new array to pass to java
+#
+function processArgs {
+id=0;
+for var
+do
+    if [ $var != '-debug' ]
+    then
+    ARGS[id]=$var;
+    let id++;
+    else
+      ISDEBUG=1;
+    fi
+done
+if [ $ISDEBUG == 1 ]
+then
+    DEBUG="-agentlib:jdwp=transport=dt_socket,server=y,suspend=y,address=8000"
+else
+    DEBUG=""
+fi
+}
+
+function run {
+   java  $CUSTOM_JDBC $STD_ARGS $JAVA_OPTS $DEBUG -jar "$JARFILE" ${ARGS[*]}
+}
+
+echo "$@" | grep '\-debug' > /dev/null 2>&1 
+if test "m$?" != "m0"
+then
+#if it is not debug we can pass the arguments straight through 
+   java  $CUSTOM_JDBC $STD_ARGS $JAVA_OPTS $DEBUG -jar "$JARFILE" "$@"
+   exit $?
+fi
+
+# Process the arguments and see if we have are in debug mode
+processArgs "$@"
+#
+# if you want to see what is getting passed, uncomment the next line
+#echo "after process args ${ARGS[@]}"
+run

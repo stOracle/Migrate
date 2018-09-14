@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="UTF-8"?><module codename="org.netbeans.spi.quicksearch">
+    <module_version install_time="1432135793535" last="true" origin="Ant" specification_version="1.25">
+        <file crc="2420451830" name="config/Modules/org-netbeans-spi-quicksearch.xml"/>
+        <file crc="1406116885" name="modules/locale/org-netbeans-spi-quicksearch_de.jar"/>
+        <file crc="678299601" name="modules/locale/org-netbeans-spi-quicksearch_es.jar"/>
+        <file crc="1305730581" name="modules/locale/org-netbeans-spi-quicksearch_fr.jar"/>
+        <file crc="2973462132" name="modules/locale/org-netbeans-spi-quicksearch_it.jar"/>
+        <file crc="1819213906" name="modules/locale/org-netbeans-spi-quicksearch_ja.jar"/>
+        <file crc="956206866" name="modules/locale/org-netbeans-spi-quicksearch_ko.jar"/>
+        <file crc="101422798" name="modules/locale/org-netbeans-spi-quicksearch_pt_BR.jar"/>
+        <file crc="1661572379" name="modules/locale/org-netbeans-spi-quicksearch_zh_CN.jar"/>
+        <file crc="3937070787" name="modules/locale/org-netbeans-spi-quicksearch_zh_TW.jar"/>
+        <file crc="958012539" name="modules/org-netbeans-spi-quicksearch.jar"/>
+    </module_version>
+</module>

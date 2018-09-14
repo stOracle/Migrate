@@ -1,0 +1,9 @@
+'''
+Created on May 17, 2018
+
+@author: srauner
+'''
+
+header="Content-Type: text/html\n\n"
+
+print(header)

@@ -1,0 +1,5 @@
+<?xml version = '1.0' encoding = 'UTF-8'?>
+<oracle.dbtools.crest.model.design.logical.LogicalDesign>
+   <object objectType="main_view" objectID="C213EFC9-5422-978C-D742-4A334845F799" name="Logical" visible="true"/>
+   <object objectType="" objectID="dwsync" name="" seqName="_notes"/>
+</oracle.dbtools.crest.model.design.logical.LogicalDesign>

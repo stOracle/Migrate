@@ -1,0 +1,84 @@
+<?xml version = '1.0' encoding = 'UTF-8'?>
+<Table class="oracle.dbtools.crest.model.design.relational.Table" directorySegmentName="seg_0" id="8726349A-744B-3BB4-B1F0-C06D82A236C6" name="sep28_member">
+<createdBy>Stephen</createdBy>
+<createdTime>2016-10-03 21:42:16 UTC</createdTime>
+<generatorID>F378FF85-D44E-8461-960E-5499F745CDC2</generatorID>
+<ownerDesignName>Sep28TeamDataModel</ownerDesignName>
+<allowColumnReorder>false</allowColumnReorder>
+<existDependencyGenerateInDDl>true</existDependencyGenerateInDDl>
+<parsed>true</parsed>
+<columns itemClass="oracle.dbtools.crest.model.design.relational.Column">
+<Column name="member_id" id="016DB215-6647-A8B0-ECBF-F2B614E46343">
+<createdBy>Stephen</createdBy>
+<createdTime>2016-10-03 21:42:16 UTC</createdTime>
+<generatorID>474B89A8-52FD-7A4C-4827-5290670CFF50</generatorID>
+<ownerDesignName>Sep28TeamDataModel</ownerDesignName>
+<useDomainConstraints>false</useDomainConstraints>
+<use>1</use>
+<logicalDatatype>LOGDT011</logicalDatatype>
+<ownDataTypeParameters>,,</ownDataTypeParameters>
+<autoIncrementCycle>false</autoIncrementCycle>
+</Column>
+<Column name="name" id="8BBF014B-0EB3-ADD1-A035-EBF214F4C9F7">
+<createdBy>Stephen</createdBy>
+<createdTime>2016-10-03 21:42:16 UTC</createdTime>
+<generatorID>E6C8DE32-5E40-EE20-D4B1-0AB10AF12272</generatorID>
+<ownerDesignName>Sep28TeamDataModel</ownerDesignName>
+<nullsAllowed>true</nullsAllowed>
+<useDomainConstraints>false</useDomainConstraints>
+<use>1</use>
+<logicalDatatype>LOGDT024</logicalDatatype>
+<dataTypeSize>256</dataTypeSize>
+<ownDataTypeParameters>256,,</ownDataTypeParameters>
+<autoIncrementCycle>false</autoIncrementCycle>
+</Column>
+<Column name="address" id="6BA94CDD-BD4E-CECD-F80F-835C9E29230B">
+<createdBy>Stephen</createdBy>
+<createdTime>2016-10-03 21:42:16 UTC</createdTime>
+<generatorID>B68CAFB3-63DE-939D-9577-AA7879CF3DD8</generatorID>
+<ownerDesignName>Sep28TeamDataModel</ownerDesignName>
+<nullsAllowed>true</nullsAllowed>
+<useDomainConstraints>false</useDomainConstraints>
+<use>1</use>
+<logicalDatatype>LOGDT024</logicalDatatype>
+<dataTypeSize>256</dataTypeSize>
+<ownDataTypeParameters>256,,</ownDataTypeParameters>
+<autoIncrementCycle>false</autoIncrementCycle>
+</Column>
+<Column name="phone" id="6D984DC3-65B6-3924-F07F-FCB2E971988E">
+<createdBy>Stephen</createdBy>
+<createdTime>2016-10-03 21:42:16 UTC</createdTime>
+<generatorID>BD0DEEA0-CA76-B045-6C21-B2B85442C163</generatorID>
+<ownerDesignName>Sep28TeamDataModel</ownerDesignName>
+<nullsAllowed>true</nullsAllowed>
+<useDomainConstraints>false</useDomainConstraints>
+<use>1</use>
+<logicalDatatype>LOGDT024</logicalDatatype>
+<dataTypeSize>256</dataTypeSize>
+<ownDataTypeParameters>256,,</ownDataTypeParameters>
+<autoIncrementCycle>false</autoIncrementCycle>
+</Column>
+</columns>
+<indexes itemClass="oracle.dbtools.crest.model.design.relational.Index">
+<ind_PK_UK id="2FEBAC14-8D8D-7D75-3342-B3EB20C0DD74" name="sep28_member_PK">
+<createdBy>Stephen</createdBy>
+<createdTime>2016-10-03 21:42:16 UTC</createdTime>
+<generatorID>181AA2E4-4AEF-4BF4-8A35-8A1443483158</generatorID>
+<ownerDesignName>Sep28TeamDataModel</ownerDesignName>
+<pk>true</pk>
+<indexState>Primary Constraint</indexState>
+<isSurrogateKey>false</isSurrogateKey>
+<indexColumnUsage>
+<colUsage columnID="016DB215-6647-A8B0-ECBF-F2B614E46343"/>
+</indexColumnUsage>
+</ind_PK_UK>
+<ind_PK_UK id="A6FFEDC6-6050-3606-B57A-E27B7C442009" name="sep28_member__IDX">
+<createdBy>Stephen</createdBy>
+<createdTime>2016-10-03 21:42:16 UTC</createdTime>
+<ownerDesignName>Sep28TeamDataModel</ownerDesignName>
+<indexState>Unique Plain Index</indexState>
+<isSurrogateKey>false</isSurrogateKey>
+<relationGeneratorID>69F356C3-251E-B5CA-E2C7-005578877507</relationGeneratorID>
+</ind_PK_UK>
+</indexes>
+</Table>

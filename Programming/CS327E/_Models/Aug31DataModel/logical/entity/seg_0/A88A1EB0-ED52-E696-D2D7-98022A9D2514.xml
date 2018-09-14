@@ -1,0 +1,87 @@
+<?xml version = '1.0' encoding = 'UTF-8'?>
+<Entity class="oracle.dbtools.crest.model.design.logical.Entity" directorySegmentName="seg_0" id="A88A1EB0-ED52-E696-D2D7-98022A9D2514" name="Aug31_Phone">
+<createdBy>pcannata</createdBy>
+<createdTime>2016-08-31 22:08:55 UTC</createdTime>
+<ownerDesignName>Aug31DataModel</ownerDesignName>
+<engineerTo>
+<item key="7684AAB6-0F3A-7B89-F08F-DBD155C1CE5E" value="true"/>
+</engineerTo>
+<adequatelyNormalized>NO</adequatelyNormalized>
+<expectedVolumes>0</expectedVolumes>
+<fwdEngineeringStrategyName>Single Table</fwdEngineeringStrategyName>
+<growthPercent>0</growthPercent>
+<growthType>Year</growthType>
+<maxVolumes>9999999</maxVolumes>
+<minVolumes>0</minVolumes>
+<normalForm>Third</normalForm>
+<attributes itemClass="oracle.dbtools.crest.model.design.logical.Attribute">
+<Attribute name="phone_id" id="102DBF8B-F9A9-26AB-9463-216C630CC49A">
+<createdBy>pcannata</createdBy>
+<createdTime>2016-08-31 22:09:25 UTC</createdTime>
+<ownerDesignName>Aug31DataModel</ownerDesignName>
+<engineerTo>
+<item key="7684AAB6-0F3A-7B89-F08F-DBD155C1CE5E" value="true"/>
+</engineerTo>
+<useDomainConstraints>false</useDomainConstraints>
+<use>1</use>
+<logicalDatatype>LOGDT011</logicalDatatype>
+<ownDataTypeParameters>,,</ownDataTypeParameters>
+</Attribute>
+<Attribute name="type" id="1CAB0C71-E230-F94C-D565-85526C4FB54A">
+<createdBy>pcannata</createdBy>
+<createdTime>2016-08-31 22:09:56 UTC</createdTime>
+<ownerDesignName>Aug31DataModel</ownerDesignName>
+<engineerTo>
+<item key="7684AAB6-0F3A-7B89-F08F-DBD155C1CE5E" value="true"/>
+</engineerTo>
+<nullsAllowed>true</nullsAllowed>
+<useDomainConstraints>false</useDomainConstraints>
+<use>1</use>
+<logicalDatatype>LOGDT024</logicalDatatype>
+<dataTypeSize>256</dataTypeSize>
+<ownDataTypeParameters>256,,</ownDataTypeParameters>
+</Attribute>
+<Attribute name="phone" id="DA1BFC2B-2684-B22F-4EAF-1009586F9C19">
+<createdBy>pcannata</createdBy>
+<createdTime>2016-08-31 22:10:15 UTC</createdTime>
+<ownerDesignName>Aug31DataModel</ownerDesignName>
+<engineerTo>
+<item key="7684AAB6-0F3A-7B89-F08F-DBD155C1CE5E" value="true"/>
+</engineerTo>
+<nullsAllowed>true</nullsAllowed>
+<useDomainConstraints>false</useDomainConstraints>
+<use>1</use>
+<logicalDatatype>LOGDT024</logicalDatatype>
+<dataTypeSize>256</dataTypeSize>
+<ownDataTypeParameters>256,,</ownDataTypeParameters>
+</Attribute>
+<Attribute name="person_id" id="BFA09D4D-C8A2-EEA1-EE56-3ABE52B9EF4D">
+<createdBy>pcannata</createdBy>
+<createdTime>2016-08-31 22:11:41 UTC</createdTime>
+<generatorID>08A18F8C-BE4E-B02B-7DD0-ED544D8D7341</generatorID>
+<ownerDesignName>Aug31DataModel</ownerDesignName>
+<engineerTo>
+<item key="7684AAB6-0F3A-7B89-F08F-DBD155C1CE5E" value="true"/>
+</engineerTo>
+<referedAttribute>F1B7E2B6-476D-115E-4853-59B0262DE816</referedAttribute>
+<useDomainConstraints>false</useDomainConstraints>
+<use>1</use>
+<logicalDatatype>LOGDT011</logicalDatatype>
+<ownDataTypeParameters>,,</ownDataTypeParameters>
+</Attribute>
+</attributes>
+<identifiers itemClass="oracle.dbtools.crest.model.design.logical.CandidateKey">
+<identifier id="2B145410-E886-9231-264F-92CBD20D7D38" name="Aug31_Phone PK">
+<createdBy>pcannata</createdBy>
+<createdTime>2016-08-31 22:09:48 UTC</createdTime>
+<ownerDesignName>Aug31DataModel</ownerDesignName>
+<engineerTo>
+<item key="7684AAB6-0F3A-7B89-F08F-DBD155C1CE5E" value="true"/>
+</engineerTo>
+<pk>true</pk>
+<usedAttributes>
+<attributeRef>102DBF8B-F9A9-26AB-9463-216C630CC49A</attributeRef>
+</usedAttributes>
+</identifier>
+</identifiers>
+</Entity>

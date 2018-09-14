@@ -1,0 +1,59 @@
+<?xml version = '1.0' encoding = 'UTF-8'?>
+<Entity class="oracle.dbtools.crest.model.design.logical.Entity" directorySegmentName="seg_0" id="EDA73808-6608-703D-E4D2-EF4BC4A2AFF4" name="Aug31_Person">
+<createdBy>pcannata</createdBy>
+<createdTime>2016-08-31 22:05:39 UTC</createdTime>
+<ownerDesignName>Aug31DataModel</ownerDesignName>
+<engineerTo>
+<item key="7684AAB6-0F3A-7B89-F08F-DBD155C1CE5E" value="true"/>
+</engineerTo>
+<adequatelyNormalized>NO</adequatelyNormalized>
+<expectedVolumes>0</expectedVolumes>
+<fwdEngineeringStrategyName>Single Table</fwdEngineeringStrategyName>
+<growthPercent>0</growthPercent>
+<growthType>Year</growthType>
+<maxVolumes>9999999</maxVolumes>
+<minVolumes>0</minVolumes>
+<normalForm>Third</normalForm>
+<attributes itemClass="oracle.dbtools.crest.model.design.logical.Attribute">
+<Attribute name="person_id" id="F1B7E2B6-476D-115E-4853-59B0262DE816">
+<createdBy>pcannata</createdBy>
+<createdTime>2016-08-31 22:07:14 UTC</createdTime>
+<ownerDesignName>Aug31DataModel</ownerDesignName>
+<engineerTo>
+<item key="7684AAB6-0F3A-7B89-F08F-DBD155C1CE5E" value="true"/>
+</engineerTo>
+<useDomainConstraints>false</useDomainConstraints>
+<use>1</use>
+<logicalDatatype>LOGDT011</logicalDatatype>
+<ownDataTypeParameters>,,</ownDataTypeParameters>
+</Attribute>
+<Attribute name="name" id="37226F4F-E511-BEC5-A333-5014A638E7B0">
+<createdBy>pcannata</createdBy>
+<createdTime>2016-08-31 22:08:07 UTC</createdTime>
+<ownerDesignName>Aug31DataModel</ownerDesignName>
+<engineerTo>
+<item key="7684AAB6-0F3A-7B89-F08F-DBD155C1CE5E" value="true"/>
+</engineerTo>
+<nullsAllowed>true</nullsAllowed>
+<useDomainConstraints>false</useDomainConstraints>
+<use>1</use>
+<logicalDatatype>LOGDT024</logicalDatatype>
+<dataTypeSize>256</dataTypeSize>
+<ownDataTypeParameters>256,,</ownDataTypeParameters>
+</Attribute>
+</attributes>
+<identifiers itemClass="oracle.dbtools.crest.model.design.logical.CandidateKey">
+<identifier id="C825DE02-5C27-B634-5965-6F2D2B3863F0" name="Aug31_Person PK">
+<createdBy>pcannata</createdBy>
+<createdTime>2016-08-31 22:07:33 UTC</createdTime>
+<ownerDesignName>Aug31DataModel</ownerDesignName>
+<engineerTo>
+<item key="7684AAB6-0F3A-7B89-F08F-DBD155C1CE5E" value="true"/>
+</engineerTo>
+<pk>true</pk>
+<usedAttributes>
+<attributeRef>F1B7E2B6-476D-115E-4853-59B0262DE816</attributeRef>
+</usedAttributes>
+</identifier>
+</identifiers>
+</Entity>

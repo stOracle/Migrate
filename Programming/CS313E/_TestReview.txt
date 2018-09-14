@@ -1,0 +1,82 @@
+test 3
+-------------------------------------------------------------
+5 Questions
+
+theres a block of 6, do 3:
+- coding questions
+- recursion
+- trees
+- lists
+
+block of 3, choose 1:
+- conceptual type
+- fill in chart
+- dynamic programming
+	- revisit coin sorting, rod cutting, etc.
+
+#10
+- single source, shortest path, dijakstra's algorithm
+- return table
+- he will give directed graph
+- *find shortest path to everywhere from X*
+	- in notes
+
+Extra credit:
+- Prim's and Kruskal's Minimal Spanning Tree
+
+
+-------------------------------------------------------------
+Review
+-------------------------------------------------------------
+
+You should know the following sorting algorithms and their efficiency 
+  - selection sort, bubble sort, insertion sort, merge sort and
+  quick sort. You should be able to trace each of the algorithms
+  for a given array.
+
+* You should be able to apply binary search and merge algorithms.
+
+* You should be familiar with different classes of algorithms -
+  brute force, greedy, divide and conquer, and dynamic programming.
+
+* Using recursion, you should be able to do permutation and
+  combination and back tracking.
+
+* You should know the algorithms that we covered using the following 
+  data structures - stacks, queues, linked lists and binary search 
+  trees. You should be able to modify the data structures according
+  to specifications - like creating a doubly linked list.
+
+* You should be able to use a hash function and hash using single
+  probing, quadratic probing, and double hashing.
+
+* You should be able to add to the functionality of the BinarySearchTree
+  class, modify the BinarySearchTree class, or apply the BinarySearchTree
+  class to solve simple problems.
+
+* You should be able to trace the algorithms to create a heap, add
+  or delete nodes from a heap and use heap sort to sort an array.
+
+* Show how to balance a binary bearch tree to create an AVL tree. 
+  Show how to get the balance factor in a binary search tree and
+  keep the tree balanced after insertions or deletions.
+
+* Given an infix arithmetic expression draw the binary expression
+  tree representation of it. Show how to get the prefix and postfix
+  expressions from that tree.
+
+* You must be able to obtain the adjacency matrix for a given graph.
+  Or given the adjacency matrix build the graph.
+
+* You must be familiar and be able the trace the following graph
+  algorithms - Depth First Search (DFS), Breadth First Search (BFS),
+  Topological Sort, Minimum Cost Spanning Tree using Kruskal's and
+  Prim's algorithm, and Dijkstra's Single Source Shortest Path 
+  algorithm. Determine if there is an Eulerian path in a graph and
+  trace that Eulerian path. 
+
+* Given the description of a new data structure you should be able 
+  to write the class to represent it.
+
+* You may bring two cheat sheets (8.5" x 11") with you that have hand 
+  written notes on both sides of the paper.

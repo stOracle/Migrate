@@ -1,0 +1,29 @@
+-- VERSION_5
+-- START DISKCACHE_2
+C:\Users\srauner\eclipse-workspace\.metadata\.plugins\org.eclipse.core.resources\.projects\helloworld\com.python.pydev.analysis\v2_indexcache
+helloworld|1525725625303167000|C:\Users\srauner\eclipse-workspace\helloworld\helloworld.py
+htbin.myweb|1526596767942559000|C:\Users\srauner\eclipse-workspace\helloworld\htbin\myweb.py
+knight|1526590837061178000|C:\Users\srauner\eclipse-workspace\helloworld\knight.py
+-- END DISKCACHE
+-- START DICTIONARY
+6
+6=helloworld
+5=C:\Users\srauner\eclipse-workspace\helloworld\helloworld.py
+1=C:\Users\srauner\eclipse-workspace\helloworld\htbin\myweb.py
+3=C:\Users\srauner\eclipse-workspace\helloworld\knight.py
+2=htbin.myweb
+4=knight
+-- END DICTIONARY
+-- START TREE 1
+7
+hea|1|header!1^7#1*19@
+mai|2|main!3^143#5*34@main!5^7#5*50@
+mak|1|makeBoard!3^9#5*34@
+mov|1|move!3^60#5*34@
+opt|1|options!3^32#5*34@
+pag|1|page!1^21#1*19@
+pri|1|printBoard!3^19#5*34@
+-- END TREE
+-- START TREE 2
+0
+-- END TREE

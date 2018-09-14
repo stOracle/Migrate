@@ -1,0 +1,30 @@
+The animation included in this folder displays a slowly falling set of cubes which can gain
+velocity and rotation by colliding with spheres given preset velocities. Collisions will
+occur between wall and object for all objects and between cubes and spheres only. Gravity
+is implemented for all objects. The eventual steady state of the animation will be all
+objects bouncing around inside the box with spheres continuously modifying the cubes' 
+properties via collision. Clicking the screen and dragging allows changing of the camera view.
+
+As for the classes in the project, there is a master Figure class, a Ball class, a Cube class,
+and a Point class. The figure class contains many of the basic physical attributes of real world
+objects such as position, rotation, etc, and contains many methods for modifying these attributes.
+The Ball and Cube classes inherit this class, and they themselves contain the necessary methods
+for eventual display on the screen. The point class is used in conjunction with the positions
+of Ball and Cube objects as a simple method to detect collision (testing difference between 
+center points). 
+
+Fully implementing the collision (including the modification of object properties due to collision)
+between the ball and cube objects was probably the only challenge that stuck out any more than 
+general debugging of minor things. 
+
+Kenneth Small did the majority of the framework coding, that is, setting up the master Figure Class,
+primitive forms of the Cube and Ball classes, and collision detection for the boundaries of the box. 
+
+Stephen Rauner worked mostly with the Cube class and collision detection between the Cube and
+Ball classes. He also setup the visuals for the box boundary, the camera control, and implemented
+the cubeset into the scene.
+
+Matthew Wimberley worked mostly with the Ball class and the final mechanics and animations of the
+final product. This included extending collision detection into a visual form via changing
+the properties of objects after collision. 
+

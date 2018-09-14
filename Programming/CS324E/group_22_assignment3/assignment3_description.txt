@@ -1,0 +1,68 @@
+------------------------------------------------------------
+python text extraction and Wordle
+------------------------------------------------------------
+
+Kenneth Small worked on the extract_words.py python script. It reads in the Sherlock.txt text file 
+and outputs allwords.txt, uniquewords.txt, and wordfrequency.txt as required, as well as 
+another text file called rawFreqs.txt which lists alphabetically all the distinct words found 
+in allwords.txt along with their number of occurences throughout the text.
+
+------------------------------------------------------------
+a3_novelvisualization
+------------------------------------------------------------
+
+The a3_novelvisualization.pde file randomly draws words to a canvas from the unqiquewords.txt
+file. A word can only appear once, and the program will continue randomizing the next word
+if there is too much blank space left at the end of a line before moving on to the next line.
+This is to make the empty space more consistent on the right side and to have more of the 
+window filled. 
+
+A font size of 30 was chosen so that words would be easily readible while still allowing
+for atleast 3-4 words per line. The font type chosen was Trajan Pro 3, and was chosen due
+to it meshing well with the current colors and due to being a good middle ground between
+fancy and casual. There are 4 font colors due to the first 3 being chosen having a bit too
+much darkness overall. The orange was added as a 4th color to breathe a bit more life into
+the words. Color selection is done randomly on a per word basis to keep the color distribution
+balanced in the overall image. 
+
+When the canvas is clicked, a new random selection of words will appear. 
+
+Matthew Wimberley
+mcw2496
+
+------------------------------------------------------------
+a3_wordfrequency
+------------------------------------------------------------
+
+def pull() pulls in all the information from the file "wordfrequency.txt" and 
+sorts it into a frequency dictionary and a frequency list.
+
+def setup() establishes the size and the background color
+
+def draw() begins by utilizing pull() to obtain the freq_list and freq_dict
+num_freq is the amount of different frequencies we are dealing with.
+
+the for loop iterates through every frequency in the freq list.
+  it uses the dictionary to find the word_count for the i'th frequency in the
+    freq list.
+  after it establishes the width of every sector on the seashell. I set this value
+    to an arbitrary 50 degrees so the graph would look better. This causes the smaller
+      sectors to overlap towards the end. However, the arc() function is in the PIE mode 
+        so you can distinguish the smaller sectors.
+  the logic loop is intended to make an order of 3 different colors which alternate as
+    i iterates. 
+  lastly, the arc function draws the sectors:
+    it sets the origin of the sector in the middle, it uses word_metric to establish
+      how far from the center the sector will reach, and finally sets the angle
+        based on i * width_sector.
+
+
+
+We noticed the frequency has a logarithmic behavior, so we thought it would be interesting
+to portray the visual as a seashell, which naturally has a logarithmic curve.
+The distance the ith sector is from the center represents the amount of words have 
+a frequency of freq_list[i].
+As the spiral is built, the word count for each frequency shrinks, as does the curve. 
+
+Stephen Rauner
+STR428

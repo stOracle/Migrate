@@ -1,0 +1,23 @@
+'''
+Created on Apr 17, 2018
+
+@author: srauner
+'''
+import random
+def main():
+    
+    hand = [[4,'h'], [3,'s']]
+    score = hand[0][0] + hand[1][0]
+    
+    print("hand = ", hand)
+    print()
+    for i in range(len(hand)):
+        print(str(hand[i]))
+    print()
+    print("hand[0] = ", hand[0])
+    print("hand[0][0] = ", hand[0][0])
+    print(score)
+    
+    
+    
+main()

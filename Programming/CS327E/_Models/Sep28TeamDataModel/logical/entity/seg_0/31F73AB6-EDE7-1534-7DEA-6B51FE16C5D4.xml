@@ -1,0 +1,73 @@
+<?xml version = '1.0' encoding = 'UTF-8'?>
+<Entity class="oracle.dbtools.crest.model.design.logical.Entity" directorySegmentName="seg_0" id="31F73AB6-EDE7-1534-7DEA-6B51FE16C5D4" name="sep28_mPos">
+<createdBy>Stephen</createdBy>
+<createdTime>2016-10-03 21:38:49 UTC</createdTime>
+<ownerDesignName>Sep28TeamDataModel</ownerDesignName>
+<engineerTo>
+<item key="F956A7B7-3E14-319C-2691-CF7461533336" value="true"/>
+</engineerTo>
+<adequatelyNormalized>NO</adequatelyNormalized>
+<expectedVolumes>0</expectedVolumes>
+<fwdEngineeringStrategyName>Single Table</fwdEngineeringStrategyName>
+<growthPercent>0</growthPercent>
+<growthType>Year</growthType>
+<maxVolumes>9999999</maxVolumes>
+<minVolumes>0</minVolumes>
+<normalForm>Third</normalForm>
+<attributes itemClass="oracle.dbtools.crest.model.design.logical.Attribute">
+<Attribute name="mPos_id" id="5F7E7DA4-D0CA-8E92-D371-B85987B08DD2">
+<createdBy>Stephen</createdBy>
+<createdTime>2016-10-03 21:39:01 UTC</createdTime>
+<ownerDesignName>Sep28TeamDataModel</ownerDesignName>
+<engineerTo>
+<item key="F956A7B7-3E14-319C-2691-CF7461533336" value="true"/>
+</engineerTo>
+<useDomainConstraints>false</useDomainConstraints>
+<use>1</use>
+<logicalDatatype>LOGDT011</logicalDatatype>
+<ownDataTypeParameters>,,</ownDataTypeParameters>
+</Attribute>
+<Attribute name="member_id" id="BE7B29CD-C33C-268A-A504-94052854C84A">
+<createdBy>Stephen</createdBy>
+<createdTime>2016-10-03 21:41:43 UTC</createdTime>
+<generatorID>4EBD7E2A-5BAF-1822-05EA-995AD310C0BB</generatorID>
+<ownerDesignName>Sep28TeamDataModel</ownerDesignName>
+<engineerTo>
+<item key="F956A7B7-3E14-319C-2691-CF7461533336" value="true"/>
+</engineerTo>
+<referedAttribute>474B89A8-52FD-7A4C-4827-5290670CFF50</referedAttribute>
+<useDomainConstraints>false</useDomainConstraints>
+<use>1</use>
+<logicalDatatype>LOGDT011</logicalDatatype>
+<ownDataTypeParameters>,,</ownDataTypeParameters>
+</Attribute>
+<Attribute name="position_id" id="A526BD13-C9A5-FBD3-D1C3-B01206F1F655">
+<createdBy>Stephen</createdBy>
+<createdTime>2016-10-03 21:41:50 UTC</createdTime>
+<generatorID>74255452-5117-3305-872A-5C9B53609107</generatorID>
+<ownerDesignName>Sep28TeamDataModel</ownerDesignName>
+<engineerTo>
+<item key="F956A7B7-3E14-319C-2691-CF7461533336" value="true"/>
+</engineerTo>
+<referedAttribute>F2FB0880-CE4C-1FB2-AB29-3FA651EB095D</referedAttribute>
+<useDomainConstraints>false</useDomainConstraints>
+<use>1</use>
+<logicalDatatype>LOGDT011</logicalDatatype>
+<ownDataTypeParameters>,,</ownDataTypeParameters>
+</Attribute>
+</attributes>
+<identifiers itemClass="oracle.dbtools.crest.model.design.logical.CandidateKey">
+<identifier id="5C2D0E30-9BAA-4368-C526-25522271CECC" name="sep28_mPos PK">
+<createdBy>Stephen</createdBy>
+<createdTime>2016-10-03 21:39:13 UTC</createdTime>
+<ownerDesignName>Sep28TeamDataModel</ownerDesignName>
+<engineerTo>
+<item key="F956A7B7-3E14-319C-2691-CF7461533336" value="true"/>
+</engineerTo>
+<pk>true</pk>
+<usedAttributes>
+<attributeRef>5F7E7DA4-D0CA-8E92-D371-B85987B08DD2</attributeRef>
+</usedAttributes>
+</identifier>
+</identifiers>
+</Entity>

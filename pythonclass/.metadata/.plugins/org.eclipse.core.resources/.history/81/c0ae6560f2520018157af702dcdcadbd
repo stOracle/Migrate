@@ -1,0 +1,153 @@
+# code to get a knight around a chess board without repeating a square
+# given any square
+# ------------------------------------
+
+import random
+
+# initializes the board 
+def makeBoard(x, y):
+    board = []
+    for i in range(8):
+        row = []
+        for j in range(8):
+            if (i == x) and (j == y):
+                row.append([i, j, 1])
+            else:
+                row.append([i, j, 0])
+        board.append(row)
+    return board
+
+def gameWon(board):
+    for i in range(len(board)):
+        for j in range(len(board[i])):
+            if board[i][j][2] == 0:
+                return False
+    return True
+
+# prints the board in a easy to understand layout
+def printBoard(n):
+    board_str = ""
+    for i in range(len(n[0])):
+        st = ""
+        for j in range(len(n[i])):
+            st += "| {} ".format(n[i][j][2])
+        st += "|\n"
+        board_str += st
+    print(board_str)
+    return None
+
+# given coordinates (x, y), this function will 
+# give you a list of all coordinates possible to move to
+def options(x, y, hist):
+    options = []
+    hard = (-2, -1, 2, 1)
+    for i in range(0, 4):
+        if (x + hard[i] < 0) or (x + hard[i] > 7):
+            continue
+        else:
+            if i % 2 == 0:
+                if not ((y - 1 < 0) or (y + 1 > 7)):
+                    options.append([x + hard[i], y - 1])
+                    options.append([x + hard[i], y + 1])
+                elif (y - 1 < 0):
+                    options.append([x + hard[i], y + 1])
+                elif (y + 1 > 7):
+                    options.append([x + hard[i], y - 1])
+                else:
+                    continue
+            else:
+                if not ((y - 2 < 0) or (y + 2 > 7)):
+                    options.append([x + hard[i], y - 2])
+                    options.append([x + hard[i], y + 2])
+                elif (y - 2 < 0):
+                    options.append([x + hard[i], y + 2])
+                elif (y + 2 > 7):
+                    options.append([x + hard[i], y - 2])
+                else:
+                    continue
+                
+    bad = []
+    for i in range(len(options)):
+        if hist[options[i][0]][options[i][1]][2] == 1:
+            bad.append(i)
+    bad.reverse()
+    for i in range(len(bad)):
+        options.pop(bad[i])
+    return options
+
+# given coordinates (x, y), this function will pass to the next appropriate move
+def move(x, y, hist, level):
+    moves = options(x, y, hist)
+    # write game won!
+    if gameWon(hist):
+        print ("YOU DID IT")
+        return True
+    elif len(moves) == 0:
+        hist[x][y][2] = 0
+        #print("Start!")
+        print("no options for ({}, {})! Going Back!".format(x, y))
+        print("-----------------------------------")
+        print("-------END OF PATH (LEVEL: {})-----".format(level))
+        print("-----------------------------------")
+        return False
+    else:
+        hist[x][y][2] = 1
+        #for i in range(len(moves)):
+            #print("\nStart!")
+            #print("Level = {}".format(level))
+            #print("options = {}".format(moves))
+            #print("choice = {}".format(choice))
+            #print("moving to ({}, {})!".format(moves[i][0], moves[i][1]))
+                       
+            #printBoard(hist)
+            #print("End!")
+            #if (move(moves[i][0], moves[i][1], hist, level + 1)): 
+                #return True
+        #hist[x][y][2] = 0
+        #return True
+    
+        while len(moves) > 0:
+            print("\nStart!")
+            print("Level = {}".format(level))
+            print("options = {}".format(moves))
+            #print("choice = {}".format(choice))
+            print("moving to ({}, {})!".format(moves[-1][0], moves[-1][1]))
+            if (move(moves[-1][0], moves[-1][1]), hist):
+                return True
+            moves.pop()
+        
+        hist[x][y][2] = 0    
+        return False
+
+        
+        #choice = random.randint(0, len(moves) - 1)
+        #print("\nStart!")
+        #print("options = {}".format(moves))
+        #print("choice = {}".format(choice))
+        #print("moving to ({}, {})!".format(moves[choice][0], moves[choice][1]))
+        #print("End!")
+        
+        # you need to make a pop that gets rid of the branches as you try them 
+        # this one tried random twice, getting the same randint and gave up when it had more options
+        #printBoard(hist)
+        #move(moves[choice][0], moves[choice][1], hist)        
+
+def main():
+    print("\nLet's solve Knights Journey!\n")
+    start_x = 0
+    start_y = 0
+    choice = input(str("Our starting position will be ({}, {}). Ready?".format(start_x, start_y)))
+    while choice != 'y':
+        choice = input(str("Our starting position will be ({}, {}). Ready?".format(start_x, start_y)))
+    
+    board = makeBoard(start_x, start_y)
+    print()
+    
+    
+    
+    
+    x = move(start_x, start_y, board, 0)
+    print(x)
+    print("out")
+    
+main() 

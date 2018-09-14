@@ -1,0 +1,27 @@
+'''
+Created on Apr 17, 2018
+
+@author: srauner
+'''
+import random
+def main():
+    
+    num = random.randint(1,100)
+    correct = False
+    
+    while not correct:
+        x = int(input("Please enter a number between 1 and 100: "))
+        
+        if (x == num):
+            print('Correct!')
+            correct = True
+        elif (x > num) and (x <= 100):
+            print ('Your number is too high!')
+        elif (x < num) and (x >= 0):
+            print ('Your number is too low!')
+        else:
+            print ('Your number is outside the range')
+    
+    
+    
+main()

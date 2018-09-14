@@ -1,0 +1,163 @@
+<?xml version = '1.0' encoding = 'UTF-8'?>
+<Table class="oracle.dbtools.crest.model.design.relational.Table" directorySegmentName="seg_0" id="B2A7C354-DB41-0BF7-4BBF-1B5155CBFF96" name="oct10_person">
+<createdBy>pcannata</createdBy>
+<createdTime>2016-10-10 22:13:13 UTC</createdTime>
+<generatorID>115B2F04-E8F3-87F2-DCF4-8723825EB4FC</generatorID>
+<ownerDesignName>Oct10PersonDataModel</ownerDesignName>
+<allowColumnReorder>false</allowColumnReorder>
+<existDependencyGenerateInDDl>true</existDependencyGenerateInDDl>
+<parsed>true</parsed>
+<columns itemClass="oracle.dbtools.crest.model.design.relational.Column">
+<Column name="person_id" id="78D5916E-187E-C3D3-6D0B-7D8DB2924544">
+<createdBy>pcannata</createdBy>
+<createdTime>2016-10-10 22:13:13 UTC</createdTime>
+<generatorID>62707BC0-0710-CB19-29A7-885291FBDBB7</generatorID>
+<ownerDesignName>Oct10PersonDataModel</ownerDesignName>
+<useDomainConstraints>false</useDomainConstraints>
+<use>1</use>
+<logicalDatatype>LOGDT011</logicalDatatype>
+<ownDataTypeParameters>,,</ownDataTypeParameters>
+<autoIncrementCycle>false</autoIncrementCycle>
+</Column>
+<Column name="name" id="8D18524C-FECD-928B-5C88-BE9D38DC0AB8">
+<createdBy>pcannata</createdBy>
+<createdTime>2016-10-10 22:13:13 UTC</createdTime>
+<generatorID>3E3F50BE-CBC9-67F0-AA0B-194F9B14C0BC</generatorID>
+<ownerDesignName>Oct10PersonDataModel</ownerDesignName>
+<nullsAllowed>true</nullsAllowed>
+<useDomainConstraints>false</useDomainConstraints>
+<use>1</use>
+<logicalDatatype>LOGDT024</logicalDatatype>
+<dataTypeSize>256</dataTypeSize>
+<ownDataTypeParameters>256,,</ownDataTypeParameters>
+<autoIncrementCycle>false</autoIncrementCycle>
+</Column>
+<Column name="age" id="31983456-31E4-DFAF-F456-CC684D234A86">
+<createdBy>pcannata</createdBy>
+<createdTime>2016-10-10 22:13:13 UTC</createdTime>
+<generatorID>0C85E1E9-BC18-1E73-4FC5-1659A1406313</generatorID>
+<ownerDesignName>Oct10PersonDataModel</ownerDesignName>
+<nullsAllowed>true</nullsAllowed>
+<useDomainConstraints>false</useDomainConstraints>
+<use>1</use>
+<logicalDatatype>LOGDT011</logicalDatatype>
+<ownDataTypeParameters>,,</ownDataTypeParameters>
+<autoIncrementCycle>false</autoIncrementCycle>
+</Column>
+<Column name="sal" id="9E2EC6ED-7BC2-47BE-82CF-BC07A0818489">
+<createdBy>pcannata</createdBy>
+<createdTime>2016-10-10 22:13:13 UTC</createdTime>
+<generatorID>007DA0D0-5C96-3A16-DF8B-D09E35C36048</generatorID>
+<ownerDesignName>Oct10PersonDataModel</ownerDesignName>
+<nullsAllowed>true</nullsAllowed>
+<useDomainConstraints>false</useDomainConstraints>
+<use>1</use>
+<logicalDatatype>LOGDT011</logicalDatatype>
+<ownDataTypeParameters>,,</ownDataTypeParameters>
+<autoIncrementCycle>false</autoIncrementCycle>
+</Column>
+<Column name="org" id="A5DFF47A-192E-8719-25CF-A4B8665FA184">
+<createdBy>pcannata</createdBy>
+<createdTime>2016-10-10 22:13:13 UTC</createdTime>
+<generatorID>B74FB5F9-49A5-8BBF-E917-4E20BD2E7CED</generatorID>
+<ownerDesignName>Oct10PersonDataModel</ownerDesignName>
+<nullsAllowed>true</nullsAllowed>
+<useDomainConstraints>false</useDomainConstraints>
+<use>1</use>
+<logicalDatatype>LOGDT024</logicalDatatype>
+<dataTypeSize>256</dataTypeSize>
+<ownDataTypeParameters>256,,</ownDataTypeParameters>
+<autoIncrementCycle>false</autoIncrementCycle>
+</Column>
+<Column name="type" id="AED484EC-713A-8A35-DE4F-566DF98B6D4B">
+<createdBy>pcannata</createdBy>
+<createdTime>2016-10-10 22:13:13 UTC</createdTime>
+<ownerDesignName>Oct10PersonDataModel</ownerDesignName>
+<constraintName>CH_INH_oct10_person</constraintName>
+<useDomainConstraints>false</useDomainConstraints>
+<use>1</use>
+<logicalDatatype>LOGDT024</logicalDatatype>
+<dataTypeSize>12</dataTypeSize>
+<listOfValues>
+<valueDef value="oct10_emp" description="entity oct10_emp"/>
+<valueDef value="oct10_mgr" description="entity oct10_mgr"/>
+<valueDef value="oct10_person" description="entity oct10_person"/>
+</listOfValues>
+<ownDataTypeParameters>12,,</ownDataTypeParameters>
+<autoIncrementCycle>false</autoIncrementCycle>
+<isDiscriminatorColumn>true</isDiscriminatorColumn>
+<dependentColumns>
+<dependentColumn class="oracle.dbtools.crest.model.design.relational.Column$DependentColumnDescriptor">
+<columnID>8D18524C-FECD-928B-5C88-BE9D38DC0AB8</columnID>
+<dependAsMandatory>false</dependAsMandatory>
+<dependOnValue>true</dependOnValue>
+<discriminatorValue>oct10_person</discriminatorValue>
+<id>5D9A3AAA-7275-68AB-8878-6B21AC2C65CC</id>
+</dependentColumn>
+<dependentColumn class="oracle.dbtools.crest.model.design.relational.Column$DependentColumnDescriptor">
+<columnID>31983456-31E4-DFAF-F456-CC684D234A86</columnID>
+<dependAsMandatory>false</dependAsMandatory>
+<dependOnValue>true</dependOnValue>
+<discriminatorValue>oct10_person</discriminatorValue>
+<id>D5E83C49-E3AB-748D-6898-F6F414DAEB2D</id>
+</dependentColumn>
+<dependentColumn class="oracle.dbtools.crest.model.design.relational.Column$DependentColumnDescriptor">
+<columnID>9E2EC6ED-7BC2-47BE-82CF-BC07A0818489</columnID>
+<dependAsMandatory>false</dependAsMandatory>
+<dependOnValue>true</dependOnValue>
+<discriminatorValue>oct10_emp</discriminatorValue>
+<id>E05A1042-9461-ED13-3943-A3F6ABE08FCD</id>
+</dependentColumn>
+<dependentColumn class="oracle.dbtools.crest.model.design.relational.Column$DependentColumnDescriptor">
+<columnID>8D18524C-FECD-928B-5C88-BE9D38DC0AB8</columnID>
+<dependAsMandatory>false</dependAsMandatory>
+<dependOnValue>true</dependOnValue>
+<discriminatorValue>oct10_emp</discriminatorValue>
+<id>C41C2579-406F-A99F-E5AA-B231FB227951</id>
+</dependentColumn>
+<dependentColumn class="oracle.dbtools.crest.model.design.relational.Column$DependentColumnDescriptor">
+<columnID>31983456-31E4-DFAF-F456-CC684D234A86</columnID>
+<dependAsMandatory>false</dependAsMandatory>
+<dependOnValue>true</dependOnValue>
+<discriminatorValue>oct10_emp</discriminatorValue>
+<id>1E41DDE7-7F9C-3307-9DB6-FB63AF326D6A</id>
+</dependentColumn>
+<dependentColumn class="oracle.dbtools.crest.model.design.relational.Column$DependentColumnDescriptor">
+<columnID>A5DFF47A-192E-8719-25CF-A4B8665FA184</columnID>
+<dependAsMandatory>false</dependAsMandatory>
+<dependOnValue>true</dependOnValue>
+<discriminatorValue>oct10_mgr</discriminatorValue>
+<id>F3D9F926-B0E7-40F3-6E23-BD31782A44A0</id>
+</dependentColumn>
+<dependentColumn class="oracle.dbtools.crest.model.design.relational.Column$DependentColumnDescriptor">
+<columnID>8D18524C-FECD-928B-5C88-BE9D38DC0AB8</columnID>
+<dependAsMandatory>false</dependAsMandatory>
+<dependOnValue>true</dependOnValue>
+<discriminatorValue>oct10_mgr</discriminatorValue>
+<id>7F65AF5B-E60B-7090-34CF-8659F84C49E5</id>
+</dependentColumn>
+<dependentColumn class="oracle.dbtools.crest.model.design.relational.Column$DependentColumnDescriptor">
+<columnID>31983456-31E4-DFAF-F456-CC684D234A86</columnID>
+<dependAsMandatory>false</dependAsMandatory>
+<dependOnValue>true</dependOnValue>
+<discriminatorValue>oct10_mgr</discriminatorValue>
+<id>4E7D0263-85EE-FA56-FC53-9B5701D554E3</id>
+</dependentColumn>
+</dependentColumns>
+</Column>
+</columns>
+<indexes itemClass="oracle.dbtools.crest.model.design.relational.Index">
+<ind_PK_UK id="4430E71F-7674-45E0-FFEF-65E89BFA60AB" name="oct10_person_PK">
+<createdBy>pcannata</createdBy>
+<createdTime>2016-10-10 22:13:13 UTC</createdTime>
+<generatorID>AD75D498-96D6-BD3F-B91B-76E5A1A82B50</generatorID>
+<ownerDesignName>Oct10PersonDataModel</ownerDesignName>
+<pk>true</pk>
+<indexState>Primary Constraint</indexState>
+<isSurrogateKey>false</isSurrogateKey>
+<indexColumnUsage>
+<colUsage columnID="78D5916E-187E-C3D3-6D0B-7D8DB2924544"/>
+</indexColumnUsage>
+</ind_PK_UK>
+</indexes>
+</Table>

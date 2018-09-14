@@ -1,0 +1,86 @@
+<?xml version = '1.0' encoding = 'UTF-8'?>
+<Entity class="oracle.dbtools.crest.model.design.logical.Entity" directorySegmentName="seg_0" id="DBAA2052-1EF3-3875-5B25-DEEB1A3D4142" name="DBF_PaStIl">
+<createdBy>Stephen</createdBy>
+<createdTime>2016-11-30 01:02:00 UTC</createdTime>
+<ownerDesignName>HospitalModel</ownerDesignName>
+<engineerTo>
+<item key="AD605F01-77C0-DDF1-D65B-9F0A845D94CC" value="true"/>
+</engineerTo>
+<adequatelyNormalized>NO</adequatelyNormalized>
+<expectedVolumes>0</expectedVolumes>
+<fwdEngineeringStrategyName>Single Table</fwdEngineeringStrategyName>
+<growthPercent>0</growthPercent>
+<growthType>Year</growthType>
+<maxVolumes>9999999</maxVolumes>
+<minVolumes>0</minVolumes>
+<normalForm>Third</normalForm>
+<attributes itemClass="oracle.dbtools.crest.model.design.logical.Attribute">
+<Attribute name="pastil_id" id="36C1BFB4-7B3B-B105-1D52-52B5D445E86A">
+<createdBy>Stephen</createdBy>
+<createdTime>2016-11-30 01:03:38 UTC</createdTime>
+<ownerDesignName>HospitalModel</ownerDesignName>
+<engineerTo>
+<item key="AD605F01-77C0-DDF1-D65B-9F0A845D94CC" value="true"/>
+</engineerTo>
+<useDomainConstraints>false</useDomainConstraints>
+<use>1</use>
+<logicalDatatype>LOGDT011</logicalDatatype>
+<ownDataTypeParameters>,,</ownDataTypeParameters>
+</Attribute>
+<Attribute name="emp_id" id="4173C25A-A613-FA09-CF4B-97E775A6924D">
+<createdBy>Stephen</createdBy>
+<createdTime>2016-11-30 01:07:02 UTC</createdTime>
+<generatorID>57EE321D-9FEA-48AC-0F67-809B7498E994</generatorID>
+<ownerDesignName>HospitalModel</ownerDesignName>
+<engineerTo>
+<item key="AD605F01-77C0-DDF1-D65B-9F0A845D94CC" value="true"/>
+</engineerTo>
+<referedAttribute>2C57B257-27D0-7F9F-D24A-0A780191AFA9</referedAttribute>
+<useDomainConstraints>false</useDomainConstraints>
+<use>1</use>
+<logicalDatatype>LOGDT011</logicalDatatype>
+<ownDataTypeParameters>,,</ownDataTypeParameters>
+</Attribute>
+<Attribute name="illness_id" id="365FF4C3-A1D0-FA8C-539B-FF6F26846137">
+<createdBy>Stephen</createdBy>
+<createdTime>2016-11-30 01:07:11 UTC</createdTime>
+<generatorID>50E15757-D3CF-B1E1-C5A1-618E4C93B51C</generatorID>
+<ownerDesignName>HospitalModel</ownerDesignName>
+<engineerTo>
+<item key="AD605F01-77C0-DDF1-D65B-9F0A845D94CC" value="true"/>
+</engineerTo>
+<referedAttribute>1B271594-33FC-439E-0462-A58A00718F6D</referedAttribute>
+<useDomainConstraints>false</useDomainConstraints>
+<use>1</use>
+<logicalDatatype>LOGDT011</logicalDatatype>
+<ownDataTypeParameters>,,</ownDataTypeParameters>
+</Attribute>
+<Attribute name="patient_id" id="220668BE-D85F-8896-8D46-153C61C25E24">
+<createdBy>Stephen</createdBy>
+<createdTime>2016-11-30 01:07:18 UTC</createdTime>
+<generatorID>29F2914F-2D90-A5FD-E881-B2F8E5596F9D</generatorID>
+<ownerDesignName>HospitalModel</ownerDesignName>
+<engineerTo>
+<item key="AD605F01-77C0-DDF1-D65B-9F0A845D94CC" value="true"/>
+</engineerTo>
+<referedAttribute>16EC01A3-D97C-7647-DB5F-FAF819874951</referedAttribute>
+<useDomainConstraints>false</useDomainConstraints>
+<use>1</use>
+<ownDataTypeParameters>,,</ownDataTypeParameters>
+</Attribute>
+</attributes>
+<identifiers itemClass="oracle.dbtools.crest.model.design.logical.CandidateKey">
+<identifier id="AD75CDE6-AF1C-093C-C56A-96FD848223AC" name="DBF_PaStIl PK">
+<createdBy>Stephen</createdBy>
+<createdTime>2016-11-30 01:03:55 UTC</createdTime>
+<ownerDesignName>HospitalModel</ownerDesignName>
+<engineerTo>
+<item key="AD605F01-77C0-DDF1-D65B-9F0A845D94CC" value="true"/>
+</engineerTo>
+<pk>true</pk>
+<usedAttributes>
+<attributeRef>36C1BFB4-7B3B-B105-1D52-52B5D445E86A</attributeRef>
+</usedAttributes>
+</identifier>
+</identifiers>
+</Entity>

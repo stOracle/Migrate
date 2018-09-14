@@ -1,0 +1,1 @@
+To run, open the group_22_assignment7_part3.pyde file, make sure Processing is in python mode and hit Run.

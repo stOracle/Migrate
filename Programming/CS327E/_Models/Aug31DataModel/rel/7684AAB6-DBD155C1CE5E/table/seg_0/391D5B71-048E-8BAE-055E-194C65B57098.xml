@@ -1,0 +1,89 @@
+<?xml version = '1.0' encoding = 'UTF-8'?>
+<Table class="oracle.dbtools.crest.model.design.relational.Table" directorySegmentName="seg_0" id="391D5B71-048E-8BAE-055E-194C65B57098" name="Aug31_Phone">
+<createdBy>pcannata</createdBy>
+<createdTime>2016-09-07 21:17:44 UTC</createdTime>
+<generatorID>A88A1EB0-ED52-E696-D2D7-98022A9D2514</generatorID>
+<ownerDesignName>Aug31DataModel</ownerDesignName>
+<allowColumnReorder>false</allowColumnReorder>
+<existDependencyGenerateInDDl>true</existDependencyGenerateInDDl>
+<parsed>true</parsed>
+<columns itemClass="oracle.dbtools.crest.model.design.relational.Column">
+<Column name="phone_id" id="3A6E40BA-B88E-40D2-101E-D1E009F9A568">
+<createdBy>pcannata</createdBy>
+<createdTime>2016-09-07 21:17:44 UTC</createdTime>
+<generatorID>102DBF8B-F9A9-26AB-9463-216C630CC49A</generatorID>
+<ownerDesignName>Aug31DataModel</ownerDesignName>
+<useDomainConstraints>false</useDomainConstraints>
+<use>1</use>
+<logicalDatatype>LOGDT011</logicalDatatype>
+<ownDataTypeParameters>,,</ownDataTypeParameters>
+<autoIncrementCycle>false</autoIncrementCycle>
+</Column>
+<Column name="type" id="E867F0B4-1DCB-34DD-BF86-CA26B4A6FBAA">
+<createdBy>pcannata</createdBy>
+<createdTime>2016-09-07 21:17:44 UTC</createdTime>
+<generatorID>1CAB0C71-E230-F94C-D565-85526C4FB54A</generatorID>
+<ownerDesignName>Aug31DataModel</ownerDesignName>
+<nullsAllowed>true</nullsAllowed>
+<useDomainConstraints>false</useDomainConstraints>
+<use>1</use>
+<logicalDatatype>LOGDT024</logicalDatatype>
+<dataTypeSize>256</dataTypeSize>
+<ownDataTypeParameters>256,,</ownDataTypeParameters>
+<autoIncrementCycle>false</autoIncrementCycle>
+</Column>
+<Column name="phone" id="E54BCD26-492F-A9ED-311E-4C883F0D6711">
+<createdBy>pcannata</createdBy>
+<createdTime>2016-09-07 21:17:44 UTC</createdTime>
+<generatorID>DA1BFC2B-2684-B22F-4EAF-1009586F9C19</generatorID>
+<ownerDesignName>Aug31DataModel</ownerDesignName>
+<nullsAllowed>true</nullsAllowed>
+<useDomainConstraints>false</useDomainConstraints>
+<use>1</use>
+<logicalDatatype>LOGDT024</logicalDatatype>
+<dataTypeSize>256</dataTypeSize>
+<ownDataTypeParameters>256,,</ownDataTypeParameters>
+<autoIncrementCycle>false</autoIncrementCycle>
+</Column>
+<Column name="Aug31_Person_person_id" id="B0805038-3D8A-349D-C53E-116535FF825F">
+<createdBy>pcannata</createdBy>
+<createdTime>2016-09-07 21:17:44 UTC</createdTime>
+<generatorID>BFA09D4D-C8A2-EEA1-EE56-3ABE52B9EF4D</generatorID>
+<ownerDesignName>Aug31DataModel</ownerDesignName>
+<useDomainConstraints>false</useDomainConstraints>
+<use>1</use>
+<logicalDatatype>LOGDT011</logicalDatatype>
+<ownDataTypeParameters>,,</ownDataTypeParameters>
+<previousColumn>false</previousColumn>
+<autoIncrementCycle>false</autoIncrementCycle>
+<associations>
+<colAssociation fkAssociation="430B88BA-D636-56ED-9C2C-17B73E503C5E" referredColumn="818DCBCF-864F-09E3-C460-1519F982DB41"/>
+</associations>
+</Column>
+</columns>
+<indexes itemClass="oracle.dbtools.crest.model.design.relational.Index">
+<ind_PK_UK id="A0338439-E669-8B0C-5EFD-2BFB0792FB88" name="Aug31_Phone_PK">
+<createdBy>pcannata</createdBy>
+<createdTime>2016-09-07 21:17:44 UTC</createdTime>
+<generatorID>2B145410-E886-9231-264F-92CBD20D7D38</generatorID>
+<ownerDesignName>Aug31DataModel</ownerDesignName>
+<pk>true</pk>
+<indexState>Primary Constraint</indexState>
+<isSurrogateKey>false</isSurrogateKey>
+<indexColumnUsage>
+<colUsage columnID="3A6E40BA-B88E-40D2-101E-D1E009F9A568"/>
+</indexColumnUsage>
+</ind_PK_UK>
+<ind_PK_UK id="BBF4C425-424A-4D39-73E0-0CA93B4301DC" name="Aug31_Phone_Aug31_Person_FK">
+<createdBy>pcannata</createdBy>
+<createdTime>2016-09-07 21:17:44 UTC</createdTime>
+<generatorID>08A18F8C-BE4E-B02B-7DD0-ED544D8D7341</generatorID>
+<ownerDesignName>Aug31DataModel</ownerDesignName>
+<indexState>Foreign Key</indexState>
+<isSurrogateKey>false</isSurrogateKey>
+<indexColumnUsage>
+<colUsage columnID="B0805038-3D8A-349D-C53E-116535FF825F"/>
+</indexColumnUsage>
+</ind_PK_UK>
+</indexes>
+</Table>

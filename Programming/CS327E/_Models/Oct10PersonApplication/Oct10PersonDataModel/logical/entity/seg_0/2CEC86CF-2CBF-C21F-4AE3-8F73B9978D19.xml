@@ -1,0 +1,35 @@
+<?xml version = '1.0' encoding = 'UTF-8'?>
+<Entity class="oracle.dbtools.crest.model.design.logical.Entity" directorySegmentName="seg_0" id="2CEC86CF-2CBF-C21F-4AE3-8F73B9978D19" name="oct10_mgr">
+<createdBy>pcannata</createdBy>
+<createdTime>2016-10-10 21:58:56 UTC</createdTime>
+<ownerDesignName>Oct10PersonDataModel</ownerDesignName>
+<shouldEngineer>false</shouldEngineer>
+<engineerTo>
+<item key="C440380F-19B6-7BCE-42F0-46B9CB6D7A07" value="false"/>
+</engineerTo>
+<adequatelyNormalized>NO</adequatelyNormalized>
+<expectedVolumes>0</expectedVolumes>
+<fwdEngineeringStrategyName>Single Table</fwdEngineeringStrategyName>
+<growthPercent>0</growthPercent>
+<growthType>Year</growthType>
+<hierarchicalParent>115B2F04-E8F3-87F2-DCF4-8723825EB4FC</hierarchicalParent>
+<maxVolumes>9999999</maxVolumes>
+<minVolumes>0</minVolumes>
+<normalForm>Third</normalForm>
+<attributes itemClass="oracle.dbtools.crest.model.design.logical.Attribute">
+<Attribute name="org" id="B74FB5F9-49A5-8BBF-E917-4E20BD2E7CED">
+<createdBy>pcannata</createdBy>
+<createdTime>2016-10-10 21:59:22 UTC</createdTime>
+<ownerDesignName>Oct10PersonDataModel</ownerDesignName>
+<engineerTo>
+<item key="C440380F-19B6-7BCE-42F0-46B9CB6D7A07" value="true"/>
+</engineerTo>
+<nullsAllowed>true</nullsAllowed>
+<useDomainConstraints>false</useDomainConstraints>
+<use>1</use>
+<logicalDatatype>LOGDT024</logicalDatatype>
+<dataTypeSize>256</dataTypeSize>
+<ownDataTypeParameters>256,,</ownDataTypeParameters>
+</Attribute>
+</attributes>
+</Entity>

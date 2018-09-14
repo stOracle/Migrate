@@ -1,0 +1,72 @@
+<?xml version = '1.0' encoding = 'UTF-8'?>
+<Entity class="oracle.dbtools.crest.model.design.logical.Entity" directorySegmentName="seg_0" id="EBA5DB67-4C77-7ED7-5EB6-7368368314E2" name="DBF_pAddresses">
+<createdBy>Stephen</createdBy>
+<createdTime>2016-11-30 00:44:09 UTC</createdTime>
+<ownerDesignName>HospitalModel</ownerDesignName>
+<engineerTo>
+<item key="AD605F01-77C0-DDF1-D65B-9F0A845D94CC" value="true"/>
+</engineerTo>
+<adequatelyNormalized>NO</adequatelyNormalized>
+<expectedVolumes>0</expectedVolumes>
+<fwdEngineeringStrategyName>Single Table</fwdEngineeringStrategyName>
+<growthPercent>0</growthPercent>
+<growthType>Year</growthType>
+<maxVolumes>9999999</maxVolumes>
+<minVolumes>0</minVolumes>
+<normalForm>Third</normalForm>
+<attributes itemClass="oracle.dbtools.crest.model.design.logical.Attribute">
+<Attribute name="pAddress_id" id="7B097F56-F934-FF0E-CA09-B7A5151FB2D9">
+<createdBy>Stephen</createdBy>
+<createdTime>2016-11-30 00:44:21 UTC</createdTime>
+<ownerDesignName>HospitalModel</ownerDesignName>
+<engineerTo>
+<item key="AD605F01-77C0-DDF1-D65B-9F0A845D94CC" value="true"/>
+</engineerTo>
+<useDomainConstraints>false</useDomainConstraints>
+<use>1</use>
+<logicalDatatype>LOGDT011</logicalDatatype>
+<ownDataTypeParameters>,,</ownDataTypeParameters>
+</Attribute>
+<Attribute name="patient_id" id="F14A307D-C58B-19E2-6642-08AF3D3BE475">
+<createdBy>Stephen</createdBy>
+<createdTime>2016-11-30 01:06:14 UTC</createdTime>
+<generatorID>79B65438-494E-6C32-8A5A-E767967B057B</generatorID>
+<ownerDesignName>HospitalModel</ownerDesignName>
+<engineerTo>
+<item key="AD605F01-77C0-DDF1-D65B-9F0A845D94CC" value="true"/>
+</engineerTo>
+<referedAttribute>16EC01A3-D97C-7647-DB5F-FAF819874951</referedAttribute>
+<useDomainConstraints>false</useDomainConstraints>
+<use>1</use>
+<ownDataTypeParameters>,,</ownDataTypeParameters>
+</Attribute>
+<Attribute name="address_id" id="C012E7C5-5A11-EAD2-686E-0EC40C73D2CE">
+<createdBy>Stephen</createdBy>
+<createdTime>2016-11-30 01:06:31 UTC</createdTime>
+<generatorID>59AF97CB-B2F5-D8C1-A728-7D41F9C30CEB</generatorID>
+<ownerDesignName>HospitalModel</ownerDesignName>
+<engineerTo>
+<item key="AD605F01-77C0-DDF1-D65B-9F0A845D94CC" value="true"/>
+</engineerTo>
+<referedAttribute>1FABD574-1123-EED6-F75D-1A4A1395EC27</referedAttribute>
+<useDomainConstraints>false</useDomainConstraints>
+<use>1</use>
+<logicalDatatype>LOGDT011</logicalDatatype>
+<ownDataTypeParameters>,,</ownDataTypeParameters>
+</Attribute>
+</attributes>
+<identifiers itemClass="oracle.dbtools.crest.model.design.logical.CandidateKey">
+<identifier id="DF0F0778-E245-32E6-03F2-1C918E79CA8A" name="DBF_Patient_Addresses PK">
+<createdBy>Stephen</createdBy>
+<createdTime>2016-11-30 00:44:41 UTC</createdTime>
+<ownerDesignName>HospitalModel</ownerDesignName>
+<engineerTo>
+<item key="AD605F01-77C0-DDF1-D65B-9F0A845D94CC" value="true"/>
+</engineerTo>
+<pk>true</pk>
+<usedAttributes>
+<attributeRef>7B097F56-F934-FF0E-CA09-B7A5151FB2D9</attributeRef>
+</usedAttributes>
+</identifier>
+</identifiers>
+</Entity>

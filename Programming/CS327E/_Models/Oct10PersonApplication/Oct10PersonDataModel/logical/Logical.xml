@@ -1,0 +1,7 @@
+<?xml version = '1.0' encoding = 'UTF-8'?>
+<LogicalDesign class="oracle.dbtools.crest.model.design.logical.LogicalDesign" name="Logical" id="D93CBCC5-36D9-D460-9220-696BE2E66FEB" mainViewID="C213EFC9-5422-978C-D742-4A334845F799">
+<createdBy>pcannata</createdBy>
+<createdTime>2016-10-10 21:54:49 UTC</createdTime>
+<ownerDesignName>Oct10PersonDataModel</ownerDesignName>
+<shouldBeOpen>false</shouldBeOpen>
+</LogicalDesign>

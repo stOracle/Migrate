@@ -1,0 +1,48 @@
+<?xml version = '1.0' encoding = 'UTF-8'?>
+<Diagram class="oracle.dbtools.crest.swingui.logical.DPVLogical" name="Logical" id="C213EFC9-5422-978C-D742-4A334845F799">
+<createdBy>pcannata</createdBy>
+<modifiedBy>pcannata</modifiedBy>
+<createdTime>2016-10-10 21:55:00 UTC</createdTime>
+<autoRoute>false</autoRoute>
+<boxInbox>false</boxInbox>
+<showLegend>false</showLegend>
+<showLabels>false</showLabels>
+<showRelAttributes>false</showRelAttributes>
+<gridEnabled>false</gridEnabled>
+<showGrid>false</showGrid>
+<diagramColor>-1</diagramColor>
+<display>false</display>
+<notation>2</notation>
+<objectViews>
+<OView class="oracle.dbtools.crest.swingui.logical.TVEntity" oid="115B2F04-E8F3-87F2-DCF4-8723825EB4FC" otype="Entity" vid="92DEEE85-00AB-92E5-BC1E-1A7D33C6E19E">
+<hideElementsInCurrentOnly>false</hideElementsInCurrentOnly>
+<bounds x="110" y="32" width="199" height="113"/>
+</OView>
+<OView class="oracle.dbtools.crest.swingui.logical.TVEntity" oid="2CEC86CF-2CBF-C21F-4AE3-8F73B9978D19" otype="Entity" vid="3703BC28-63D4-2E2F-5279-1DF06798A694">
+<hideElementsInCurrentOnly>false</hideElementsInCurrentOnly>
+<bounds x="247" y="224" width="170" height="110"/>
+</OView>
+<OView class="oracle.dbtools.crest.swingui.logical.TVEntity" oid="87E84FAB-74C8-DC0F-FFC0-380B0F018C07" otype="Entity" vid="3012A4D9-1BD8-EA6C-1592-8760611DC604">
+<hideElementsInCurrentOnly>false</hideElementsInCurrentOnly>
+<bounds x="18" y="222" width="170" height="110"/>
+</OView>
+</objectViews>
+<connectors>
+<Connector class="oracle.dbtools.crest.swingui.logical.TVInheritanceRelation" oid="2664F92F-F924-C451-2AEC-220555CDD88F" otype="Hierarchy relation" vid_source="92DEEE85-00AB-92E5-BC1E-1A7D33C6E19E" vid_target="3703BC28-63D4-2E2F-5279-1DF06798A694">
+<hideElementsInCurrentOnly>false</hideElementsInCurrentOnly>
+<lineWidth>1</lineWidth>
+<points>
+<point x="278" y="145"/>
+<point x="278" y="224"/>
+</points>
+</Connector>
+<Connector class="oracle.dbtools.crest.swingui.logical.TVInheritanceRelation" oid="2CD2C64D-11D5-353E-34BF-003A5C1A7B0B" otype="Hierarchy relation" vid_source="92DEEE85-00AB-92E5-BC1E-1A7D33C6E19E" vid_target="3012A4D9-1BD8-EA6C-1592-8760611DC604">
+<hideElementsInCurrentOnly>false</hideElementsInCurrentOnly>
+<lineWidth>1</lineWidth>
+<points>
+<point x="149" y="145"/>
+<point x="149" y="222"/>
+</points>
+</Connector>
+</connectors>
+</Diagram>
